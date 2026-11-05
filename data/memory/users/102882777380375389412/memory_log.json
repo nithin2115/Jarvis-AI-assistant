@@ -1,0 +1,536 @@
+[
+  {
+    "text": "yeah i'm feeling good jarvis, everything fine only",
+    "intent": "personal",
+    "importance": 0.8,
+    "timestamp": 1779765845.6836655
+  },
+  {
+    "text": "the judges are and me the current weather in them",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1779765932.3434029
+  },
+  {
+    "text": "The seems to be going smoothly for you vampy",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780631676.212523
+  },
+  {
+    "text": "There is a small typo ramsey it's ramsey not vampy",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780631684.2191834
+  },
+  {
+    "text": "There's been a mix up vampy",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780631689.8135548
+  },
+  {
+    "text": "How are you feeling today vampy",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780631727.9135914
+  },
+  {
+    "text": "Perfectly as always how about you fancy",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780631736.327617
+  },
+  {
+    "text": "We're able to clear up the mix up vampy",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780631744.3997657
+  },
+  {
+    "text": "Problem: Longest Consecutive Sequence\n\nGiven an unsorted integer array nums, return the length of the longest consecutive elements sequence.\n\nYou must write an algorithm that runs in O(n) time.\n\nExample 1:\n\nInput:\nnums = [100,4,200,1,3,2]\n\nOutput:\n4\n\nExplanation:\nThe longest consecutive sequence is [1,2,3,4].\nIts length is 4.\n\nExample 2:\n\nInput:\nnums = [0,3,7,2,5,8,4,6,0,1]\n\nOutput:\n9\n\nExplanation:\nThe longest consecutive sequence is [0,1,2,3,4,5,6,7,8].\nIts length is 9.\n\nConstraints:\n\n1 <= nums.length <= 100000\n-10^9 <= nums[i] <= 10^9\n\nRequirements:\n\n1. Solve in Java.\n2. Provide optimized code.\n3. Provide sample input and output.\n4. Explain the approach step by step in simple language.\n5. Explain why O(n) is achieved.\n6. Mention edge cases.\n7. Do not provide brute force solution unless asked.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780673259.9582953
+  },
+  {
+    "text": "Given an array of integers nums and an integer k, return the number of subarrays whose sum equals k.\n\nConstraints:\n1 <= nums.length <= 100000\n-1000 <= nums[i] <= 1000\n\nRequirements:\n1. Solve in Java.\n2. Optimized solution only.\n3. Explain approach.\n4. Explain why brute force is not acceptable.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780673332.536608
+  },
+  {
+    "text": "Problem:\n\nGiven a binary tree, find the maximum path sum.\n\nA path can start and end at any node.\n\nRequirements:\n\n1. Solve in Java.\n2. Optimized solution only.\n3. Explain approach.\n4. Explain recursion.\n5. Explain why negative paths are ignored.\n6. Time and Space Complexity.\n7. Sample Input and Output.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780673632.148016
+  },
+  {
+    "text": "Problem:\n\nDesign an LRU Cache.\n\nImplement:\n\nLRUCache(int capacity)\nint get(int key)\nvoid put(int key, int value)\n\nRequirements:\n\n1. Java\n2. O(1) get\n3. O(1) put\n4. Explain why HashMap + Doubly Linked List is used\n5. Sample Input/Output\n6. Time and Space Complexity",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780673830.470026
+  },
+  {
+    "text": "Problem: Lowest Common Ancestor of a Binary Tree\n\nGiven a binary tree, find the Lowest Common Ancestor (LCA) of two given nodes p and q.\n\nAccording to the definition of LCA:\nThe lowest common ancestor is the lowest node in the tree that has both p and q as descendants (where a node can be a descendant of itself).\n\nExample:\n\nInput:\n\n        3\n       / \\\n      5   1\n     / \\ / \\\n    6  2 0  8\n      / \\\n     7   4\n\np = 5\nq = 1\n\nOutput:\n3\n\nExample 2:\n\nInput:\n\n        3\n       / \\\n      5   1\n     / \\ / \\\n    6  2 0  8\n      / \\\n     7   4\n\np = 5\nq = 4\n\nOutput:\n5\n\nRequirements:\n\n1. Solve in Java.\n2. Provide optimized solution only.\n3. Provide complete runnable code.\n4. Provide sample input and output.\n5. Explain the approach step by step.\n6. Explain recursion clearly.\n7. Explain Time Complexity.\n8. Explain Space Complexity.\n9. Mention edge cases.\n10. Code must be generated completely before explanations.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780676571.3644083
+  },
+  {
+    "text": "Design and implement an LFU Cache in Java.\n\nRequirements:\n\n1. O(1) get\n2. O(1) put\n3. Complete runnable code\n4. Sample Input\n5. Sample Output\n6. Approach\n7. Time Complexity\n8. Space Complexity\n9. Edge Cases\n\nGenerate FULL CODE first.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780678119.9634273
+  },
+  {
+    "text": "Problem:\n\nDesign a File System.\n\nImplement:\n\ncreatePath(String path, int value)\nget(String path)\n\nRules:\n\n1. Path may contain multiple directories.\n2. Parent path must exist.\n3. O(length of path)\n\nRequirements:\n\n1. Java\n2. Complete runnable code\n3. Sample Input/Output\n4. Approach\n5. Complexity\n6. Edge Cases",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780678217.2962127
+  },
+  {
+    "text": "Problem: Network Delay Time\n\nYou are given a network of n nodes labeled from 1 to n.\n\nYou are also given a list of travel times as directed edges:\n\ntimes[i] = (u, v, w)\n\nwhere:\n\nu = source node\nv = destination node\nw = time taken\n\nA signal is sent from node k.\n\nReturn the minimum time required for all nodes to receive the signal.\n\nIf some node cannot receive the signal, return -1.\n\nExample:\n\nInput:\n\ntimes = [[2,1,1],[2,3,1],[3,4,1]]\nn = 4\nk = 2\n\nOutput:\n\n2\n\nExplanation:\n\nNode 2 → Node 1 = 1\nNode 2 → Node 3 = 1\nNode 2 → Node 3 → Node 4 = 2\n\nMaximum time = 2\n\nRequirements:\n\n1. Solve in Java.\n2. Optimized solution only.\n3. Complete runnable code.\n4. Use Priority Queue.\n5. Explain why Dijkstra is used.\n6. Sample Input.\n7. Sample Output.\n8. Approach.\n9. Time Complexity.\n10. Space Complexity.\n11. Edge Cases.\n12. Generate FULL CODE before explanation.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780682946.8564305
+  },
+  {
+    "text": "Build a full Spring Boot + React Todo Application\n\nInclude:\n\nBackend\nFrontend\nREST APIs\nJWT Auth\nDatabase Schema\nProject Structure",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780723618.1553323
+  },
+  {
+    "text": "today i'm going to test you at top level jarvis",
+    "intent": "personal",
+    "importance": 0.8,
+    "timestamp": 1780734322.8428347
+  },
+  {
+    "text": "today i'm going to test you jarvis",
+    "intent": "personal",
+    "importance": 0.8,
+    "timestamp": 1780734356.377088
+  },
+  {
+    "text": "Build a full-stack Expense Tracker application.\n\nRequirements:\n\nFrontend:\n- React + Vite\n- Tailwind CSS\n- Dashboard\n- Add Expense\n- Edit Expense\n- Delete Expense\n- Monthly Analytics\n- Dark Mode\n\nBackend:\n- Spring Boot\n- JWT Authentication\n- REST APIs\n- MySQL Database\n\nFeatures:\n- User Registration\n- Login\n- Expense Categories\n- Monthly Reports\n- Charts\n- Export CSV\n\nAgent Instructions:\n\n1. Create the project on disk.\n2. Generate all folders automatically.\n3. Generate all files automatically.\n4. Create backend first.\n5. Create frontend next.\n6. Show project status.\n7. Show generated file tree.\n8. Continue building until project is complete.\n9. Do not explain architecture.\n10. Build the actual project.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780749281.1516933
+  },
+  {
+    "text": "today i'm going to test you",
+    "intent": "personal",
+    "importance": 0.8,
+    "timestamp": 1780766477.1002727
+  },
+  {
+    "text": "Problem: Word Ladder\n\nGiven two words:\n\nbeginWord\nendWord\n\nand a dictionary wordList,\n\nreturn the length of the shortest transformation sequence from beginWord to endWord.\n\nRules:\n\n1. Only one letter can be changed at a time.\n2. Each transformed word must exist in wordList.\n3. Return 0 if transformation is impossible.\n\nExample:\n\nInput:\n\nbeginWord = \"hit\"\nendWord = \"cog\"\n\nwordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]\n\nOutput:\n\n5\n\nExplanation:\n\nhit\n→ hot\n→ dot\n→ dog\n→ cog\n\nLength = 5\n\nRequirements:\n\n1. Java solution.\n2. Optimized solution only.\n3. Complete runnable code.\n4. Explain why BFS is used.\n5. Sample Input.\n6. Sample Output.\n7. Approach.\n8. Time Complexity.\n9. Space Complexity.\n10. Edge Cases.\n11. Generate FULL CODE before explanation.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780766637.845255
+  },
+  {
+    "text": "Implement Median Finder.\n\nDesign a data structure that supports:\n\naddNum(int num)\n\nfindMedian()\n\nRequirements:\n\n1. Java solution\n2. O(log n) addNum\n3. O(1) findMedian\n4. Complete runnable code\n5. Explain approach\n6. Time Complexity\n7. Space Complexity\n8. Sample Input/Output\n9. Use two heaps\n10. Generate FULL CODE before explanation",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780766731.3432965
+  },
+  {
+    "text": "Design a Distributed Rate Limiter.\n\nRequirements:\n\n1. Allow requests per user.\n2. Limit = 100 requests/minute.\n3. Support millions of users.\n4. Handle distributed servers.\n5. Use Redis.\n6. Prevent race conditions.\n7. Discuss scalability.\n8. Provide Java implementation.\n9. Explain trade-offs between:\n   - Token Bucket\n   - Leaky Bucket\n   - Fixed Window\n   - Sliding Window\n10. Production-ready answer.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780766867.012286
+  },
+  {
+    "text": "Design WhatsApp.\n\nRequirements:\n\n1. One-to-one messaging\n2. Group chats\n3. Message delivery status\n4. Online/offline presence\n5. Media sharing\n6. End-to-end encryption\n7. Support 500 million users\n\nExplain:\n\n1. Functional Requirements\n2. Non-Functional Requirements\n3. Capacity Estimation\n4. Database Design\n5. Message Flow\n6. WebSocket Architecture\n7. Scaling Strategy\n8. Redis Usage\n9. Kafka Usage\n10. Sharding Strategy\n11. Security\n12. Monitoring\n13. Tradeoffs\n\nProvide architecture diagrams using text.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780767805.3637197
+  },
+  {
+    "text": "A Spring Boot API is handling 50 million requests/day.\n\nDatabase response times increased from 20ms to 3 seconds.\n\nDesign a complete debugging and optimization plan.\n\nInclude:\n\n1. Root cause analysis\n2. Monitoring\n3. Query optimization\n4. Indexing\n5. Redis caching\n6. Load balancing\n7. Database sharding\n8. Observability\n9. Tradeoffs\n10. Production rollout strategy",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780768349.8074605
+  },
+  {
+    "text": "You have:\n\nUsers(user_id, name)\n\nOrders(order_id, user_id, amount, created_at)\n\nThere are 100 million orders.\n\nFind the top 10 users by total spending in the last 12 months.\n\nRequirements:\n\n1. SQL Query\n2. Optimized Query\n3. Index Suggestions\n4. Execution Plan Analysis\n5. Partitioning Strategy\n6. Performance Bottlenecks\n7. Time Complexity\n8. Space Complexity",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780815670.2324388
+  },
+  {
+    "text": "A MySQL Orders table contains 500 million rows.\n\nCurrent query:\n\nSELECT user_id,\nSUM(amount)\nFROM Orders\nWHERE created_at >= NOW() - INTERVAL 1 YEAR\nGROUP BY user_id\nORDER BY SUM(amount) DESC\nLIMIT 10;\n\nRequirements:\n\n1. Explain why this query is slow.\n2. Design indexes.\n3. Design partitioning.\n4. Design caching.\n5. Design read replicas.\n6. Show EXPLAIN analysis.\n7. Estimate performance improvements.\n8. Provide production rollout plan.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780817588.9018874
+  },
+  {
+    "text": "A MySQL Orders table contains 2 billion rows.\n\nSchema:\n\nOrders(\n    order_id BIGINT,\n    user_id BIGINT,\n    amount DECIMAL(10,2),\n    created_at TIMESTAMP\n)\n\nCurrent query:\n\nSELECT user_id,\n       SUM(amount) total_spending\nFROM Orders\nWHERE created_at >= NOW() - INTERVAL 1 YEAR\nGROUP BY user_id\nORDER BY total_spending DESC\nLIMIT 100;\n\nResponse time:\n38 seconds\n\nRequirements:\n\n1. Root Cause Analysis\n2. Query Optimization\n3. Index Design\n4. Covering Index Strategy\n5. Partitioning Strategy\n6. Read Replica Strategy\n7. Redis Strategy\n8. Materialized View Strategy\n9. Sharding Strategy\n10. Monitoring\n11. Production Rollout Plan\n12. Cost Tradeoffs",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780821340.6247952
+  },
+  {
+    "text": "Problem:\n\nGiven an array of integers nums and an integer k,\nreturn the number of subarrays whose sum is divisible by k.\n\nRequirements:\n\n1. Java solution\n2. Optimized solution only\n3. Complete runnable code\n4. Explain approach\n5. Time Complexity\n6. Space Complexity\n7. Edge Cases",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780846443.9155393
+  },
+  {
+    "text": "Tables:\n\nCustomers(\n    customer_id,\n    customer_name\n)\n\nOrders(\n    order_id,\n    customer_id,\n    amount,\n    order_date\n)\n\nFind the top 5 customers who spent the most money in the last 12 months.\n\nRequirements:\n\n1. SQL Query\n2. Optimized Query\n3. Index Suggestions\n4. Execution Plan Discussion\n5. Performance Considerations for 500 Million Orders",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780846565.362673
+  },
+  {
+    "text": "A PostgreSQL table contains 5 billion rows.\n\nUsers request:\n\nTop 100 products by revenue\nfor the last 24 months.\n\nCurrent query takes 62 seconds.\n\nDesign a production-grade solution.\n\nRequirements:\n\n1. Root Cause Analysis\n2. Index Strategy\n3. Partitioning Strategy\n4. Read Replicas\n5. Redis\n6. Materialized Views\n7. CDC Pipeline\n8. Kafka\n9. Sharding\n10. Monitoring\n11. Rollout Plan\n12. Cost Tradeoffs",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780846808.7120242
+  },
+  {
+    "text": "Given an array of integers nums and an integer k,\nreturn the number of subarrays whose sum equals k.\n\nRequirements:\n\n1. Java solution\n2. Optimized solution only\n3. Complete runnable code\n4. Sample Input\n5. Sample Output\n6. Time Complexity\n7. Space Complexity\n8. Edge Cases\n\nGenerate FULL CODE first.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780847636.9187887
+  },
+  {
+    "text": "A PostgreSQL Orders table contains 3 billion rows.\n\nCurrent query takes 45 seconds.\n\nRequirements:\n\n1. Root Cause Analysis\n2. Index Strategy\n3. Partitioning Strategy\n4. Read Replica Strategy\n5. Redis Strategy\n6. Materialized Views\n7. Monitoring\n8. Rollout Plan\n9. Cost Tradeoffs",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780847832.3894181
+  },
+  {
+    "text": "Given an integer array nums and an integer k,\nreturn the number of subarrays whose sum equals k.\n\nRequirements:\n\n1. Java solution\n2. Full runnable code\n3. Code first\n4. Sample Input\n5. Sample Output\n6. Edge Cases\n7. Complexity\n\nGenerate complete answer.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780848871.169439
+  },
+  {
+    "text": "Given an integer array nums and an integer k, return the number of subarrays whose sum equals k. Requirements: 1. Java solution 2. Full runnable code 3. Code first 4. Sample Input 5. Sample Output 6. Edge Cases 7. Complexity Generate complete answer.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780848955.4952133
+  },
+  {
+    "text": "Problem:\n\nGiven an integer array nums and an integer k,\nthere is a sliding window of size k moving from left to right.\n\nReturn the maximum value in each window.\n\nExample:\n\nInput:\n\nnums = [1,3,-1,-3,5,3,6,7]\nk = 3\n\nOutput:\n\n[3,3,5,5,6,7]\n\nRequirements:\n\n1. Java solution\n2. Optimized solution only\n3. Complete runnable code\n4. Code first\n5. Explain approach\n6. Sample Input\n7. Sample Output\n8. Time Complexity\n9. Space Complexity\n10. Edge Cases\n\nIMPORTANT:\n\nDo not use brute force.\n\nUse the optimal approach.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780850828.6667106
+  },
+  {
+    "text": "Problem:\n\nGiven an integer array nums and an integer k,\nreturn the median of every sliding window of size k.\n\nExample:\n\nnums = [1,3,-1,-3,5,3,6,7]\nk = 3\n\nOutput:\n\n[1,-1,-1,3,5,6]\n\nRequirements:\n\n1. Java solution\n2. Optimized solution only\n3. Full runnable code\n4. Code first\n5. Explain approach\n6. Time Complexity\n7. Space Complexity\n\nIMPORTANT:\n\nDo not use brute force.\n\nUse the optimal approach.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780851051.5839884
+  },
+  {
+    "text": "Design Twitter\n\nRequirements:\n1. postTweet(userId, tweetId)\n2. getNewsFeed(userId)\n3. follow(followerId, followeeId)\n4. unfollow(followerId, followeeId)\n\nReturn 10 most recent tweets.\n\nUse the optimal design.\n\nJava only.\n\nDo not generate brute force.\nDo not generate multiple solutions.\nGenerate production-grade code only.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1780852751.9899385
+  },
+  {
+    "text": "LRU Cache\n\nDesign and implement an LRU Cache.\n\nOperations:\n1. get(key)\n2. put(key, value)\n\nBoth operations must run in O(1).\n\nRequirements:\n- Java only\n- Production-grade code\n- No brute force\n- No multiple solutions\n- Use the optimal design only\n\nOutput:\n1. Problem Understanding\n2. Optimal Algorithm\n3. Full Code\n4. Approach\n5. Time Complexity\n6. Space Complexity\n7. Edge Cases",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1780853157.3142729
+  },
+  {
+    "text": "Implement LRU Cache in Java.\n\nRequirements:\n1. O(1) get\n2. O(1) put\n3. Production-grade code\n4. Full runnable code\n5. No brute force",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781071434.050736
+  },
+  {
+    "text": "Given an array nums and an integer k,\nreturn the median of every sliding window of size k.\n\nRequirements:\n\n1. Java only\n2. Optimal solution only\n3. Do NOT use sorting every window\n4. Full runnable code\n5. Production-grade implementation",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781071679.5598423
+  },
+  {
+    "text": "Implement LRU Cache in Java.\nOptimal solution only.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781071916.261772
+  },
+  {
+    "text": "Optimize this PostgreSQL query running on 3 billion rows.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781072034.1808755
+  },
+  {
+    "text": "Design WhatsApp for 1 billion users.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781072252.9832911
+  },
+  {
+    "text": "Build a React Login Page with JWT Authentication.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781072409.262602
+  },
+  {
+    "text": "My Spring Boot app throws NullPointerException at UserService.java:45",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781072575.1778183
+  },
+  {
+    "text": "Review this Java code and find bugs: public static int calculateTotalAlternatingSum(int[] arr1, int[] arr2) {\n\n    int totalSum = 0;\n\n    for (int i = 0; i < arr1.length; i++) {\n\n        if (i % 2 == 0) {\n            totalSum += arr1[i] + arr2[i];\n        } else {\n            totalSum += arr1[i] - arr2[i];\n        }\n    }\n\n    return totalSum;\n}",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781072807.3791468
+  },
+  {
+    "text": "Given an array nums and an integer k,\nreturn the median of every sliding window of size k.\n\nRequirements:\n\n1. Java\n2. Optimal solution only\n3. No brute force\n4. Full runnable code",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781073044.3708434
+  },
+  {
+    "text": "Design Amazon for 500 million users.\n\nInclude:\nRedis\nKafka\nSharding\nPayments\nInventory\nMonitoring\nDisaster Recovery\nCost Tradeoffs",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781073234.9077477
+  },
+  {
+    "text": "Implement LFU Cache in Java.\nOptimal solution only.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781109250.0092754
+  },
+  {
+    "text": "Sliding Window Median\n\nOptimal solution only.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781109477.7197719
+  },
+  {
+    "text": "Optimize a PostgreSQL query running on 5 billion rows.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781109680.5793839
+  },
+  {
+    "text": "Design WhatsApp for 1 billion users.\n\nRequirements:\nRedis\nKafka\nMonitoring\nTradeoffs",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781109950.4314864
+  },
+  {
+    "text": "Build Spring Boot + React Todo App\n\nRequirements:\nJWT\nMySQL\nDocker\nFolder Structure",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781110736.5301645
+  },
+  {
+    "text": "My Spring Boot app throws:\n\nNullPointerException\nat UserService.java:45",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781111080.3671224
+  },
+  {
+    "text": "Continue exactly from where you left off. Do not repeat previous parts. Only output the rest of the code/text.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781111092.103578
+  },
+  {
+    "text": "Design Amazon for 500 million users.\n\nInclude:\nRedis\nKafka\nSharding\nMonitoring\nDisaster Recovery\nCost Tradeoffs",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781111658.1426325
+  },
+  {
+    "text": "Design WhatsApp\n→ SYSTEM_DESIGN_AGENT\n\nOptimize PostgreSQL query\n→ SQL_AGENT\n\nImplement LFU Cache\n→ DSA_AGENT\n\nBuild React App\n→ FULLSTACK_AGENT\n\nReview Java Code\n→ CODE_REVIEW_AGENT",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781111954.811851
+  },
+  {
+    "text": "Implement Sliding Window Maximum in Java.\nOptimal solution only.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781168113.7763584
+  },
+  {
+    "text": "Implement Sliding Window Median in Java.\nOptimal solution only.\n\nConstraints:\nn up to 100000\nk up to 50000\n\nReturn complete code.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781168440.6872926
+  },
+  {
+    "text": "Implement LFU Cache in Java.\n\nRequirements:\n- O(1) get\n- O(1) put\n- Capacity = 100000\n- Return complete production-grade code\n\nExplain:\n- Data structures used\n- Why complexity is O(1)",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781178182.5589287
+  },
+  {
+    "text": "Implement LFU Cache in Java.\n\nRequirements:\n- O(1) get\n- O(1) put\n- Complete production-grade implementation\n- Explain why complexity is O(1)",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781181047.9311965
+  },
+  {
+    "text": "Design Instagram for 1 billion users.\n\nInclude:\n- Capacity Calculations\n- Redis\n- Kafka\n- CDN\n- Monitoring\n- Disaster Recovery\n- Cost Analysis\n- Tradeoffs",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781263729.6301665
+  },
+  {
+    "text": "Design WhatsApp for 1 billion users.\n\nRequirements:\n- Capacity calculations\n- API design\n- Redis strategy\n- Kafka strategy\n- Database sharding\n- Multi-region deployment\n- Disaster recovery\n- Monitoring\n- Security\n- Cost analysis\n\nFor every design choice explain WHY it was chosen.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781264571.3499122
+  },
+  {
+    "text": "Orders table has 10 billion rows.\n\nSELECT customer_id,\n       SUM(amount)\nFROM Orders\nWHERE created_at >= NOW() - INTERVAL '12 months'\nGROUP BY customer_id\nORDER BY SUM(amount) DESC\nLIMIT 100;\n\nOptimize this query.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781264677.5640612
+  },
+  {
+    "text": "My Spring Boot application throws:\n\njava.lang.NullPointerException\n\nat UserService.java:45\n\nHelp me debug it.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781265601.0664666
+  },
+  {
+    "text": "Build a production-ready URL Shortener.\n\nTech Stack:\n- Spring Boot\n- React\n- PostgreSQL\n- Redis\n- Docker\n- JWT Authentication\n\nRequirements:\n- User Registration/Login\n- Create Short URL\n- Redirect Short URL\n- Analytics (click count)\n- URL Expiration\n- Role-Based Access Control (Admin/User)\n\nInclude:\n1. Folder Structure\n2. Database Schema\n3. Entities\n4. Repositories\n5. Services\n6. Controllers\n7. Security Configuration\n8. Redis Caching Strategy\n9. React Frontend Structure\n10. API Integration\n11. Docker Setup\n12. README\n13. Deployment Steps\n\nProvide production-grade architecture.",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781265867.2086737
+  },
+  {
+    "text": "Implement LFU Cache in Java.\nO(1) get\nO(1) put\nCapacity 100000\nProduction-grade code.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781278068.7823517
+  },
+  {
+    "text": "Implement Sliding Window Median in Java.\nn=100000\nk=50000\nOptimal only.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781278300.2320502
+  },
+  {
+    "text": "Implement Sliding Window Median in Java.\nn = 100000\nk = 50000\n\nRequirements:\n- Two Heaps\n- Lazy Deletion\n- O(n log k)\n\nExplain exactly how stale elements are removed.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781278518.5180836
+  },
+  {
+    "text": "Optimize this PostgreSQL query on a 10 billion row Orders table.\n\nSELECT customer_id,\n       SUM(amount) AS revenue\nFROM orders\nWHERE created_at >= NOW() - INTERVAL '12 months'\nGROUP BY customer_id\nORDER BY revenue DESC\nLIMIT 100;\n\nRequirements:\n- Root cause analysis\n- Index strategy\n- EXPLAIN plan analysis\n- Partitioning strategy\n- Read replicas\n- Redis caching\n- Monitoring\n- Tradeoffs",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781279122.319168
+  },
+  {
+    "text": "tell me the current weather in chirala, andhra pradesh",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781781908.920205
+  },
+  {
+    "text": "Optimize this PostgreSQL query on a 10 billion row Orders table.\n\nSELECT customer_id,\n       SUM(amount) AS revenue\nFROM orders\nWHERE created_at >= NOW() - INTERVAL '12 months'\nGROUP BY customer_id\nORDER BY revenue DESC\nLIMIT 100;\n\nRequirements:\n- Root cause analysis\n- Query analysis\n- Index strategy\n- EXPLAIN plan analysis\n- Partitioning strategy\n- Read replicas\n- Redis caching\n- Monitoring\n- Tradeoffs\n- Final optimized query",
+    "intent": "task",
+    "importance": 0.6,
+    "timestamp": 1781781973.4431949
+  },
+  {
+    "text": "Design Instagram for 1 billion users.\n\nRequirements:\n- Functional requirements\n- Non-functional requirements\n- Scale estimation\n- Capacity calculations\n- API design\n- Database design\n- Redis strategy\n- Kafka strategy\n- Data flow\n- Monitoring\n- Disaster recovery\n- Tradeoffs\n- Cost considerations\n- Architecture diagram",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781782173.7721932
+  },
+  {
+    "text": "Design WhatsApp for 2 billion users.\n\nRequirements:\n- Functional requirements\n- Non-functional requirements\n- Scale estimation\n- Capacity calculations\n- End-to-end encryption\n- Message ordering\n- Delivery guarantees\n- Presence service\n- Group messaging\n- Media uploads\n- Cassandra schema\n- Redis strategy\n- Kafka strategy\n- Multi-region failover\n- Monitoring\n- Disaster recovery\n- Cost analysis\n- Tradeoffs\n- Architecture diagram",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781785557.5396533
+  },
+  {
+    "text": "Build a production-grade E-Commerce Platform.\n\nRequirements:\n- Spring Boot\n- React\n- PostgreSQL\n- Redis\n- Kafka\n- JWT\n- Docker\n- Kubernetes\n- Complete folder structure\n- Entities\n- Repositories\n- Services\n- Controllers\n- Security\n- CI/CD\n- Deployment\n- README",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781785764.818261
+  },
+  {
+    "text": "Implement LFU Cache in Java. O(1) get and put. Production-grade code",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781884977.5404072
+  },
+  {
+    "text": "Implement LFU Cache in Java. O(1) get and put. Production-grade code.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1781967579.2769349
+  },
+  {
+    "text": "Implement LRU Cache in Java. O(1) only.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782023997.7874658
+  },
+  {
+    "text": "Implement Trie in Java.\nComplete production-grade code only.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782024180.6574419
+  },
+  {
+    "text": "Implement LFU Cache in Java.\n\nRequirements:\n- O(1) get\n- O(1) put\n- Capacity up to 100000\n- Complete production-grade code\n- Explain data structures\n- Explain why complexity is O(1)",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782057738.9488242
+  },
+  {
+    "text": "Implement Segment Tree with Range Sum Query in Java.\n\nRequirements:\n- Build\n- Query\n- Point Update\n- Complete production-grade code\n- Complexity proof",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782067881.476038
+  },
+  {
+    "text": "Implement Dijkstra Algorithm in Java.\n\nRequirements:\n- Adjacency List\n- Priority Queue\n- Return shortest distance from source\n- Complete production-grade code\n- Complexity proof",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782068171.355221
+  },
+  {
+    "text": "Implement Union Find (Disjoint Set Union) in Java.\n\nRequirements:\n- Path Compression\n- Union by Rank\n- Complete production-grade code\n- Complexity proof",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782068425.6196852
+  },
+  {
+    "text": "Implement MedianFinder in Java.\n\nRequirements:\n- addNum()\n- findMedian()\n- Two Heaps\n- O(log n)\n- Complete production-grade code",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782068652.518538
+  },
+  {
+    "text": "Implement All O(1) Data Structure in Java.\n\nRequirements:\n- inc(String key)\n- dec(String key)\n- getMaxKey()\n- getMinKey()\n\nConstraints:\n- All operations O(1)\n- Production-grade code\n- Complete implementation",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782069571.5664752
+  },
+  {
+    "text": "Design Twitter\n\nRequirements:\n- postTweet\n- getNewsFeed\n- follow\n- unfollow\n\nReturn complete production-grade Java code.\nAnalyze complexity.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782069961.6345828
+  },
+  {
+    "text": "Implement LFU Cache in Java.\n\nRequirements:\n- get(int key)\n- put(int key, int value)\n- O(1) average time complexity for both operations\n- Capacity can be up to 100000\n- When frequencies tie, evict the Least Recently Used key\n- Return COMPLETE production-grade Java code\n- Include all helper classes\n- Must compile without modification\n\nMandatory Constraints:\n- Use:\n    HashMap<Integer, Node> keyToNode\n    HashMap<Integer, DoublyLinkedList> freqToList\n    int minFrequency\n- Each frequency bucket must be a doubly linked list\n- Node removal from frequency list must be O(1)\n- Eviction must be O(1)\n- No PriorityQueue\n- No TreeMap\n- No LinkedHashMap\n- No linear scans\n- No pseudocode\n- No omitted sections\n- No comments like:\n    // rest of code\n    // omitted\n    // TODO\n\nOutput Format:\n\n1. Full Code\n2. Data Structures Used\n3. Why get() is O(1)\n4. Why put() is O(1)\n5. Time Complexity\n6. Space Complexity\n7. Edge Cases\n\nBefore returning the answer verify:\n\n- Node contains:\n    key, value, freq, prev, next\n\n- DoublyLinkedList contains:\n    addFirst()\n    remove()\n    removeLast()\n\n- LFUCache contains:\n    capacity\n    minFrequency\n    keyToNode\n    freqToList\n\n- get() updates frequency correctly\n\n- put() updates frequency correctly\n\n- Eviction removes:\n    least frequency\n    and among them least recently used\n\n- All operations remain O(1)\n\nReturn only the final verified answer.",
+    "intent": "general",
+    "importance": 0.5,
+    "timestamp": 1782070428.789984
+  }
+]

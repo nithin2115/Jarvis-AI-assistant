@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JARVIS · Memory Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500&family=Rajdhani:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{min-height:100vh;background:#00040a;color:#cfe6ff;
+  font-family:'Rajdhani','Segoe UI',sans-serif;}
+body{
+  background:
+    radial-gradient(circle at 12% 8%,rgba(0,150,255,.10),transparent 45%),
+    radial-gradient(circle at 88% 92%,rgba(0,90,255,.08),transparent 50%),
+    #00040a;
+}
+
+/* ── Top bar ─────────────────────────────────────────── */
+.bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;
+  justify-content:space-between;padding:14px 26px;
+  background:rgba(0,5,18,.72);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(0,140,255,.14);}
+.bar-l{display:flex;align-items:center;gap:14px;}
+.brand{font-family:'Orbitron',sans-serif;letter-spacing:5px;font-size:14px;
+  color:#7fcaff;text-decoration:none;}
+.crumb{font-size:11px;letter-spacing:3px;color:rgba(180,220,255,.4);
+  text-transform:uppercase;}
+.bar-r{display:flex;align-items:center;gap:10px;font-size:12px;
+  color:rgba(180,220,255,.7);}
+.btn{background:rgba(0,100,255,.09);border:1px solid rgba(0,140,255,.22);
+  color:#cfe6ff;padding:7px 14px;border-radius:8px;cursor:pointer;
+  font-family:inherit;font-size:11.5px;letter-spacing:1.2px;
+  text-transform:uppercase;text-decoration:none;display:inline-block;
+  transition:all .25s cubic-bezier(.16,1,.3,1);}
+.btn:hover{background:rgba(0,130,255,.17);border-color:rgba(0,180,255,.45);
+  box-shadow:0 0 18px rgba(0,140,255,.18);}
+.btn:disabled{opacity:.4;cursor:not-allowed;}
+.btn-danger{background:rgba(255,60,60,.06);border-color:rgba(255,80,80,.28);
+  color:#ffb4b4;}
+.btn-danger:hover{background:rgba(255,60,60,.14);
+  border-color:rgba(255,90,90,.55);box-shadow:0 0 18px rgba(255,90,90,.18);}
+.btn-primary{background:rgba(0,170,255,.15);border-color:rgba(0,200,255,.55);
+  color:#e8f6ff;}
+.btn-primary:hover{background:rgba(0,200,255,.25);}
+
+/* ── Layout ──────────────────────────────────────────── */
+.wrap{max-width:1120px;margin:0 auto;padding:30px 26px 80px;}
+.row{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:22px;}
+@media (max-width:900px){.row{grid-template-columns:1fr;}}
+
+.card{background:rgba(0,8,24,.55);
+  border:1px solid rgba(0,140,255,.16);border-radius:14px;padding:22px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(0,150,255,.06);}
+.card h2{font-family:'Orbitron',sans-serif;font-size:13px;letter-spacing:3px;
+  color:#9cdcff;margin-bottom:16px;text-transform:uppercase;font-weight:400;
+  display:flex;align-items:center;justify-content:space-between;}
+.card h2 .hint{font-family:'Rajdhani',sans-serif;font-size:11px;
+  letter-spacing:1px;color:rgba(180,220,255,.4);text-transform:none;}
+
+/* ── Stats grid ─────────────────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.stat{background:rgba(0,12,30,.55);border:1px solid rgba(0,140,255,.10);
+  border-radius:10px;padding:14px;text-align:center;}
+.stat .v{font-family:'Orbitron',sans-serif;font-size:22px;color:#a8e1ff;
+  letter-spacing:1px;}
+.stat .l{font-size:10px;letter-spacing:2px;color:rgba(180,220,255,.5);
+  text-transform:uppercase;margin-top:4px;}
+
+/* ── Toggle switch ──────────────────────────────────── */
+.toggle{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;border-radius:10px;
+  background:rgba(0,12,30,.55);border:1px solid rgba(0,140,255,.10);}
+.toggle .desc{font-size:13px;color:rgba(207,230,255,.85);}
+.toggle .desc small{display:block;font-size:11px;color:rgba(180,220,255,.42);
+  margin-top:3px;}
+.sw{position:relative;width:50px;height:26px;background:rgba(0,40,80,.5);
+  border:1px solid rgba(0,140,255,.25);border-radius:14px;cursor:pointer;
+  transition:all .25s;}
+.sw::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;
+  border-radius:50%;background:#7fcaff;transition:all .25s;}
+.sw.on{background:rgba(0,180,255,.35);border-color:rgba(0,200,255,.7);}
+.sw.on::after{left:26px;background:#fff;
+  box-shadow:0 0 8px rgba(0,200,255,.7);}
+
+/* ── Forms ──────────────────────────────────────────── */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.field label{font-size:10px;letter-spacing:2px;color:rgba(180,220,255,.55);
+  text-transform:uppercase;}
+.field input,.field select,.field textarea{
+  background:rgba(0,8,24,.6);border:1px solid rgba(0,140,255,.18);
+  border-radius:8px;padding:10px 12px;color:#e8f6ff;font-family:inherit;
+  font-size:13px;outline:none;transition:all .2s;}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:rgba(0,180,255,.5);box-shadow:0 0 10px rgba(0,140,255,.18);}
+.field textarea{min-height:64px;resize:vertical;}
+.row-form{display:grid;grid-template-columns:2fr 1fr 0.7fr;gap:10px;}
+@media (max-width:700px){.row-form{grid-template-columns:1fr;}}
+
+/* ── Search row ──────────────────────────────────────── */
+.search-row{display:grid;grid-template-columns:1fr 180px 110px;gap:10px;
+  margin-bottom:14px;}
+@media (max-width:700px){.search-row{grid-template-columns:1fr;}}
+
+/* ── Memory list ─────────────────────────────────────── */
+.mem-list{display:flex;flex-direction:column;gap:8px;max-height:560px;
+  overflow-y:auto;padding-right:4px;}
+.mem-list::-webkit-scrollbar{width:8px;}
+.mem-list::-webkit-scrollbar-thumb{background:rgba(0,140,255,.18);
+  border-radius:4px;}
+.mem{display:grid;grid-template-columns:1fr auto;gap:10px;
+  padding:10px 12px;background:rgba(0,12,30,.45);
+  border:1px solid rgba(0,140,255,.08);border-radius:9px;
+  transition:all .15s;}
+.mem:hover{border-color:rgba(0,180,255,.28);
+  background:rgba(0,18,42,.55);}
+.mem .meta{display:flex;gap:10px;font-size:10px;color:rgba(180,220,255,.45);
+  text-transform:uppercase;letter-spacing:1.5px;margin-top:5px;}
+.mem .badge{padding:1px 7px;border-radius:6px;font-size:9px;
+  background:rgba(0,140,255,.12);border:1px solid rgba(0,140,255,.22);
+  color:#9cdcff;letter-spacing:1.5px;}
+.mem .imp-5{background:rgba(255,170,40,.13);
+  border-color:rgba(255,170,40,.4);color:#ffd58a;}
+.mem .imp-4{background:rgba(255,200,80,.10);
+  border-color:rgba(255,200,80,.32);color:#ffe5a8;}
+.mem .imp-1{opacity:.65;}
+.mem .actions{display:flex;gap:6px;align-items:flex-start;}
+.mem .icon-btn{background:transparent;border:1px solid rgba(0,140,255,.14);
+  color:rgba(180,220,255,.75);padding:4px 8px;font-size:10px;border-radius:6px;
+  cursor:pointer;font-family:inherit;letter-spacing:.5px;}
+.mem .icon-btn:hover{border-color:rgba(0,180,255,.45);color:#cfe6ff;}
+.mem .icon-btn.del:hover{border-color:rgba(255,80,80,.5);color:#ffb4b4;}
+.mem-empty{text-align:center;padding:40px;color:rgba(180,220,255,.35);
+  font-size:13px;font-style:italic;}
+
+/* ── Toast ──────────────────────────────────────────── */
+#toast{position:fixed;top:90px;right:30px;z-index:50;display:flex;
+  flex-direction:column;gap:8px;}
+.toast{padding:12px 18px;border-radius:9px;font-size:12px;letter-spacing:.6px;
+  background:rgba(0,16,40,.85);border:1px solid rgba(0,180,255,.4);
+  color:#cfe6ff;backdrop-filter:blur(10px);min-width:240px;
+  box-shadow:0 12px 30px rgba(0,0,0,.5);
+  animation:tIn .3s ease forwards;}
+.toast.err{border-color:rgba(255,80,80,.5);color:#ffb4b4;}
+.toast.ok{border-color:rgba(80,255,140,.4);color:#aef0c0;}
+@keyframes tIn{from{transform:translateX(20px);opacity:0;}
+  to{transform:translateX(0);opacity:1;}}
+
+/* ── Loader ─────────────────────────────────────────── */
+.spin{display:inline-block;width:14px;height:14px;border-radius:50%;
+  border:2px solid rgba(0,180,255,.2);border-top-color:rgba(0,200,255,.9);
+  animation:spin 0.7s linear infinite;vertical-align:middle;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── Danger zone ────────────────────────────────────── */
+.danger-zone{margin-top:30px;border:1px solid rgba(255,80,80,.25);
+  border-radius:14px;padding:22px;
+  background:rgba(40,8,8,.35);}
+.danger-zone h2{color:#ff9494;}
+
+/* ── Modal ──────────────────────────────────────────── */
+.modal{position:fixed;inset:0;background:rgba(0,2,8,.78);z-index:100;
+  display:none;align-items:center;justify-content:center;
+  backdrop-filter:blur(8px);}
+.modal.show{display:flex;}
+.modal-card{background:rgba(0,8,24,.95);
+  border:1px solid rgba(255,80,80,.4);border-radius:14px;padding:28px;
+  max-width:480px;width:90%;box-shadow:0 30px 60px rgba(0,0,0,.7);}
+.modal-card h3{font-family:'Orbitron',sans-serif;font-size:14px;
+  letter-spacing:3px;color:#ff9494;text-transform:uppercase;margin-bottom:14px;}
+.modal-card p{font-size:13px;color:rgba(207,230,255,.8);line-height:1.6;
+  margin-bottom:18px;}
+.modal-card .field{margin-bottom:16px;}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;}
+</style>
+</head>
+<body>
+
+<!-- ── Top bar ─────────────────────────────────────────── -->
+<div class="bar">
+  <div class="bar-l">
+    <a href="/" class="brand">J · A · R · V · I · S</a>
+    <span class="crumb">› Memory Settings</span>
+  </div>
+  <div class="bar-r">
+    <span id="who">…</span>
+    <a href="/" class="btn">← Back</a>
+    <a href="/logout" class="btn">Logout</a>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<div class="wrap">
+
+  <!-- ══ Top section: stats + memory toggle ══════════════ -->
+  <div class="card">
+    <h2>Overview <span class="hint" id="ov-hint">loading…</span></h2>
+    <div class="stats" id="stats">
+      <div class="stat"><div class="v" id="s-mem">—</div><div class="l">Memories</div></div>
+      <div class="stat"><div class="v" id="s-conv">—</div><div class="l">Conversations</div></div>
+      <div class="stat"><div class="v" id="s-notes">—</div><div class="l">Notes</div></div>
+      <div class="stat"><div class="v" id="s-int">—</div><div class="l">Interactions</div></div>
+    </div>
+    <div class="toggle" style="margin-top:18px;">
+      <div class="desc">
+        Memory recording
+        <small>When OFF, JARVIS will still <em>read</em> your prior memories but will not save new ones.</small>
+      </div>
+      <div class="sw" id="mem-switch" role="switch" aria-checked="false" tabindex="0"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- ══ Left: memory list + search ═════════════════════ -->
+    <div class="card">
+      <h2>Memories <span class="hint" id="list-hint">—</span></h2>
+      <div class="search-row">
+        <input id="q" type="text" placeholder="Search your memories…">
+        <select id="cat-filter">
+          <option value="">All categories</option>
+        </select>
+        <button class="btn" id="search-btn">Search</button>
+      </div>
+      <div class="mem-list" id="mem-list">
+        <div class="mem-empty">Loading…</div>
+      </div>
+    </div>
+
+    <!-- ══ Right: add new + actions ═══════════════════════ -->
+    <div>
+      <div class="card">
+        <h2>Add Memory</h2>
+        <div class="field">
+          <label>Content</label>
+          <textarea id="add-content"
+            placeholder="e.g. User prefers dark mode and concise answers"></textarea>
+        </div>
+        <div class="row-form">
+          <div class="field">
+            <label>Category</label>
+            <input id="add-cat" type="text" value="general" maxlength="40">
+          </div>
+          <div class="field">
+            <label>Importance (1–5)</label>
+            <input id="add-imp" type="number" min="1" max="5" value="3">
+          </div>
+          <div class="field" style="justify-content:flex-end;">
+            <label>&nbsp;</label>
+            <button class="btn btn-primary" id="add-btn">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h2>Maintenance</h2>
+        <p style="font-size:12px;color:rgba(180,220,255,.55);line-height:1.7;
+                  margin-bottom:14px;">
+          Cleanup deduplicates and prunes low-value entries. Export gives you
+          a JSON archive of every memory, conversation, and note tied to your account.
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn" id="cleanup-btn">Run Cleanup</button>
+          <button class="btn" id="export-btn">Export Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Danger zone ═════════════════════════════════════ -->
+  <div class="card danger-zone">
+    <h2>Danger Zone</h2>
+    <p style="font-size:12px;color:rgba(255,180,180,.65);line-height:1.7;
+              margin-bottom:14px;">
+      Permanently delete your account and every byte of associated data —
+      memories, conversations, notes, vector embeddings, and JSON state files.
+      This action is <strong>irreversible</strong>.
+    </p>
+    <button class="btn btn-danger" id="del-account-btn">Delete My Account</button>
+  </div>
+</div>
+
+<!-- ══ Delete-account confirmation modal ═══════════════════ -->
+<div class="modal" id="confirm-modal">
+  <div class="modal-card">
+    <h3>Confirm account deletion</h3>
+    <p>This will permanently delete every record we hold for your account.
+       Type <strong>DELETE</strong> below to confirm.</p>
+    <div class="field">
+      <input id="confirm-text" type="text" placeholder="DELETE" autocomplete="off">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" id="confirm-cancel">Cancel</button>
+      <button class="btn btn-danger" id="confirm-delete" disabled>Delete forever</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────
+// Tiny fetch wrapper that includes credentials (session cookie) and
+// optionally a Bearer token if the page was loaded via JWT-only client.
+// ─────────────────────────────────────────────────────────────────────
+const TOKEN_KEY = "jarvis.access";
+function authHeaders(extra = {}) {
+  const t = localStorage.getItem(TOKEN_KEY);
+  const h = { "Content-Type": "application/json", ...extra };
+  if (t) h["Authorization"] = "Bearer " + t;
+  return h;
+}
+async function api(path, opts = {}) {
+  const res = await fetch(path, {
+    credentials: "same-origin",
+    headers: authHeaders(opts.headers),
+    ...opts,
+  });
+  let data = null;
+  try { data = await res.json(); } catch { /* not JSON (e.g. export) */ }
+  return { ok: res.ok, status: res.status, data, raw: res };
+}
+
+function toast(msg, kind = "") {
+  const wrap = document.getElementById("toast");
+  const el   = document.createElement("div");
+  el.className = "toast " + kind;
+  el.textContent = msg;
+  wrap.appendChild(el);
+  setTimeout(() => el.remove(), 3500);
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Initial bootstrap: who am I + stats + memory list + categories
+// ─────────────────────────────────────────────────────────────────────
+async function loadMe() {
+  const r = await api("/api/auth/me");
+  if (!r.ok) {
+    toast("Not signed in. Redirecting to login…", "err");
+    setTimeout(() => location.href = "/login", 1200);
+    return null;
+  }
+  const u = r.data.user;
+  document.getElementById("who").textContent =
+    (u.name || u.username || u.email || "user").toString();
+  // Reflect server's current memory_enabled state on the toggle.
+  setSwitch(!!u.memory_enabled);
+  return u;
+}
+
+async function loadStats() {
+  const r = await api("/api/memory/stats");
+  if (!r.ok) return;
+  const s = r.data.stats || {};
+  document.getElementById("s-mem").textContent   = s.memories      ?? 0;
+  document.getElementById("s-conv").textContent  = s.conversations ?? 0;
+  document.getElementById("s-notes").textContent = s.notes         ?? 0;
+  document.getElementById("s-int").textContent   = s.interactions  ?? 0;
+  document.getElementById("ov-hint").textContent =
+    "user " + (s.user_id || "—");
+}
+
+async function loadCategories() {
+  const r = await api("/api/memory/categories");
+  if (!r.ok) return;
+  const sel = document.getElementById("cat-filter");
+  // Keep the "All categories" option as the head, then re-fill the rest.
+  sel.querySelectorAll("option:not(:first-child)").forEach(o => o.remove());
+  (r.data.items || []).forEach(c => {
+    const o = document.createElement("option");
+    o.value = c.category;
+    o.textContent = `${c.category} (${c.count})`;
+    sel.appendChild(o);
+  });
+}
+
+async function loadMemories() {
+  const q   = document.getElementById("q").value.trim();
+  const cat = document.getElementById("cat-filter").value;
+  let url, params = new URLSearchParams();
+  if (q) {
+    if (cat) params.set("category", cat);
+    params.set("q", q);
+    params.set("limit", "50");
+    url = "/api/memory/search?" + params.toString();
+  } else {
+    if (cat) params.set("category", cat);
+    params.set("limit", "200");
+    url = "/api/memory/list?" + params.toString();
+  }
+  const list = document.getElementById("mem-list");
+  list.innerHTML = '<div class="mem-empty"><span class="spin"></span> Loading…</div>';
+  const r = await api(url);
+  if (!r.ok) { list.innerHTML = '<div class="mem-empty">Failed to load.</div>'; return; }
+  const items = r.data.items || [];
+  document.getElementById("list-hint").textContent =
+    items.length + (items.length === 1 ? " entry" : " entries");
+  if (!items.length) {
+    list.innerHTML = '<div class="mem-empty">No memories yet — say "remember this…" to JARVIS or add one above.</div>';
+    return;
+  }
+  list.innerHTML = "";
+  items.forEach(m => list.appendChild(memCard(m)));
+}
+
+function memCard(m) {
+  const wrap = document.createElement("div");
+  wrap.className = "mem imp-" + (m.importance || 1);
+  // Left: content + metadata
+  const left = document.createElement("div");
+  const txt = document.createElement("div");
+  txt.style.fontSize = "13.5px";
+  txt.style.lineHeight = "1.55";
+  txt.textContent = m.content || "";
+  left.appendChild(txt);
+  const meta = document.createElement("div");
+  meta.className = "meta";
+  const date = (m.created_at || "").substring(0, 10);
+  meta.innerHTML = `
+    <span class="badge">${escapeHtml(m.category || "general")}</span>
+    <span>★ ${m.importance ?? 1}</span>
+    <span>hits ${m.hits ?? 0}</span>
+    <span>${escapeHtml(date)}</span>
+  `;
+  left.appendChild(meta);
+  // Right: action buttons
+  const right = document.createElement("div");
+  right.className = "actions";
+  const editBtn = document.createElement("button");
+  editBtn.className = "icon-btn";
+  editBtn.textContent = "EDIT";
+  editBtn.onclick = () => editMemory(m);
+  const delBtn = document.createElement("button");
+  delBtn.className = "icon-btn del";
+  delBtn.textContent = "DEL";
+  delBtn.onclick = () => deleteMemory(m);
+  right.appendChild(editBtn);
+  right.appendChild(delBtn);
+  wrap.appendChild(left); wrap.appendChild(right);
+  return wrap;
+}
+
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// CRUD: add / edit / delete
+// ─────────────────────────────────────────────────────────────────────
+async function addMemory() {
+  const content    = document.getElementById("add-content").value.trim();
+  const category   = document.getElementById("add-cat").value.trim() || "general";
+  const importance = parseInt(document.getElementById("add-imp").value, 10) || 3;
+  if (!content) { toast("Enter some content first", "err"); return; }
+  const r = await api("/api/memory/add", {
+    method: "POST",
+    body: JSON.stringify({ content, category, importance }),
+  });
+  if (!r.ok) { toast(r.data?.error || "Save failed", "err"); return; }
+  document.getElementById("add-content").value = "";
+  toast("Memory saved", "ok");
+  await Promise.all([loadMemories(), loadStats(), loadCategories()]);
+}
+
+async function editMemory(m) {
+  const newContent = prompt("Update memory:", m.content || "");
+  if (newContent === null) return;
+  const newImp = prompt("Importance (1-5):", String(m.importance || 3));
+  if (newImp === null) return;
+  const r = await api(`/api/memory/${m.id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      content: newContent,
+      importance: parseInt(newImp, 10) || 3,
+    }),
+  });
+  if (!r.ok) { toast(r.data?.error || "Update failed", "err"); return; }
+  toast("Memory updated", "ok");
+  loadMemories();
+}
+
+async function deleteMemory(m) {
+  if (!confirm(`Delete: "${(m.content || "").slice(0, 80)}"?`)) return;
+  const r = await api(`/api/memory/${m.id}`, { method: "DELETE" });
+  if (!r.ok) { toast("Delete failed", "err"); return; }
+  toast("Deleted", "ok");
+  await Promise.all([loadMemories(), loadStats()]);
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Toggle: memory_enabled
+// ─────────────────────────────────────────────────────────────────────
+function setSwitch(on) {
+  const sw = document.getElementById("mem-switch");
+  sw.classList.toggle("on", !!on);
+  sw.setAttribute("aria-checked", !!on);
+}
+async function toggleMemory() {
+  const sw   = document.getElementById("mem-switch");
+  const next = !sw.classList.contains("on");
+  // Optimistic UI; revert if server disagrees.
+  setSwitch(next);
+  const r = await api("/api/memory/disable", {
+    method: "POST",
+    body: JSON.stringify({ enabled: next }),
+  });
+  if (!r.ok) {
+    setSwitch(!next);
+    toast("Could not change memory setting", "err");
+    return;
+  }
+  toast(next ? "Memory recording ON" : "Memory recording OFF", "ok");
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Maintenance: cleanup + export
+// ─────────────────────────────────────────────────────────────────────
+async function runCleanup() {
+  const btn = document.getElementById("cleanup-btn");
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Cleaning…';
+  const r = await api("/api/memory/cleanup", { method: "POST" });
+  btn.disabled = false; btn.textContent = "Run Cleanup";
+  if (!r.ok) { toast("Cleanup failed", "err"); return; }
+  const rep = r.data.report || {};
+  toast(`Cleanup: ${rep.deduped||0} deduped, ${rep.deleted_low||0} pruned, ${rep.deleted_overflow||0} capped`, "ok");
+  await Promise.all([loadMemories(), loadStats()]);
+}
+
+async function exportData() {
+  // Fetch as a blob so the browser downloads it; the server already sets
+  // a Content-Disposition header with a sensible filename.
+  const t = localStorage.getItem(TOKEN_KEY);
+  const headers = {};
+  if (t) headers["Authorization"] = "Bearer " + t;
+  const res = await fetch("/api/memory/export", {
+    credentials: "same-origin", headers,
+  });
+  if (!res.ok) { toast("Export failed", "err"); return; }
+  const blob = await res.blob();
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href = url;
+  a.download = "jarvis-memory.json";
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  toast("Export downloaded", "ok");
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Account deletion (confirm modal + DELETE /api/account)
+// ─────────────────────────────────────────────────────────────────────
+function openDeleteModal() {
+  const m = document.getElementById("confirm-modal");
+  document.getElementById("confirm-text").value = "";
+  document.getElementById("confirm-delete").disabled = true;
+  m.classList.add("show");
+  setTimeout(() => document.getElementById("confirm-text").focus(), 50);
+}
+function closeDeleteModal() {
+  document.getElementById("confirm-modal").classList.remove("show");
+}
+async function confirmDeleteAccount() {
+  const btn = document.getElementById("confirm-delete");
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Deleting…';
+  const r = await api("/api/account", { method: "DELETE" });
+  if (!r.ok) {
+    btn.disabled = false; btn.textContent = "Delete forever";
+    toast(r.data?.error || "Could not delete account", "err");
+    return;
+  }
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem("jarvis.refresh");
+  toast("Account deleted. Goodbye.", "ok");
+  setTimeout(() => location.href = "/login", 1500);
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Wire-up
+// ─────────────────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", async () => {
+  // Toggle
+  const sw = document.getElementById("mem-switch");
+  sw.addEventListener("click", toggleMemory);
+  sw.addEventListener("keydown", e => {
+    if (e.key === " " || e.key === "Enter") { e.preventDefault(); toggleMemory(); }
+  });
+
+  // Search
+  document.getElementById("search-btn").addEventListener("click", loadMemories);
+  document.getElementById("q").addEventListener("keydown", e => {
+    if (e.key === "Enter") loadMemories();
+  });
+  document.getElementById("cat-filter").addEventListener("change", loadMemories);
+
+  // Add
+  document.getElementById("add-btn").addEventListener("click", addMemory);
+
+  // Maintenance
+  document.getElementById("cleanup-btn").addEventListener("click", runCleanup);
+  document.getElementById("export-btn").addEventListener("click", exportData);
+
+  // Danger zone
+  document.getElementById("del-account-btn").addEventListener("click", openDeleteModal);
+  document.getElementById("confirm-cancel").addEventListener("click", closeDeleteModal);
+  document.getElementById("confirm-text").addEventListener("input", e => {
+    document.getElementById("confirm-delete").disabled = e.target.value !== "DELETE";
+  });
+  document.getElementById("confirm-delete").addEventListener("click", confirmDeleteAccount);
+
+  // Initial load
+  const me = await loadMe();
+  if (!me) return;
+  await Promise.all([loadStats(), loadCategories(), loadMemories()]);
+});
+</script>
+</body>
+</html>

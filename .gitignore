@@ -1,0 +1,36 @@
+# Environment variables — NEVER commit API keys!
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database files (auto-recreated)
+users.db
+memory.db
+*.db
+*.sqlite
+
+# Test/debug scripts
+test_keys.py
+test_groq_models.py
+
+# Logs
+*.log
+
+# Large model files
+*.bin
+*.pt
+*.onnx

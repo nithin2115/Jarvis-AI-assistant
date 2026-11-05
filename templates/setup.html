@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Permissions-Policy" content="camera=(self); microphone=(self)">
+<title>JARVIS — First-Time Setup</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#020408;font-family:"Segoe UI",sans-serif;color:#fff;overflow:hidden;}
+#bg{position:fixed;inset:0;background:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);background-size:48px 48px;}
+.corner{position:fixed;width:28px;height:28px;border-color:#00d4ff22;border-style:solid;}
+.corner.tl{top:16px;left:16px;border-width:1px 0 0 1px}
+.corner.tr{top:16px;right:16px;border-width:1px 1px 0 0}
+.corner.bl{bottom:16px;left:16px;border-width:0 0 1px 1px}
+.corner.br{bottom:16px;right:16px;border-width:0 1px 1px 0}
+
+#wrap{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:28px;}
+
+#hdr{text-align:center;}
+#hdr h1{font-size:11px;letter-spacing:7px;color:#00d4ff66;text-transform:uppercase;margin-bottom:6px;}
+#hdr p{font-size:13px;color:#ffffff40;}
+
+/* Steps indicator */
+#steps{display:flex;gap:12px;align-items:center;}
+.step-dot{width:28px;height:28px;border-radius:50%;border:1px solid #00d4ff33;display:flex;align-items:center;justify-content:center;font-size:10px;color:#00d4ff55;transition:all .4s;}
+.step-dot.active{border-color:#00d4ff;color:#00d4ff;box-shadow:0 0 12px #00d4ff44;}
+.step-dot.done{border-color:#00ff88;background:#00ff8811;color:#00ff88;}
+.step-line{width:40px;height:1px;background:#00d4ff22;}
+
+/* Panel */
+#panel{background:rgba(0,10,22,.88);border:1px solid #00d4ff1a;border-radius:18px;padding:36px 44px;width:500px;text-align:center;}
+#panel h2{font-size:11px;letter-spacing:5px;color:#00d4ff77;text-transform:uppercase;margin-bottom:8px;}
+#panel .inst{font-size:13px;color:#ffffff50;line-height:1.8;margin-bottom:24px;}
+
+/* Camera */
+#cam-wrap{position:relative;width:220px;height:220px;margin:0 auto 20px;border-radius:50%;overflow:hidden;border:2px solid #00d4ff33;}
+#camFeed{width:100%;height:100%;object-fit:cover;transform:scaleX(-1);}
+#cam-overlay{position:absolute;inset:0;border-radius:50%;pointer-events:none;}
+#scan-ring{position:absolute;inset:-4px;border-radius:50%;border:2px solid transparent;border-top-color:#00d4ff;animation:spin 1.5s linear infinite;display:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+#face-box{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+#face-indicator{width:120px;height:120px;border-radius:50%;border:1.5px dashed #00d4ff33;transition:all .3s;}
+#face-indicator.detected{border-color:#00ff88;border-style:solid;box-shadow:0 0 20px #00ff8833;}
+
+/* Voice */
+#voice-wrap{width:220px;height:72px;margin:0 auto 20px;border-radius:36px;border:1px solid #00d4ff22;display:flex;align-items:center;justify-content:center;gap:3px;padding:0 18px;overflow:hidden;}
+.vbar{width:3px;border-radius:2px;background:#00d4ff44;transition:height .08s;}
+
+/* Buttons */
+.btn{padding:13px 36px;border-radius:28px;cursor:pointer;font-size:11px;letter-spacing:3px;text-transform:uppercase;border:none;transition:all .3s;display:inline-block;}
+.btn-primary{background:rgba(0,212,255,.1);border:1px solid #00d4ff;color:#00d4ff;}
+.btn-primary:hover{background:rgba(0,212,255,.22);box-shadow:0 0 20px #00d4ff33;}
+.btn-primary:disabled{opacity:.3;cursor:not-allowed;}
+.btn-success{background:rgba(0,255,136,.08);border:1px solid #00ff88;color:#00ff88;}
+.btn-success:hover{background:rgba(0,255,136,.18);}
+
+#status{min-height:20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:12px;transition:color .3s;}
+#progress{width:100%;height:2px;background:#00d4ff11;border-radius:1px;margin-top:16px;overflow:hidden;}
+#progress-bar{height:100%;background:#00d4ff;width:0%;transition:width .5s;border-radius:1px;}
+
+/* Hidden */
+.hidden{display:none!important;}
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div class="corner tl"></div><div class="corner tr"></div>
+<div class="corner bl"></div><div class="corner br"></div>
+
+<div id="wrap">
+  <div id="hdr">
+    <h1>First-Time Setup &nbsp;—&nbsp; {{ name }}</h1>
+    <p>JARVIS needs to learn your face and voice to recognise you.</p>
+  </div>
+
+  <!-- Step indicator -->
+  <div id="steps">
+    <div class="step-dot active" id="s1">1</div>
+    <div class="step-line"></div>
+    <div class="step-dot" id="s2">2</div>
+    <div class="step-line"></div>
+    <div class="step-dot" id="s3">3</div>
+  </div>
+
+  <!-- Panel -->
+  <div id="panel">
+
+    <!-- STEP 1: Face capture -->
+    <div id="step-face">
+      <h2>Step 1 — Face Registration</h2>
+      <p class="inst">Look directly at the camera.<br>Keep your face centred in the circle.</p>
+      <div id="cam-wrap">
+        <video id="camFeed" autoplay playsinline muted></video>
+        <div id="cam-overlay">
+          <div id="scan-ring"></div>
+          <div id="face-box"><div id="face-indicator"></div></div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="capFaceBtn" onclick="captureFace()" disabled>Capture Face</button>
+      <div id="status" style="color:#ffffff44">Starting camera...</div>
+      <div id="progress"><div id="progress-bar"></div></div>
+    </div>
+
+    <!-- STEP 2: Voice capture -->
+    <div id="step-voice" class="hidden">
+      <h2>Step 2 — Voice Registration</h2>
+      <p class="inst">Click Record, then say clearly:<br><span style="color:#00d4ff88;font-style:italic;">"Hey Jarvis, initialise voice authentication"</span></p>
+      <div id="voice-wrap" style="margin-bottom:24px;">
+        <div class="vbar" id="v0" style="height:8px;"></div>
+        <div class="vbar" id="v1" style="height:8px;"></div>
+        <div class="vbar" id="v2" style="height:8px;"></div>
+        <div class="vbar" id="v3" style="height:8px;"></div>
+        <div class="vbar" id="v4" style="height:8px;"></div>
+        <div class="vbar" id="v5" style="height:8px;"></div>
+        <div class="vbar" id="v6" style="height:8px;"></div>
+        <div class="vbar" id="v7" style="height:8px;"></div>
+        <div class="vbar" id="v8" style="height:8px;"></div>
+        <div class="vbar" id="v9" style="height:8px;"></div>
+        <div class="vbar" id="v10" style="height:8px;"></div>
+        <div class="vbar" id="v11" style="height:8px;"></div>
+        <div class="vbar" id="v12" style="height:8px;"></div>
+        <div class="vbar" id="v13" style="height:8px;"></div>
+        <div class="vbar" id="v14" style="height:8px;"></div>
+        <div class="vbar" id="v15" style="height:8px;"></div>
+      </div>
+      <button class="btn btn-primary" id="recBtn" onclick="startVoice()">Record Voice (4 sec)</button>
+      <div id="status2" style="color:#ffffff44;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:12px;min-height:20px;"></div>
+      <div id="progress2"><div style="width:0%;height:2px;background:#00d4ff;border-radius:1px;transition:width .1s;" id="progress-bar2"></div></div>
+    </div>
+
+    <!-- STEP 3: Complete -->
+    <div id="step-done" class="hidden">
+      <div style="font-size:52px;margin-bottom:20px;">✓</div>
+      <h2 style="color:#00ff8877;">Setup Complete</h2>
+      <p class="inst" style="margin-top:10px;">Identity registered.<br>JARVIS will recognise you on every login.</p>
+      <button class="btn btn-success" onclick="finish()" style="margin-top:8px;">Activate JARVIS</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const NAME = "{{ name }}";
+let stream, audioCtx, analyser, faceCaptureDone=false, voiceCaptureDone=false;
+let faceCheckInterval=null;
+
+// ── Camera ───────────────────────────────────────────────────
+async function startCamera(){
+  try{
+    stream = await navigator.mediaDevices.getUserMedia({video:{width:320,height:320,facingMode:'user'},audio:false});
+    document.getElementById('camFeed').srcObject = stream;
+    document.getElementById('capFaceBtn').disabled = false;
+    setStatus('Centre your face then click Capture', '#00d4ff88');
+    detectFaceLoop();
+  }catch(e){
+    setStatus('Camera access denied — cannot continue', '#ff4444aa');
+  }
+}
+
+function detectFaceLoop(){
+  const video = document.getElementById('camFeed');
+  const ind   = document.getElementById('face-indicator');
+  faceCheckInterval = setInterval(async ()=>{
+    if(video.readyState < 2) return;
+    const b64 = captureFrame();
+    if(!b64) return;
+    try{
+      const r = await fetch('/api/auth/has_face',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image:b64})});
+      const d = await r.json();
+      ind.classList.toggle('detected', d.has_face);
+    }catch{}
+  }, 800);
+}
+
+function captureFrame(){
+  const v = document.getElementById('camFeed');
+  if(!v.videoWidth) return null;
+  const c = document.createElement('canvas'); c.width=v.videoWidth; c.height=v.videoHeight;
+  c.getContext('2d').drawImage(v,0,0);
+  return c.toDataURL('image/jpeg', 0.85);
+}
+
+async function captureFace(){
+  const btn = document.getElementById('capFaceBtn');
+  btn.disabled=true;
+  const ring = document.getElementById('scan-ring'); ring.style.display='block';
+  setStatus('Scanning face...', '#00d4ff88');
+  setProgress(30);
+
+  const b64 = captureFrame();
+  if(!b64){ setStatus('No camera frame — try again', '#ff4444aa'); ring.style.display='none'; btn.disabled=false; return; }
+
+  try{
+    const r = await fetch('/api/auth/setup/face',{
+      method:'POST',
+      credentials:'include',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({image:b64})
+    });
+    let d;
+    try{ d = await r.json(); }
+    catch(je){ ring.style.display='none'; btn.disabled=false; setStatus(`Server error (${r.status}) — try again`,'#ff4444aa'); return; }
+    if(d.ok){
+      setProgress(100); ring.style.display='none';
+      setStatus('Face registered ✓', '#00ff8888');
+      clearInterval(faceCheckInterval);
+      if(stream) stream.getVideoTracks().forEach(t=>t.stop());
+      setTimeout(goStep2, 900);
+    }else{
+      ring.style.display='none'; setProgress(0); btn.disabled=false;
+      setStatus(d.error||'No face detected — try again', '#ff4444aa');
+    }
+  }catch(e){ console.error('[FACE CAPTURE]', e); ring.style.display='none'; btn.disabled=false; setStatus('Network error: '+e.message,'#ff4444aa'); }
+}
+
+// ── Voice ────────────────────────────────────────────────────
+let voiceSamples=[], voiceProc=null, voiceACtx=null, recording=false;
+
+async function startVoice(){
+  if(recording) return;
+  recording=true;
+  const btn=document.getElementById('recBtn'); btn.disabled=true;
+  setStatus2('Recording... speak now','#00d4ff88');
+  voiceSamples=[];
+
+  try{
+    const micStream = await getVoiceMicStream('setup');
+    voiceACtx = new (window.AudioContext||window.webkitAudioContext)({sampleRate:16000});
+    const src = voiceACtx.createMediaStreamSource(micStream);
+    analyser  = voiceACtx.createAnalyser(); analyser.fftSize=256;
+    voiceProc = voiceACtx.createScriptProcessor(4096,1,1);
+    src.connect(analyser); src.connect(voiceProc); voiceProc.connect(voiceACtx.destination);
+
+    voiceProc.onaudioprocess = e => {
+      const d=e.inputBuffer.getChannelData(0);
+      voiceSamples.push(...Array.from(d));
+      animBars(analyser);
+    };
+
+    // Progress bar over 4 seconds
+    const start=Date.now(); const dur=4000;
+    const tick=setInterval(()=>{
+      const pct=Math.min(100,((Date.now()-start)/dur)*100);
+      document.getElementById('progress-bar2').style.width=pct+'%';
+      if(pct>=100){clearInterval(tick); stopVoice(micStream);}
+    },100);
+  }catch(e){
+    console.error('[SETUP MIC]', e && e.name, e && e.message, e);
+    recording=false; btn.disabled=false;
+    setStatus2(micErrorText(e, 'cannot register voice'),'#ff4444aa');
+  }
+}
+
+async function getVoiceMicStream(label){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    throw {name:'NotSupportedError', message:'mediaDevices.getUserMedia is unavailable'};
+  }
+  const attempts=[
+    {audio:{sampleRate:16000,channelCount:1},video:false},
+    {audio:{sampleRate:{ideal:16000},channelCount:{ideal:1}},video:false},
+    {audio:true,video:false}
+  ];
+  let lastErr=null;
+  for(const constraints of attempts){
+    try{
+      return await navigator.mediaDevices.getUserMedia(constraints);
+    }catch(e){
+      lastErr=e;
+      console.warn(`[${label} mic]`, e && e.name, e && e.message, constraints);
+      if(e && (e.name==='NotAllowedError' || e.name==='SecurityError')) break;
+    }
+  }
+  throw lastErr || {name:'UnknownError', message:'microphone could not start'};
+}
+
+function micErrorText(e, suffix){
+  const name=(e && e.name) || 'UnknownError';
+  const msg=(e && e.message) ? ` (${e.message})` : '';
+  if(name==='NotAllowedError' || name==='SecurityError')
+    return `Microphone permission blocked - allow localhost in browser settings ${msg}`;
+  if(name==='NotFoundError' || name==='DevicesNotFoundError')
+    return `No microphone found - connect or enable an input device ${msg}`;
+  if(name==='NotReadableError' || name==='TrackStartError')
+    return `Microphone is busy - close other apps and try again ${msg}`;
+  if(name==='OverconstrainedError' || name==='ConstraintNotSatisfiedError')
+    return `Microphone format unsupported - ${suffix} ${msg}`;
+  if(name==='NotSupportedError')
+    return `Browser microphone API unavailable - ${suffix} ${msg}`;
+  return `Microphone error (${name}) - ${suffix} ${msg}`;
+}
+
+function _f32ToB64(samples){
+  const arr   = new Float32Array(samples);
+  const bytes = new Uint8Array(arr.buffer);
+  let bin = '', chunk = 8192;
+  for(let i=0; i<bytes.length; i+=chunk)
+    bin += String.fromCharCode(...bytes.subarray(i, Math.min(i+chunk, bytes.length)));
+  return btoa(bin);
+}
+
+async function stopVoice(micStream){
+  voiceProc.disconnect(); voiceACtx.close();
+  micStream.getTracks().forEach(t=>t.stop());
+  setStatus2('Processing voice signature...','#00d4ff88');
+
+  const b64 = _f32ToB64(voiceSamples.slice(0, 16000*4));
+
+  try{
+    const r=await fetch('/api/auth/setup/voice',{
+      method:'POST',credentials:'include',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({audio:b64})
+    });
+    let d;
+    try{ d=await r.json(); }
+    catch(je){ setStatus2(`Server error (${r.status}) — try again`,'#ff4444aa'); recording=false; document.getElementById('recBtn').disabled=false; return; }
+    if(d.ok){ setStatus2('Voice registered ✓','#00ff8888'); setTimeout(goStep3,900); }
+    else{ setStatus2(d.error||'Voice too quiet — try again','#ff4444aa'); recording=false; document.getElementById('recBtn').disabled=false; }
+  }catch(e){ console.error('[VOICE]',e); setStatus2('Network error: '+e.message,'#ff4444aa'); recording=false; document.getElementById('recBtn').disabled=false; }
+}
+
+function animBars(a){
+  const d=new Uint8Array(a.frequencyBinCount); a.getByteFrequencyData(d);
+  for(let i=0;i<16;i++){
+    const h=4+Math.round(d[Math.floor(i*d.length/16)]/255*52);
+    document.getElementById('v'+i).style.height=h+'px';
+    document.getElementById('v'+i).style.background=`rgba(0,212,255,${0.3+h/72})`;
+  }
+}
+
+// ── Steps ────────────────────────────────────────────────────
+function goStep2(){
+  document.getElementById('step-face').classList.add('hidden');
+  document.getElementById('step-voice').classList.remove('hidden');
+  document.getElementById('s1').className='step-dot done'; document.getElementById('s1').textContent='✓';
+  document.getElementById('s2').className='step-dot active';
+}
+function goStep3(){
+  document.getElementById('step-voice').classList.add('hidden');
+  document.getElementById('step-done').classList.remove('hidden');
+  document.getElementById('s2').className='step-dot done'; document.getElementById('s2').textContent='✓';
+  document.getElementById('s3').className='step-dot active';
+}
+function finish(){ window.location.href='/'; }
+
+// ── Utils ────────────────────────────────────────────────────
+function setStatus(m,c){ const e=document.getElementById('status'); e.textContent=m; e.style.color=c; }
+function setStatus2(m,c){ const e=document.getElementById('status2'); e.textContent=m; e.style.color=c; }
+function setProgress(p){ document.getElementById('progress-bar').style.width=p+'%'; }
+
+// Start
+startCamera();
+</script>
+</body>
+</html>

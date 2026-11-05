@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS AI Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Main Container */
+        .jarvis-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Outer Ring - Orbiting Lines */
+        .outer-ring {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .outer-ring::before,
+        .outer-ring::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .outer-ring::before {
+            width: 380px;
+            height: 380px;
+            top: -15px;
+            left: -15px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .outer-ring::after {
+            width: 320px;
+            height: 320px;
+            top: 15px;
+            left: 15px;
+            animation: pulse 3s ease-in-out infinite reverse;
+        }
+
+        /* Energy Lines */
+        .energy-line {
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+            transform-origin: center 175px;
+            opacity: 0;
+            animation: energyPulse 2s ease-in-out infinite;
+        }
+
+        .energy-line:nth-child(1) { transform: rotate(0deg); animation-delay: 0s; }
+        .energy-line:nth-child(2) { transform: rotate(45deg); animation-delay: 0.25s; }
+        .energy-line:nth-child(3) { transform: rotate(90deg); animation-delay: 0.5s; }
+        .energy-line:nth-child(4) { transform: rotate(135deg); animation-delay: 0.75s; }
+        .energy-line:nth-child(5) { transform: rotate(180deg); animation-delay: 1s; }
+        .energy-line:nth-child(6) { transform: rotate(225deg); animation-delay: 1.25s; }
+        .energy-line:nth-child(7) { transform: rotate(270deg); animation-delay: 1.5s; }
+        .energy-line:nth-child(8) { transform: rotate(315deg); animation-delay: 1.75s; }
+
+        @keyframes energyPulse {
+            0%, 100% { opacity: 0; transform: rotate(var(--rotation, 0deg)) scaleY(0.5); }
+            50% { opacity: 1; transform: rotate(var(--rotation, 0deg)) scaleY(1); }
+        }
+
+        /* Middle Ring */
+        .middle-ring {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        .middle-ring::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px dashed rgba(0, 255, 255, 0.4);
+            animation: rotate 10s linear infinite;
+        }
+
+        /* Inner Ring */
+        .inner-ring {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rotate 8s linear infinite;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.3),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+
+        /* AI Brain Core */
+        .brain-core {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, #00ffff, #0080ff, #001a33);
+            border-radius: 50%;
+            animation: brainPulse 2s ease-in-out infinite;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.5),
+                0 0 60px rgba(0, 255, 255, 0.3),
+                0 0 90px rgba(0, 128, 255, 0.2);
+        }
+
+        .brain-core::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            border-radius: 50%;
+            animation: innerGlow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.6; }
+        }
+
+        @keyframes brainPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 
+                    0 0 30px rgba(0, 255, 255, 0.5),
+                    0 0 60px rgba(0, 255, 255, 0.3),
+                    0 0 90px rgba(0, 128, 255, 0.2);
+            }
+            50% { 
+                transform: scale(1.1); 
+                box-shadow: 
+                    0 0 50px rgba(0, 255, 255, 0.7),
+                    0 0 100px rgba(0, 255, 255, 0.5),
+                    0 0 150px rgba(0, 128, 255, 0.3);
+            }
+        }
+
+        @keyframes innerGlow {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* State Animations */
+        .jarvis-container.listening .brain-core {
+            animation: brainPulse 0.8s ease-in-out infinite;
+            background: radial-gradient(circle at 30% 30%, #00ff88, #00cc66, #003311);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 136, 0.5),
+                0 0 60px rgba(0, 255, 136, 0.3);
+        }
+
+        .jarvis-container.thinking .brain-core {
+            animation: brainPulse 0.3s ease-in-out infinite;
+            background: radial-gradient(circle at 30% 30%, #ffaa00, #ff8800, #331a00);
+            box-shadow: 
+                0 0 30px rgba(255, 170, 0, 0.5),
+                0 0 60px rgba(255, 170, 0, 0.3);
+        }
+
+        .jarvis-container.thinking .outer-ring {
+            animation: rotate 3s linear infinite;
+        }
+
+        .jarvis-container.thinking .middle-ring {
+            animation: rotate 2s linear infinite reverse;
+        }
+
+        .jarvis-container.thinking .inner-ring {
+            animation: rotate 1s linear infinite;
+        }
+
+        .jarvis-container.speaking .brain-core {
+            animation: brainPulse 0.5s ease-in-out infinite;
+            background: radial-gradient(circle at 30% 30%, #ff00ff, #cc00cc, #330033);
+            box-shadow: 
+                0 0 30px rgba(255, 0, 255, 0.5),
+                0 0 60px rgba(255, 0, 255, 0.3);
+        }
+
+        .jarvis-container.speaking .outer-ring::before,
+        .jarvis-container.speaking .outer-ring::after {
+            animation: waveExpand 1s ease-in-out infinite;
+        }
+
+        @keyframes waveExpand {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .jarvis-container.speaking .energy-line {
+            animation: energyWave 0.5s ease-in-out infinite;
+        }
+
+        @keyframes energyWave {
+            0%, 100% { opacity: 0.3; height: 40px; }
+            50% { opacity: 1; height: 80px; }
+        }
+
+        /* Status Text */
+        .status-container {
+            position: absolute;
+            bottom: 60px;
+            text-align: center;
+        }
+
+        .status-text {
+            color: #00ffff;
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Response Text */
+        .response-container {
+            position: absolute;
+            top: 60px;
+            text-align: center;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        .response-text {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            min-height: 30px;
+        }
+
+        /* Command Input */
+        .input-container {
+            position: absolute;
+            bottom: 120px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .command-input {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 12px 20px;
+            color: #00ffff;
+            font-size: 14px;
+            width: 300px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .command-input:focus {
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .command-input::placeholder {
+            color: rgba(0, 255, 255, 0.5);
+        }
+
+        .send-btn {
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .send-btn:hover {
+            background: rgba(0, 255, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Mic Button */
+        .mic-btn {
+            position: absolute;
+            bottom: 20px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .mic-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: #00ffff;
+        }
+
+        .mic-btn.active {
+            background: rgba(0, 255, 136, 0.3);
+            border-color: #00ff88;
+            animation: micPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes micPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+        }
+
+        /* Connection Status */
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff4444;
+            transition: background 0.3s ease;
+        }
+
+        .status-dot.connected {
+            background: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <div class="connection-status">
+        <div class="status-dot" id="connectionDot"></div>
+        <span id="connectionText">Disconnected</span>
+    </div>
+
+    <div class="response-container">
+        <div class="response-text" id="responseText"></div>
+    </div>
+
+    <div class="jarvis-container" id="jarvisContainer">
+        <div class="outer-ring">
+            <div class="energy-line"></div>
+            <div class="energy-line"></div>
+            <div class="energy-line"></div>
+            <div class="energy-line"></div>
+            <div class="energy-line"></div>
+            <div class="energy-line"></div>
+            <div class="energy-line"></div>
+            <div class="energy-line"></div>
+        </div>
+        <div class="middle-ring"></div>
+        <div class="inner-ring"></div>
+        <div class="brain-core"></div>
+    </div>
+
+    <div class="status-container">
+        <div class="status-text" id="statusText">IDLE</div>
+    </div>
+
+    <div class="input-container">
+        <input type="text" class="command-input" id="commandInput" placeholder="Enter command...">
+        <button class="send-btn" id="sendBtn">➤</button>
+    </div>
+
+    <button class="mic-btn" id="micBtn">🎤</button>
+
+    <!-- Socket.IO Client Library -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script>
+        // Socket.IO Connection
+        let socket = null;
+        let reconnectInterval = null;
+        
+        // UI Elements
+        const container = document.getElementById('jarvisContainer');
+        const statusText = document.getElementById('statusText');
+        const responseText = document.getElementById('responseText');
+        const commandInput = document.getElementById('commandInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const micBtn = document.getElementById('micBtn');
+        const connectionDot = document.getElementById('connectionDot');
+        const connectionText = document.getElementById('connectionText');
+
+        // State Management
+        const states = {
+            IDLE: 'idle',
+            LISTENING: 'listening',
+            THINKING: 'thinking',
+            SPEAKING: 'speaking'
+        };
+
+        let currentState = states.IDLE;
+        let isListening = false;
+
+        // Socket.IO Functions
+        function connectSocket() {
+            // Connect to Socket.IO server
+            socket = io();
+
+            socket.on('connect', () => {
+                console.log('Connected to JARVIS backend');
+                connectionDot.classList.add('connected');
+                connectionText.textContent = 'Connected';
+                
+                if (reconnectInterval) {
+                    clearInterval(reconnectInterval);
+                    reconnectInterval = null;
+                }
+            });
+
+            socket.on('disconnect', () => {
+                console.log('Disconnected from JARVIS backend');
+                connectionDot.classList.remove('connected');
+                connectionText.textContent = 'Disconnected';
+            });
+
+            socket.on('state', (data) => {
+                setState(data.state);
+            });
+
+            socket.on('response', (data) => {
+                displayResponse(data.text);
+            });
+
+            socket.on('status', (data) => {
+                updateConnectionStatus(data.connected);
+            });
+
+            socket.on('error', (error) => {
+                console.error('Socket.IO error:', error);
+            });
+        }
+
+        function sendMessage(type, data) {
+            if (socket && socket.connected) {
+                socket.emit(type, data);
+            }
+        }
+
+        // State Management Functions
+        function setState(state) {
+            // Remove all state classes
+            container.classList.remove(states.IDLE, states.LISTENING, states.THINKING, states.SPEAKING);
+            
+            // Add new state class
+            container.classList.add(state);
+            currentState = state;
+            
+            // Update status text
+            statusText.textContent = state.toUpperCase();
+            
+            // Send state to backend
+            sendMessage('state_change', { state });
+        }
+
+        function displayResponse(text) {
+            responseText.textContent = text;
+            responseText.style.animation = 'none';
+            responseText.offsetHeight; // Trigger reflow
+            responseText.style.animation = 'textGlow 0.5s ease-in-out';
+        }
+
+        function updateConnectionStatus(connected) {
+            if (connected) {
+                connectionDot.classList.add('connected');
+                connectionText.textContent = 'Connected';
+            } else {
+                connectionDot.classList.remove('connected');
+                connectionText.textContent = 'Disconnected';
+            }
+        }
+
+        // Command Handling
+        function sendCommand() {
+            const command = commandInput.value.trim();
+            if (command) {
+                sendMessage('command', { text: command });
+                commandInput.value = '';
+                setState(states.THINKING);
+            }
+        }
+
+        // Event Listeners
+        sendBtn.addEventListener('click', sendCommand);
+        
+        commandInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendCommand();
+            }
+        });
+
+        micBtn.addEventListener('click', () => {
+            isListening = !isListening;
+            micBtn.classList.toggle('active', isListening);
+            
+            if (isListening) {
+                setState(states.LISTENING);
+                sendMessage('start_listening', {});
+                // Simulate voice recognition (replace with actual Web Speech API)
+                startVoiceRecognition();
+            } else {
+                setState(states.IDLE);
+                sendMessage('stop_listening', {});
+                stopVoiceRecognition();
+            }
+        });
+
+        // Voice Recognition (Web Speech API)
+        let recognition = null;
+
+        function startVoiceRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
+
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    commandInput.value = transcript;
+                    sendCommand();
+                    micBtn.classList.remove('active');
+                    isListening = false;
+                };
+
+                recognition.onerror = (event) => {
+                    console.error('Speech recognition error:', event.error);
+                    micBtn.classList.remove('active');
+                    isListening = false;
+                    setState(states.IDLE);
+                };
+
+                recognition.onend = () => {
+                    micBtn.classList.remove('active');
+                    isListening = false;
+                };
+
+                recognition.start();
+            } else {
+                console.log('Speech recognition not supported');
+                // Fallback: simulate listening for demo
+                setTimeout(() => {
+                    if (isListening) {
+                        micBtn.classList.remove('active');
+                        isListening = false;
+                        setState(states.IDLE);
+                    }
+                }, 3000);
+            }
+        }
+
+        function stopVoiceRecognition() {
+            if (recognition) {
+                recognition.stop();
+                recognition = null;
+            }
+        }
+
+        // Initialize
+        connectSocket();
+        setState(states.IDLE);
+    </script>
+</body>
+</html>

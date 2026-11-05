@@ -1,0 +1,13 @@
+{
+  "top_topics": {
+    "hello": 2,
+    "tell": 2,
+    "about": 3,
+    "aws": 15,
+    "concepts": 6,
+    "explain": 1,
+    "instance": 1
+  },
+  "response_style": "detailed",
+  "interaction_count": 19
+}

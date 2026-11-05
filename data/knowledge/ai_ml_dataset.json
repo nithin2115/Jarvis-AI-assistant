@@ -1,0 +1,2655 @@
+[
+  {
+    "question": "Applications of artificial intelligence",
+    "answer": "AI applications: Healthcare (diagnosis, drug discovery), Finance (fraud detection, algorithmic trading), Transportation (self-driving cars), NLP (chatbots, translation), Computer Vision (face recognition, surveillance), Recommendation systems (Netflix, Amazon), Manufacturing (quality control), and Education (personalised learning).",
+    "type": "atomic",
+    "topic": "Applications Of Artificial Intelligence",
+    "keywords": [
+      "applications",
+      "artificial",
+      "intelligence",
+      "healthcare",
+      "diagnosis",
+      "drug"
+    ]
+  },
+  {
+    "question": "Deep learning applications",
+    "answer": "Deep learning powers: image recognition (ResNet, EfficientNet), object detection (YOLO, Faster R-CNN), speech recognition (Whisper), NLP (BERT, GPT), machine translation (Google Translate), drug discovery, autonomous vehicles, game playing (AlphaGo), generative AI (Stable Diffusion, ChatGPT).",
+    "type": "atomic",
+    "topic": "Deep Learning Applications",
+    "keywords": [
+      "deep",
+      "learning",
+      "recognition",
+      "applications",
+      "powers",
+      "image"
+    ]
+  },
+  {
+    "question": "Define artificial intelligence",
+    "answer": "Artificial Intelligence is defined as the ability of a machine or computer program to think and learn. In practice it means building algorithms that can perform tasks which normally require human intelligence: translation, image recognition, diagnosis, decision-making, and more.",
+    "type": "atomic",
+    "topic": "Artificial Intelligence",
+    "keywords": [
+      "intelligence",
+      "artificial",
+      "defined",
+      "ability",
+      "machine",
+      "computer"
+    ]
+  },
+  {
+    "question": "Explain AI",
+    "answer": "AI enables machines to mimic human intelligence: learning from data, solving problems, understanding language, and recognising patterns. It is powered by sub-fields like Machine Learning, Deep Learning, NLP, and Computer Vision. Applications span every industry — healthcare, finance, transportation, and education.",
+    "type": "atomic",
+    "topic": "Ai",
+    "keywords": [
+      "learning",
+      "enables",
+      "machines",
+      "mimic",
+      "human",
+      "intelligence"
+    ]
+  },
+  {
+    "question": "Explain deep learning",
+    "answer": "Deep Learning uses stacked layers of artificial neurons to transform raw inputs (pixels, audio, text) into useful representations. Each layer learns increasingly abstract features: edges → shapes → objects (for images). Trained end-to-end with backpropagation. Frameworks: TensorFlow, PyTorch.",
+    "type": "atomic",
+    "topic": "Deep Learning",
+    "keywords": [
+      "deep",
+      "learning",
+      "stacked",
+      "layers",
+      "artificial",
+      "neurons"
+    ]
+  },
+  {
+    "question": "Explain machine learning",
+    "answer": "Machine Learning allows computers to learn from data and improve their performance without being explicitly programmed for every scenario. It works by training algorithms on historical data to identify patterns, then using those patterns to make predictions on new data. Three types: Supervised, Unsupervised, and Reinforcement Learning.",
+    "type": "atomic",
+    "topic": "Machine Learning",
+    "keywords": [
+      "learning",
+      "data",
+      "machine",
+      "patterns",
+      "allows",
+      "computers"
+    ]
+  },
+  {
+    "question": "History of artificial intelligence",
+    "answer": "AI milestones: 1950 Turing Test (Alan Turing), 1956 term coined at Dartmouth Conference, 1980s Expert Systems boom, 1997 Deep Blue beats chess champion, 2012 AlexNet revolution (deep learning), 2017 Transformer architecture, 2022 ChatGPT. AI has gone through multiple 'winters' and booms.",
+    "type": "atomic",
+    "topic": "History Of Artificial Intelligence",
+    "keywords": [
+      "turing",
+      "deep",
+      "history",
+      "artificial",
+      "intelligence",
+      "milestones"
+    ]
+  },
+  {
+    "question": "How do neural networks work?",
+    "answer": "Neural networks process data through layers of interconnected neurons. Each neuron computes a weighted sum of its inputs, adds a bias, then applies an activation function (e.g. ReLU). Layers transform the input progressively into more useful representations. Training adjusts weights via backpropagation to minimise prediction error.",
+    "type": "atomic",
+    "topic": "Neural Networks Work",
+    "keywords": [
+      "neural",
+      "networks",
+      "layers",
+      "work",
+      "process",
+      "data"
+    ]
+  },
+  {
+    "question": "How does a CNN work?",
+    "answer": "A CNN works by sliding learnable filters across the input image, computing dot products to produce feature maps. Early layers detect simple features (edges, colours); deeper layers detect complex patterns (faces, objects). Pooling (max/average) downsamples feature maps. The final fully connected layer produces class scores.",
+    "type": "atomic",
+    "topic": "A Cnn Work",
+    "keywords": [
+      "feature",
+      "maps",
+      "layers",
+      "detect",
+      "work",
+      "works"
+    ]
+  },
+  {
+    "question": "How does deep learning differ from machine learning?",
+    "answer": "Machine Learning requires human-engineered features fed to algorithms like SVM or Random Forest. Deep Learning automatically learns hierarchical features from raw data using neural networks with many layers. DL typically outperforms ML on images, audio, and text but requires much more data and GPU compute. For tabular data, XGBoost often beats deep learning.",
+    "type": "atomic",
+    "topic": "Deep Learning Differ From Machine Learning",
+    "keywords": [
+      "learning",
+      "deep",
+      "data",
+      "machine",
+      "requires",
+      "features"
+    ]
+  },
+  {
+    "question": "How does machine learning work?",
+    "answer": "ML workflow: 1) Collect and clean data, 2) Choose an algorithm (e.g. decision tree, neural network), 3) Train the model on data (algorithm learns patterns by adjusting internal parameters), 4) Evaluate on test data, 5) Tune hyperparameters, 6) Deploy to production. The model improves with more quality data.",
+    "type": "atomic",
+    "topic": "Machine Learning Work",
+    "keywords": [
+      "data",
+      "algorithm",
+      "model",
+      "machine",
+      "learning",
+      "work"
+    ]
+  },
+  {
+    "question": "How does the transformer architecture work?",
+    "answer": "Transformer encoder: input tokens → embeddings + positional encoding → Multi-Head Self-Attention (tokens attend to each other) → Feed-Forward network → layer output. Decoder adds cross-attention to encoder output. Self-attention computes Query, Key, Value matrices. Attention(Q,K,V) = softmax(QK^T / sqrt(d_k)) * V.",
+    "type": "atomic",
+    "topic": "The Transformer Architecture Work",
+    "keywords": [
+      "transformer",
+      "encoder",
+      "tokens",
+      "self-attention",
+      "output",
+      "architecture"
+    ]
+  },
+  {
+    "question": "Machine learning algorithms list",
+    "answer": "Common ML algorithms: Linear Regression, Logistic Regression, Decision Tree, Random Forest, Gradient Boosting (XGBoost), SVM, KNN, Naive Bayes, K-Means Clustering, PCA (dimensionality reduction), Neural Networks, and DBSCAN. Choice depends on data type, size, and problem (classification vs regression vs clustering).",
+    "type": "atomic",
+    "topic": "Machine Learning Algorithms List",
+    "keywords": [
+      "regression",
+      "algorithms",
+      "clustering",
+      "machine",
+      "learning",
+      "linear"
+    ]
+  },
+  {
+    "question": "Tell me about machine learning",
+    "answer": "Machine Learning is a powerful subset of AI enabling systems to learn patterns from data automatically. It covers supervised learning (labelled data → predictions), unsupervised learning (unlabelled data → patterns), and reinforcement learning (agent learns via rewards). Core to modern AI applications: search engines, recommenders, self-driving cars, and medical diagnosis.",
+    "type": "atomic",
+    "topic": "Machine Learning",
+    "keywords": [
+      "learning",
+      "data",
+      "machine",
+      "patterns",
+      "powerful",
+      "subset"
+    ]
+  },
+  {
+    "question": "Types of artificial intelligence",
+    "answer": "AI is classified by capability: Narrow AI (designed for one task — current AI), General AI (can do anything a human can — research goal), and Super AI (surpasses human intelligence — theoretical). By approach: Reactive, Limited Memory, Theory of Mind, and Self-Aware AI.",
+    "type": "atomic",
+    "topic": "Types Of Artificial Intelligence",
+    "keywords": [
+      "intelligence",
+      "human",
+      "artificial",
+      "classified",
+      "capability",
+      "narrow"
+    ]
+  },
+  {
+    "question": "What are neural network activation functions?",
+    "answer": "Activation functions introduce non-linearity, enabling networks to learn complex patterns. ReLU (Rectified Linear Unit): f(x) = max(0,x) — most widely used, fast, avoids vanishing gradient. Sigmoid: 1/(1+e^-x) — binary output. Tanh: (-1,1) range. Softmax: multi-class probabilities. Leaky ReLU: small negative slope to prevent dying neurons.",
+    "type": "atomic",
+    "topic": "Neural Network Activation Functions",
+    "keywords": [
+      "activation",
+      "functions",
+      "relu",
+      "neural",
+      "network",
+      "introduce"
+    ]
+  },
+  {
+    "question": "What are the layers in a neural network?",
+    "answer": "Neural network layers: 1) Input Layer — receives raw features, 2) Hidden Layers — learns intermediate representations (more layers = deeper network), 3) Output Layer — produces final predictions (softmax for classification, linear for regression). The number and type of hidden layers define the network architecture.",
+    "type": "atomic",
+    "topic": "The Layers In A Neural Network",
+    "keywords": [
+      "layers",
+      "network",
+      "neural",
+      "layer",
+      "hidden",
+      "input"
+    ]
+  },
+  {
+    "question": "What are the types of machine learning?",
+    "answer": "Three main types: 1) Supervised Learning — learns from labelled data to predict outputs (classification, regression). 2) Unsupervised Learning — finds patterns in unlabelled data (clustering, dimensionality reduction). 3) Reinforcement Learning — agent learns optimal actions through environment rewards (game AI, robotics). Semi-supervised and self-supervised are additional paradigms.",
+    "type": "atomic",
+    "topic": "The Types Of Machine Learning",
+    "keywords": [
+      "learning",
+      "learns",
+      "data",
+      "machine",
+      "three",
+      "supervised"
+    ]
+  },
+  {
+    "question": "What are weights and biases in neural networks?",
+    "answer": "Weights are learnable parameters connecting neurons — they scale how much one neuron influences another. Biases are additional learnable parameters that shift the activation threshold. Both are initialised randomly and updated during training via gradient descent to minimise loss. A network with millions of weights is called a Large Language Model.",
+    "type": "atomic",
+    "topic": "Weights And Biases In Neural Networks",
+    "keywords": [
+      "weights",
+      "biases",
+      "learnable",
+      "parameters",
+      "neural",
+      "networks"
+    ]
+  },
+  {
+    "question": "What do you mean by machine learning?",
+    "answer": "Machine Learning means teaching a computer to learn from examples rather than hard-coding rules. Given labelled data (inputs + correct outputs), an ML algorithm learns to map inputs to outputs. It then generalises this mapping to make accurate predictions on new, unseen data.",
+    "type": "atomic",
+    "topic": "Machine Learning",
+    "keywords": [
+      "machine",
+      "learning",
+      "data",
+      "inputs",
+      "outputs",
+      "mean"
+    ]
+  },
+  {
+    "question": "What does AI stand for?",
+    "answer": "AI stands for Artificial Intelligence — the branch of computer science focused on creating machines capable of intelligent behaviour such as learning, reasoning, problem-solving, language understanding, and perception.",
+    "type": "atomic",
+    "topic": "What Does Ai Stand For",
+    "keywords": [
+      "stand",
+      "stands",
+      "artificial",
+      "intelligence",
+      "branch",
+      "computer"
+    ]
+  },
+  {
+    "question": "What is A/B Testing?",
+    "answer": "A/B Testing compares two versions of a model or product to determine which performs better. Users are divided into two groups randomly. Each group interacts with a different version. Performance metrics are measured and statistically compared. Used in product optimization and model selection. Helps make data-driven decisions. Common in industry experiments and feature rollouts. Widely used in web and app development.",
+    "type": "atomic",
+    "topic": "A/B Testing",
+    "keywords": [
+      "testing",
+      "model",
+      "product",
+      "compares",
+      "versions",
+      "determine"
+    ]
+  },
+  {
+    "question": "What is ARIMA Model?",
+    "answer": "ARIMA stands for AutoRegressive Integrated Moving Average. Used for time series forecasting. Combines AutoRegressive (AR), Integrated (I), and Moving Average (MA) components. Handles trends and temporal patterns in data. Requires stationary data as input. Parameters are denoted as p, d, and q. Widely used in financial and business forecasting. Effective for modeling linear temporal patterns.",
+    "type": "atomic",
+    "topic": "Arima Model",
+    "keywords": [
+      "arima",
+      "autoregressive",
+      "integrated",
+      "moving",
+      "average",
+      "forecasting"
+    ]
+  },
+  {
+    "question": "What is AUC ROC?",
+    "answer": "AUC-ROC: Area Under the Receiver Operating Characteristic Curve. ROC plots TPR (Recall) vs FPR at each classification threshold. AUC summarises the curve into one number: 1.0 = perfect, 0.5 = random. Higher AUC means better class discrimination. Useful across all threshold choices. Use Precision-Recall curve for severe class imbalance.",
+    "type": "atomic",
+    "topic": "Auc Roc",
+    "keywords": [
+      "curve",
+      "threshold",
+      "class",
+      "auc-roc",
+      "area",
+      "under"
+    ]
+  },
+  {
+    "question": "What is Anomaly Detection?",
+    "answer": "Anomaly Detection identifies unusual or unexpected data points in a dataset. Also called outlier detection. Used in fraud detection and cybersecurity. Finds patterns that deviate significantly from normal behavior. Techniques include statistical methods, isolation forests, and autoencoders. Important for security and monitoring systems. Used in network intrusion detection. Critical real-world ML application.",
+    "type": "atomic",
+    "topic": "Anomaly Detection",
+    "keywords": [
+      "detection",
+      "anomaly",
+      "identifies",
+      "unusual",
+      "unexpected",
+      "data"
+    ]
+  },
+  {
+    "question": "What is BERT?",
+    "answer": "BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained language model by Google. Unlike GPT, it reads text in both directions simultaneously. Pre-trained on: Masked Language Modelling (predict [MASK] tokens) and Next Sentence Prediction. Fine-tuned for downstream tasks: QA, NER, text classification.",
+    "type": "atomic",
+    "topic": "Bert",
+    "keywords": [
+      "bert",
+      "pre-trained",
+      "language",
+      "text",
+      "bidirectional",
+      "encoder"
+    ]
+  },
+  {
+    "question": "What is Backpropagation?",
+    "answer": "Backpropagation is the algorithm used to train neural networks. It calculates the gradient of the loss function with respect to each weight. Updates weights using gradient descent to minimize error. Works from the output layer back to the input layer. Minimizes error iteratively across training epochs. Core mechanism of deep learning training. Requires differentiable activation functions. Improves model accuracy over time.",
+    "type": "atomic",
+    "topic": "Backpropagation",
+    "keywords": [
+      "backpropagation",
+      "gradient",
+      "error",
+      "layer",
+      "training",
+      "algorithm"
+    ]
+  },
+  {
+    "question": "What is Bag of Words?",
+    "answer": "Bag of Words is a text representation technique used in NLP. Converts text into numerical vectors based on word counts. Ignores grammar, word order, and context. Counts the frequency of each word in the document. Simple and effective baseline method. Used in text classification and NLP models. Limitation: loses contextual meaning of words. Widely used as a starting point in NLP tasks.",
+    "type": "atomic",
+    "topic": "Bag Of Words",
+    "keywords": [
+      "words",
+      "text",
+      "word",
+      "counts",
+      "representation",
+      "technique"
+    ]
+  },
+  {
+    "question": "What is Batch Size in Machine Learning?",
+    "answer": "Batch size is the number of training samples processed per iteration. Used during the training process. Small batch size results in faster but noisier weight updates. Large batch size gives more stable but slower training. Impacts memory usage and training speed. Affects both accuracy and convergence. Common batch sizes include 32, 64, and 128. Important hyperparameter in deep learning.",
+    "type": "atomic",
+    "topic": "Batch Size In Machine Learning",
+    "keywords": [
+      "batch",
+      "size",
+      "training",
+      "learning",
+      "machine",
+      "number"
+    ]
+  },
+  {
+    "question": "What is ChatGPT?",
+    "answer": "ChatGPT is a conversational AI by OpenAI based on GPT-4. Trained using: 1) Supervised Fine-Tuning on human demonstrations, 2) Reward Model trained from human preference comparisons, 3) PPO optimisation (RLHF) against the reward model. It can converse, write code, analyse data, summarise, translate, and reason across long contexts.",
+    "type": "atomic",
+    "topic": "Chatgpt",
+    "keywords": [
+      "chatgpt",
+      "trained",
+      "human",
+      "reward",
+      "model",
+      "conversational"
+    ]
+  },
+  {
+    "question": "What is Clustering?",
+    "answer": "Clustering is an unsupervised learning technique. Groups similar data points together into clusters. No labeled data is required for training. Examples of algorithms: K-Means and DBSCAN. Used in customer segmentation and market analysis. Helps discover hidden patterns in data. Important in exploratory data analysis. Widely used across many ML applications.",
+    "type": "atomic",
+    "topic": "Clustering",
+    "keywords": [
+      "data",
+      "clustering",
+      "analysis",
+      "unsupervised",
+      "learning",
+      "technique"
+    ]
+  },
+  {
+    "question": "What is Collaborative Filtering?",
+    "answer": "Collaborative Filtering uses user behavior and interaction data to make recommendations. Finds similar users or items based on historical preferences. Recommends items based on what similar users liked. Example: Movie recommendations based on user ratings. Requires sufficient user interaction data. Can suffer from the cold start problem for new users. Widely used method in recommendation systems.",
+    "type": "atomic",
+    "topic": "Collaborative Filtering",
+    "keywords": [
+      "user",
+      "users",
+      "based",
+      "collaborative",
+      "filtering",
+      "interaction"
+    ]
+  },
+  {
+    "question": "What is Computer Vision?",
+    "answer": "Computer Vision enables machines to understand and interpret visual information from images and videos. Processes and analyzes visual data using algorithms. Used in image classification, object detection, and segmentation. Example: Face recognition and medical image analysis. Uses deep learning models such as CNNs. Important and rapidly growing AI field. Used in healthcare, security, and autonomous vehicles.",
+    "type": "atomic",
+    "topic": "Computer Vision",
+    "keywords": [
+      "computer",
+      "vision",
+      "visual",
+      "image",
+      "enables",
+      "machines"
+    ]
+  },
+  {
+    "question": "What is Concept Drift?",
+    "answer": "Concept Drift happens when the statistical relationship between input features and the target output changes over time. The underlying data distribution shifts significantly. The model becomes outdated as the real world changes. Example: Changing customer purchasing behavior over time. Affects prediction accuracy in production. Requires continuous retraining and monitoring. Detected using statistical monitoring tools. Critical issue in dynamic real-world environments.",
+    "type": "atomic",
+    "topic": "Concept Drift",
+    "keywords": [
+      "concept",
+      "drift",
+      "statistical",
+      "changes",
+      "over",
+      "time"
+    ]
+  },
+  {
+    "question": "What is Content-Based Filtering?",
+    "answer": "Content-Based Filtering recommends items based on item features and user history. Suggests items similar to what the user has previously interacted with. Based on attributes of the items themselves. Example: Suggesting similar products based on past purchases. Does not depend on other users' data. Partly avoids the cold start problem. Used in recommendation systems across many platforms.",
+    "type": "atomic",
+    "topic": "Content-Based Filtering",
+    "keywords": [
+      "items",
+      "based",
+      "content-based",
+      "filtering",
+      "user",
+      "similar"
+    ]
+  },
+  {
+    "question": "What is Cosine Similarity?",
+    "answer": "Cosine Similarity measures the similarity between two vectors. Used extensively in text analysis and recommendation systems. Value ranges from -1 to 1. A value of 1 means the vectors are identical in direction. Based on the angle between two vectors rather than magnitude. Used in recommendation engines and document comparison. Helps compare text documents semantically. Common in NLP and information retrieval tasks.",
+    "type": "atomic",
+    "topic": "Cosine Similarity",
+    "keywords": [
+      "similarity",
+      "vectors",
+      "cosine",
+      "text",
+      "recommendation",
+      "value"
+    ]
+  },
+  {
+    "question": "What is Cross-validation?",
+    "answer": "Cross-validation is a technique used to evaluate the performance of a model. The dataset is divided into multiple parts called folds. The most common method is K-Fold Cross Validation. In each iteration, one fold is used for testing and the rest for training. This process is repeated multiple times. The final result is the average performance across all folds. It helps in detecting overfitting. It provides a more reliable evaluation. It is widely used in machine learning.",
+    "type": "atomic",
+    "topic": "Cross-Validation",
+    "keywords": [
+      "cross-validation",
+      "performance",
+      "multiple",
+      "folds",
+      "technique",
+      "evaluate"
+    ]
+  },
+  {
+    "question": "What is DBSCAN?",
+    "answer": "DBSCAN is a density-based clustering algorithm. Groups data based on density of nearby points. Does not require specifying the number of clusters in advance. Handles noise and outliers well. Uses two parameters: eps (radius) and minPts (minimum points). Good for detecting clusters of irregular shapes. Outperforms K-Means on certain data distributions. Widely used clustering method in data science.",
+    "type": "atomic",
+    "topic": "Dbscan",
+    "keywords": [
+      "data",
+      "dbscan",
+      "clustering",
+      "points",
+      "clusters",
+      "density-based"
+    ]
+  },
+  {
+    "question": "What is Data Augmentation?",
+    "answer": "Data Augmentation artificially increases the size and diversity of a training dataset. Creates new training samples from existing data using transformations. Used in image and text data processing. Example: Rotating, flipping, or cropping images. Helps reduce overfitting by exposing the model to more variation. Improves model generalization on unseen data. Especially useful in deep learning with limited data. Enhances training data diversity effectively.",
+    "type": "atomic",
+    "topic": "Data Augmentation",
+    "keywords": [
+      "data",
+      "training",
+      "augmentation",
+      "diversity",
+      "model",
+      "artificially"
+    ]
+  },
+  {
+    "question": "What is Data Drift?",
+    "answer": "Data Drift occurs when the distribution of input data changes over time. The relationship between input and output may remain the same. Example: Changes in user demographics affecting input features. Impacts model performance even without concept drift. Detected using statistical tests and monitoring dashboards. Requires data monitoring pipelines in production. Retraining may be needed to maintain accuracy. Common challenge in production ML systems.",
+    "type": "atomic",
+    "topic": "Data Drift",
+    "keywords": [
+      "data",
+      "drift",
+      "input",
+      "changes",
+      "monitoring",
+      "production"
+    ]
+  },
+  {
+    "question": "What is Data Leakage?",
+    "answer": "Data Leakage occurs when information from outside the training dataset is used during model training. It leads to overly optimistic model performance. The model unknowingly learns from future or test data. This makes it unreliable in real-world scenarios. Example: Using test data statistics during preprocessing. It causes poor generalization on new data. Proper data splitting can prevent it. It is a common mistake in ML projects.",
+    "type": "atomic",
+    "topic": "Data Leakage",
+    "keywords": [
+      "data",
+      "model",
+      "leakage",
+      "training",
+      "during",
+      "test"
+    ]
+  },
+  {
+    "question": "What is Data Preprocessing?",
+    "answer": "Data preprocessing is the initial step in the machine learning pipeline. It involves cleaning and preparing data for training. Missing values are handled using methods like mean, median, or removal. Categorical data is encoded into numerical form. Data cleaning removes noise and duplicates. Feature scaling like normalization or standardization is applied. Outliers are detected and treated. The dataset is split into training and testing sets. Proper preprocessing improves model accuracy.",
+    "type": "atomic",
+    "topic": "Data Preprocessing",
+    "keywords": [
+      "data",
+      "preprocessing",
+      "cleaning",
+      "training",
+      "like",
+      "initial"
+    ]
+  },
+  {
+    "question": "What is Dimensionality Reduction?",
+    "answer": "Dimensionality Reduction reduces the number of features in a dataset. It helps simplify data. Improves model performance and speed. Removes redundant features. Techniques include PCA and t-SNE. Helps avoid overfitting. Useful for visualization of high-dimensional data. Important in large datasets.",
+    "type": "atomic",
+    "topic": "Dimensionality Reduction",
+    "keywords": [
+      "dimensionality",
+      "reduction",
+      "features",
+      "helps",
+      "data",
+      "reduces"
+    ]
+  },
+  {
+    "question": "What is Dropout in Deep Learning?",
+    "answer": "Dropout is a regularization technique used in neural networks. Randomly disables a fraction of neurons during each training step. Prevents overfitting by reducing co-dependency between neurons. Improves model generalization. Common in deep neural network architectures. Works by forcing the network to learn redundant representations. Improves robustness of the trained model.",
+    "type": "atomic",
+    "topic": "Dropout In Deep Learning",
+    "keywords": [
+      "dropout",
+      "deep",
+      "neural",
+      "neurons",
+      "improves",
+      "model"
+    ]
+  },
+  {
+    "question": "What is Early Stopping?",
+    "answer": "Early Stopping is a regularization technique that prevents overfitting. It stops model training when validation performance stops improving. Monitors validation loss during training. Training halts if no improvement is seen for a defined number of epochs. Saves computational time and resources. Improves generalization on unseen data. Common technique in deep learning training. Simple yet highly effective.",
+    "type": "atomic",
+    "topic": "Early Stopping",
+    "keywords": [
+      "training",
+      "early",
+      "stopping",
+      "technique",
+      "stops",
+      "validation"
+    ]
+  },
+  {
+    "question": "What is Edge AI?",
+    "answer": "Edge AI refers to running AI models directly on local edge devices rather than in the cloud. Eliminates the need for cloud-based processing. Reduces latency and response time significantly. Improves privacy by keeping data on the device. Used in IoT devices and embedded systems. Example: Smart cameras and voice assistants on devices. Efficient and fast processing at the edge. A growing trend in AI deployment.",
+    "type": "atomic",
+    "topic": "Edge Ai",
+    "keywords": [
+      "edge",
+      "devices",
+      "processing",
+      "refers",
+      "running",
+      "models"
+    ]
+  },
+  {
+    "question": "What is Ensemble Learning?",
+    "answer": "Ensemble Learning combines multiple models to produce better results. It improves overall performance and accuracy. Types include Bagging and Boosting. Examples: Random Forest and AdaBoost. Reduces overfitting risk. Provides better generalization. Uses the strengths of multiple models. Common in real-world applications.",
+    "type": "atomic",
+    "topic": "Ensemble Learning",
+    "keywords": [
+      "ensemble",
+      "learning",
+      "multiple",
+      "models",
+      "better",
+      "combines"
+    ]
+  },
+  {
+    "question": "What is F1 Score?",
+    "answer": "F1 Score is the harmonic mean of precision and recall. It balances both precision and recall. Formula: 2 * (Precision * Recall) / (Precision + Recall). Useful when data is imbalanced. A high F1 score indicates a good model. It avoids misleading accuracy results. Widely used in classification problems. It gives a single performance metric.",
+    "type": "atomic",
+    "topic": "F1 Score",
+    "keywords": [
+      "precision",
+      "recall",
+      "score",
+      "harmonic",
+      "mean",
+      "balances"
+    ]
+  },
+  {
+    "question": "What is Feature Engineering?",
+    "answer": "Feature engineering is the process of transforming raw data into useful features. It helps improve the performance of machine learning models. It includes feature selection, extraction, and transformation. Example: Converting date into day, month, and year. Categorical data is converted into numerical form using encoding. Irrelevant features are removed to improve accuracy. Good features lead to better predictions. It is a crucial step in the ML pipeline. Data quality directly impacts model performance.",
+    "type": "atomic",
+    "topic": "Feature Engineering",
+    "keywords": [
+      "feature",
+      "data",
+      "features",
+      "engineering",
+      "improve",
+      "performance"
+    ]
+  },
+  {
+    "question": "What is Feature Importance?",
+    "answer": "Feature Importance quantifies the impact of each input feature on model predictions. Helps understand which variables drive model decisions. Used in tree-based models like Random Forest and XGBoost. Identifies the most influential variables in the dataset. Helps in feature selection and dimensionality reduction. Improves model performance by removing irrelevant features. Useful for model interpretability and explainability.",
+    "type": "atomic",
+    "topic": "Feature Importance",
+    "keywords": [
+      "feature",
+      "model",
+      "importance",
+      "helps",
+      "variables",
+      "quantifies"
+    ]
+  },
+  {
+    "question": "What is Feature Scaling?",
+    "answer": "Feature Scaling standardizes the range of data values. Ensures all features are on the same scale. Prevents bias due to features with large numerical values. Methods include normalization and standardization. Important for distance-based algorithms such as KNN and SVM. Improves model convergence and performance. Essential preprocessing step in ML pipelines.",
+    "type": "atomic",
+    "topic": "Feature Scaling",
+    "keywords": [
+      "feature",
+      "scaling",
+      "values",
+      "features",
+      "standardizes",
+      "range"
+    ]
+  },
+  {
+    "question": "What is Few-Shot Learning?",
+    "answer": "Few-Shot Learning enables a model to learn from a very small number of training examples. Requires only a few labeled samples per class. Useful when labeled data is limited or expensive to obtain. Leverages pre-trained models and prior knowledge. Common technique in deep learning research. Example: Learning to recognize new object classes from just 5 examples. Reduces dependency on large labeled datasets. Important modern approach in AI.",
+    "type": "atomic",
+    "topic": "Few-Shot Learning",
+    "keywords": [
+      "learning",
+      "labeled",
+      "few-shot",
+      "enables",
+      "model",
+      "learn"
+    ]
+  },
+  {
+    "question": "What is GAN?",
+    "answer": "GAN stands for Generative Adversarial Network. Consists of two networks: a generator and a discriminator. The generator creates fake or synthetic data. The discriminator tries to distinguish real data from fake. Both networks compete and improve during training. Used in image generation, data augmentation, and deepfakes. Example: Generating realistic human faces. Powerful and widely researched deep learning model.",
+    "type": "atomic",
+    "topic": "Gan",
+    "keywords": [
+      "data",
+      "networks",
+      "generator",
+      "discriminator",
+      "fake",
+      "stands"
+    ]
+  },
+  {
+    "question": "What is GPT?",
+    "answer": "GPT (Generative Pre-trained Transformer) is a decoder-only Transformer trained to predict the next token (autoregressive). GPT-3: 175B parameters. GPT-4: multimodal. Trained with self-supervised learning on internet text, then fine-tuned with RLHF (Reinforcement Learning from Human Feedback). Powers ChatGPT.",
+    "type": "atomic",
+    "topic": "Gpt",
+    "keywords": [
+      "transformer",
+      "trained",
+      "gpt-",
+      "learning",
+      "generative",
+      "pre-trained"
+    ]
+  },
+  {
+    "question": "What is Gradient Boosting?",
+    "answer": "Gradient Boosting is an ensemble learning method. Builds models sequentially where each model corrects errors of the previous one. Uses gradient descent optimization to minimize loss. Improves accuracy significantly over single models. Examples of implementations: XGBoost and LightGBM. Can overfit if not tuned properly. Widely used in machine learning competitions and industry.",
+    "type": "atomic",
+    "topic": "Gradient Boosting",
+    "keywords": [
+      "gradient",
+      "boosting",
+      "learning",
+      "models",
+      "ensemble",
+      "method"
+    ]
+  },
+  {
+    "question": "What is Gradient Descent?",
+    "answer": "Gradient Descent is an optimization algorithm used to minimize loss. It updates model parameters to reduce error. The algorithm moves in the direction of the negative gradient. Learning rate controls the step size. Too high a learning rate may overshoot the minimum. Too low makes training slow. Types include Batch, Stochastic, and Mini-batch Gradient Descent. It is widely used in training ML models.",
+    "type": "atomic",
+    "topic": "Gradient Descent",
+    "keywords": [
+      "gradient",
+      "descent",
+      "algorithm",
+      "learning",
+      "rate",
+      "training"
+    ]
+  },
+  {
+    "question": "What is Hugging Face?",
+    "answer": "Hugging Face is the leading platform for NLP and AI models. The Transformers library provides pre-trained models via AutoTokenizer and AutoModel. pipeline() enables one-line inference for text classification, NER, QA, translation. Hub hosts 100,000+ models and datasets. PEFT library for LoRA fine-tuning. Used for BERT, GPT, LLaMA, and Mistral.",
+    "type": "atomic",
+    "topic": "Hugging Face",
+    "keywords": [
+      "models",
+      "hugging",
+      "face",
+      "library",
+      "leading",
+      "platform"
+    ]
+  },
+  {
+    "question": "What is Hyperparameter Tuning?",
+    "answer": "Hyperparameters are settings configured before training starts. They are not learned from data. Examples include learning rate and number of trees. Tuning improves model performance. Methods include Grid Search and Random Search. Cross-validation is often used during tuning. It helps find optimal settings. Important for achieving better accuracy.",
+    "type": "atomic",
+    "topic": "Hyperparameter Tuning",
+    "keywords": [
+      "tuning",
+      "settings",
+      "include",
+      "search",
+      "hyperparameter",
+      "hyperparameters"
+    ]
+  },
+  {
+    "question": "What is K-Means Clustering?",
+    "answer": "K-Means is an unsupervised learning algorithm. It groups data into K clusters. Each cluster has a centroid. Data points are assigned to the nearest centroid. Centroids are updated iteratively. The process continues until convergence. Used in customer segmentation. It is a simple and widely used clustering method.",
+    "type": "atomic",
+    "topic": "K-Means Clustering",
+    "keywords": [
+      "k-means",
+      "clustering",
+      "data",
+      "centroid",
+      "unsupervised",
+      "learning"
+    ]
+  },
+  {
+    "question": "What is KNN Algorithm?",
+    "answer": "KNN stands for K-Nearest Neighbors. It is a supervised learning algorithm. Classifies data points based on their nearest neighbors. Uses distance metrics like Euclidean distance. The value of K determines how many neighbors are considered. Simple and easy to implement. Slow for large datasets due to distance computation. Used in both classification and regression tasks.",
+    "type": "atomic",
+    "topic": "Knn Algorithm",
+    "keywords": [
+      "neighbors",
+      "distance",
+      "algorithm",
+      "stands",
+      "k-nearest",
+      "supervised"
+    ]
+  },
+  {
+    "question": "What is KNN?",
+    "answer": "K-Nearest Neighbor classifies a new point by finding its K closest training examples and taking a majority vote. Distance metrics: Euclidean, Manhattan, Minkowski. No training phase — predictions happen at query time (lazy learner). Sensitive to feature scale — always normalise data. Choosing K: use cross-validation.",
+    "type": "atomic",
+    "topic": "Knn",
+    "keywords": [
+      "training",
+      "k-nearest",
+      "neighbor",
+      "classifies",
+      "point",
+      "finding"
+    ]
+  },
+  {
+    "question": "What is Keras?",
+    "answer": "Keras is a high-level neural network API, now integrated as tf.keras. Supports Sequential (linear stack) and Functional (arbitrary graph) APIs. Key layers: Dense, Conv2D, LSTM, Dropout, BatchNorm. Callbacks: EarlyStopping, ModelCheckpoint, ReduceLROnPlateau. Compile with loss, optimiser, and metrics. Excellent for rapid prototyping.",
+    "type": "atomic",
+    "topic": "Keras",
+    "keywords": [
+      "keras",
+      "high-level",
+      "neural",
+      "network",
+      "integrated",
+      "supports"
+    ]
+  },
+  {
+    "question": "What is LSTM?",
+    "answer": "LSTM stands for Long Short-Term Memory. It is a type of Recurrent Neural Network designed for sequence data. Designed to remember long-term dependencies in sequences. Uses gates (input, forget, output) to control information flow. Solves the vanishing gradient problem of standard RNNs. Used in time series forecasting and NLP tasks. Example: Speech recognition and language modeling. Powerful deep learning model for sequential data.",
+    "type": "atomic",
+    "topic": "Lstm",
+    "keywords": [
+      "lstm",
+      "designed",
+      "data",
+      "stands",
+      "long",
+      "short-term"
+    ]
+  },
+  {
+    "question": "What is Label Encoding?",
+    "answer": "Label Encoding assigns a unique integer to each category. Each category gets a unique number. Simple and fast encoding method. May introduce ordinal relationships that do not exist. Useful in tree-based models that can handle this. Example: Red = 1, Blue = 2, Green = 3. Not suitable for all algorithms. Commonly used in preprocessing steps.",
+    "type": "atomic",
+    "topic": "Label Encoding",
+    "keywords": [
+      "encoding",
+      "label",
+      "unique",
+      "category",
+      "assigns",
+      "integer"
+    ]
+  },
+  {
+    "question": "What is Learning Rate?",
+    "answer": "Learning rate controls the step size during gradient descent optimization. Determines how fast the model updates its weights. Too high a learning rate may cause the model to overshoot the minimum. Too low a learning rate results in very slow training. Critical hyperparameter in all gradient-based training. Needs proper tuning for good convergence. Affects both speed and quality of training.",
+    "type": "atomic",
+    "topic": "Learning Rate",
+    "keywords": [
+      "learning",
+      "rate",
+      "training",
+      "model",
+      "controls",
+      "step"
+    ]
+  },
+  {
+    "question": "What is Lemmatization?",
+    "answer": "Lemmatization converts words to their dictionary base form known as a lemma. Example: 'better' becomes 'good'. More linguistically accurate than stemming. Uses vocabulary and grammatical rules. Computationally more expensive than stemming. Used in NLP preprocessing pipelines. Improves text quality for downstream tasks. Preferred in applications requiring accurate language understanding.",
+    "type": "atomic",
+    "topic": "Lemmatization",
+    "keywords": [
+      "lemmatization",
+      "more",
+      "accurate",
+      "than",
+      "stemming",
+      "converts"
+    ]
+  },
+  {
+    "question": "What is Linear Regression?",
+    "answer": "Linear Regression is a supervised learning algorithm. It predicts continuous values. It models the relationship between variables. Uses a straight line equation. Example: Predicting house prices. Easy to implement and interpret. Sensitive to outliers. Widely used in predictive analysis.",
+    "type": "atomic",
+    "topic": "Linear Regression",
+    "keywords": [
+      "linear",
+      "regression",
+      "supervised",
+      "learning",
+      "algorithm",
+      "predicts"
+    ]
+  },
+  {
+    "question": "What is Logistic Regression?",
+    "answer": "Logistic Regression is a classification algorithm. It predicts probability between 0 and 1. Uses sigmoid function for output. Used for binary classification problems. Example: Spam detection. It is simple and efficient. Not suitable for complex relationships. Still widely used in ML.",
+    "type": "atomic",
+    "topic": "Logistic Regression",
+    "keywords": [
+      "logistic",
+      "regression",
+      "classification",
+      "algorithm",
+      "predicts",
+      "probability"
+    ]
+  },
+  {
+    "question": "What is ML used for?",
+    "answer": "ML is used for: spam detection, recommendation systems (Netflix, Spotify), fraud detection, image recognition, speech recognition, medical diagnosis, autonomous vehicles, natural language translation, price prediction, and customer segmentation. Essentially any task where patterns can be learned from historical data.",
+    "type": "atomic",
+    "topic": "Ml Used For",
+    "keywords": [
+      "detection",
+      "recognition",
+      "spam",
+      "recommendation",
+      "systems",
+      "netflix"
+    ]
+  },
+  {
+    "question": "What is MLOps?",
+    "answer": "MLOps (Machine Learning Operations) applies DevOps practices to ML systems. Covers: data versioning (DVC), experiment tracking (MLflow, Weights and Biases), model registry, automated training pipelines, CI/CD for ML, deployment (Docker, Kubernetes, cloud), and production monitoring (data drift, performance degradation). Goal: reliable, reproducible, scalable ML.",
+    "type": "atomic",
+    "topic": "Mlops",
+    "keywords": [
+      "mlops",
+      "data",
+      "machine",
+      "learning",
+      "operations",
+      "applies"
+    ]
+  },
+  {
+    "question": "What is Model Deployment?",
+    "answer": "Model Deployment is the process of making a trained machine learning model available for use in production. It is integrated into real-world applications and systems. Users can interact with the model through APIs or interfaces. Involves monitoring, maintenance, and updates. Tools like Flask, FastAPI, and Docker are commonly used. Deployment can be on cloud platforms or local servers. Ensures the model provides real-time predictions. Final step in the ML lifecycle.",
+    "type": "atomic",
+    "topic": "Model Deployment",
+    "keywords": [
+      "model",
+      "deployment",
+      "process",
+      "making",
+      "trained",
+      "machine"
+    ]
+  },
+  {
+    "question": "What is Model Drift?",
+    "answer": "Model Drift occurs when a deployed model's performance degrades over time. Happens due to changes in real-world data patterns. Types include concept drift and data drift. Leads to increasingly inaccurate predictions. Requires continuous monitoring of model performance. Retraining on new data is often needed. Common challenge in production ML systems. Important to maintain long-term model reliability.",
+    "type": "atomic",
+    "topic": "Model Drift",
+    "keywords": [
+      "model",
+      "drift",
+      "data",
+      "performance",
+      "occurs",
+      "deployed"
+    ]
+  },
+  {
+    "question": "What is NLP?",
+    "answer": "NLP stands for Natural Language Processing. It is a field of AI that deals with text and language data. Helps machines understand, interpret, and generate human language. Applications include chatbots, translation systems, and sentiment analysis. Uses ML and deep learning techniques. Important and widely applicable AI field. Used in industry for text analytics and language understanding.",
+    "type": "atomic",
+    "topic": "Nlp",
+    "keywords": [
+      "language",
+      "field",
+      "text",
+      "stands",
+      "natural",
+      "processing"
+    ]
+  },
+  {
+    "question": "What is Naive Bayes?",
+    "answer": "Naive Bayes is a probabilistic classification algorithm. Based on Bayes theorem. Assumes all features are independent of each other. Simple and fast algorithm. Used in text classification tasks. Example: Spam filtering. Works well with large datasets. Efficient for real-time prediction.",
+    "type": "atomic",
+    "topic": "Naive Bayes",
+    "keywords": [
+      "bayes",
+      "naive",
+      "classification",
+      "algorithm",
+      "probabilistic",
+      "based"
+    ]
+  },
+  {
+    "question": "What is NumPy?",
+    "answer": "NumPy provides efficient N-dimensional arrays (ndarray) with vectorised mathematical operations, much faster than Python lists. Key functions: array creation, indexing/slicing, broadcasting, linear algebra (np.linalg), statistics, random sampling (np.random). Foundation of all Python data science libraries. import numpy as np.",
+    "type": "atomic",
+    "topic": "Numpy",
+    "keywords": [
+      "numpy",
+      "python",
+      "random",
+      "provides",
+      "efficient",
+      "n-dimensional"
+    ]
+  },
+  {
+    "question": "What is One-Hot Encoding?",
+    "answer": "One-Hot Encoding converts categorical data into binary vectors. Each category becomes a separate column. Values are either 0 or 1. Prevents the model from assuming ordinal relationships between categories. Used in ML preprocessing pipelines. Example: Color encoded into Red, Blue, Green columns. Important for algorithms that require numeric input. Widely used in datasets with categorical variables.",
+    "type": "atomic",
+    "topic": "One-Hot Encoding",
+    "keywords": [
+      "one-hot",
+      "encoding",
+      "categorical",
+      "converts",
+      "data",
+      "binary"
+    ]
+  },
+  {
+    "question": "What is OpenCV?",
+    "answer": "OpenCV (Open Source Computer Vision Library) is the leading CV library. Python (cv2), C++, Java. Key operations: read/write images/video, geometric transforms, colour space conversion, edge detection (Canny), feature detection (SIFT, ORB), face detection (Haar cascades), optical flow, and DNN inference. import cv2. Widely used in robotics and real-time systems.",
+    "type": "atomic",
+    "topic": "Opencv",
+    "keywords": [
+      "detection",
+      "opencv",
+      "library",
+      "open",
+      "source",
+      "computer"
+    ]
+  },
+  {
+    "question": "What is Overfitting?",
+    "answer": "Overfitting occurs when a model learns the training data too well, including noise and irrelevant details. It performs very well on training data but poorly on new unseen data. This reduces the model's ability to generalize. It usually happens when the model is too complex. Example: Memorizing data instead of learning patterns. It leads to high variance. Solutions include regularization, dropout, and more training data. Cross-validation can also help detect it. The goal is to build a generalized model.",
+    "type": "atomic",
+    "topic": "Overfitting",
+    "keywords": [
+      "data",
+      "model",
+      "training",
+      "overfitting",
+      "well",
+      "occurs"
+    ]
+  },
+  {
+    "question": "What is PCA?",
+    "answer": "PCA stands for Principal Component Analysis. It is a dimensionality reduction technique. Transforms data into new variables called principal components. These components capture maximum variance. Reduces data complexity. Used in preprocessing pipelines. Helps improve computational efficiency. Widely used in data science.",
+    "type": "atomic",
+    "topic": "Pca",
+    "keywords": [
+      "data",
+      "principal",
+      "components",
+      "stands",
+      "component",
+      "analysis"
+    ]
+  },
+  {
+    "question": "What is Pandas in Python?",
+    "answer": "Pandas is Python's primary data manipulation library. Core structures: DataFrame (2D labelled table) and Series (1D). Key operations: reading data (read_csv, read_excel, read_sql), cleaning (dropna, fillna), filtering, groupby, merge/join, pivot tables, time series operations. Built on NumPy. import pandas as pd.",
+    "type": "atomic",
+    "topic": "Pandas In Python",
+    "keywords": [
+      "pandas",
+      "python",
+      "data",
+      "series",
+      "operations",
+      "primary"
+    ]
+  },
+  {
+    "question": "What is Precision and Recall?",
+    "answer": "Precision measures how many predicted positives are correct. Recall measures how many actual positives are correctly identified. Precision = TP / (TP + FP). Recall = TP / (TP + FN). High precision means fewer false positives. High recall means fewer false negatives. Used in classification problems like spam detection. Both metrics help evaluate model performance.",
+    "type": "atomic",
+    "topic": "Precision And Recall",
+    "keywords": [
+      "precision",
+      "recall",
+      "positives",
+      "measures",
+      "many",
+      "high"
+    ]
+  },
+  {
+    "question": "What is PyTorch?",
+    "answer": "PyTorch by Meta is a deep learning framework using dynamic computation graphs — the graph is built at runtime, making debugging intuitive. Key modules: torch.nn (layers), torch.optim (optimisers), DataLoader (batching). PyTorch Lightning provides cleaner training loops. Preferred in research and NLP. Supports CUDA GPU acceleration.",
+    "type": "atomic",
+    "topic": "Pytorch",
+    "keywords": [
+      "pytorch",
+      "torch",
+      "meta",
+      "deep",
+      "learning",
+      "framework"
+    ]
+  },
+  {
+    "question": "What is Q-learning?",
+    "answer": "Q-Learning is a model-free RL algorithm that learns a Q-function Q(state, action) representing expected future reward. Update: Q(s,a) ← Q(s,a) + α[r + γ*max Q(s',a') - Q(s,a)]. Deep Q-Network (DQN) uses a neural network to approximate Q. Achieved superhuman Atari game performance.",
+    "type": "atomic",
+    "topic": "Q-Learning",
+    "keywords": [
+      "q-learning",
+      "model-free",
+      "algorithm",
+      "learns",
+      "q-function",
+      "state"
+    ]
+  },
+  {
+    "question": "What is RAG?",
+    "answer": "RAG (Retrieval-Augmented Generation) enhances LLMs by retrieving relevant documents from a knowledge base and adding them to the prompt context. Steps: 1) Embed query, 2) Search vector DB (ChromaDB, Pinecone), 3) Retrieve top-k documents, 4) Add to LLM prompt, 5) Generate answer. Reduces hallucinations and enables up-to-date knowledge.",
+    "type": "atomic",
+    "topic": "Rag",
+    "keywords": [
+      "documents",
+      "knowledge",
+      "prompt",
+      "retrieval-augmented",
+      "generation",
+      "enhances"
+    ]
+  },
+  {
+    "question": "What is RLHF?",
+    "answer": "RLHF (Reinforcement Learning from Human Feedback) fine-tunes LLMs to be helpful, harmless, and honest. Steps: 1) Supervised Fine-Tuning on demonstrations, 2) Train a Reward Model from human preference comparisons, 3) Optimise the LLM with PPO against the reward model. Used to train ChatGPT, Claude, and Gemini.",
+    "type": "atomic",
+    "topic": "Rlhf",
+    "keywords": [
+      "rlhf",
+      "human",
+      "train",
+      "reward",
+      "model",
+      "reinforcement"
+    ]
+  },
+  {
+    "question": "What is RNN?",
+    "answer": "RNN stands for Recurrent Neural Network. Used for processing sequential and time-ordered data. It remembers information from previous inputs through recurrent connections. Has loops in its network structure. Used in NLP and time series tasks. Struggles with long-term dependencies due to vanishing gradients. LSTM is an improved version that addresses this issue. Useful in sequence-to-sequence prediction problems.",
+    "type": "atomic",
+    "topic": "Rnn",
+    "keywords": [
+      "recurrent",
+      "network",
+      "stands",
+      "neural",
+      "processing",
+      "sequential"
+    ]
+  },
+  {
+    "question": "What is ROC Curve?",
+    "answer": "ROC Curve plots True Positive Rate vs False Positive Rate. It evaluates classification models. Shows performance at different thresholds. AUC (Area Under Curve) measures overall performance. Higher AUC means a better model. Used in binary classification. Helps compare different models. Widely used in ML evaluation.",
+    "type": "atomic",
+    "topic": "Roc Curve",
+    "keywords": [
+      "curve",
+      "positive",
+      "rate",
+      "classification",
+      "models",
+      "performance"
+    ]
+  },
+  {
+    "question": "What is Random Forest?",
+    "answer": "Random Forest is an ensemble learning method. It uses multiple decision trees. Each tree is trained on random data samples. Final output is based on majority voting or averaging. It reduces overfitting compared to a single tree. Improves accuracy and stability. Used in classification and regression tasks. Widely used in industry.",
+    "type": "atomic",
+    "topic": "Random Forest",
+    "keywords": [
+      "random",
+      "forest",
+      "tree",
+      "ensemble",
+      "learning",
+      "method"
+    ]
+  },
+  {
+    "question": "What is ReLU?",
+    "answer": "ReLU stands for Rectified Linear Unit. Formula: f(x) = max(0, x). If the input is negative, output is zero. If positive, the output remains the same value. Simple and computationally efficient function. Helps avoid the vanishing gradient problem. Widely used in deep learning architectures. Improves training speed significantly.",
+    "type": "atomic",
+    "topic": "Relu",
+    "keywords": [
+      "relu",
+      "output",
+      "stands",
+      "rectified",
+      "linear",
+      "unit"
+    ]
+  },
+  {
+    "question": "What is Regularization?",
+    "answer": "Regularization helps prevent overfitting. It adds a penalty to the loss function. Common types are L1 (Lasso) and L2 (Ridge). It reduces model complexity. Helps improve generalization. L1 can reduce features to zero. L2 shrinks coefficients. Important for robust models.",
+    "type": "atomic",
+    "topic": "Regularization",
+    "keywords": [
+      "regularization",
+      "helps",
+      "prevent",
+      "overfitting",
+      "adds",
+      "penalty"
+    ]
+  },
+  {
+    "question": "What is Reinforcement Learning?",
+    "answer": "Reinforcement Learning is a type of machine learning where an agent learns by interacting with its environment. It receives rewards for correct actions and penalties for wrong ones. The goal is to maximize cumulative reward. Used in robotics and gaming. Example: Self-driving cars and game-playing AI. Uses trial and error method. Important area of AI research.",
+    "type": "atomic",
+    "topic": "Reinforcement Learning",
+    "keywords": [
+      "learning",
+      "reinforcement",
+      "machine",
+      "agent",
+      "learns",
+      "interacting"
+    ]
+  },
+  {
+    "question": "What is SMOTE?",
+    "answer": "SMOTE stands for Synthetic Minority Over-sampling Technique. It generates synthetic data points for the minority class. Helps balance imbalanced datasets. Improves model performance on rare classes. Avoids simple duplication of existing data. Works by interpolating between minority class samples. Widely used in classification tasks. Particularly useful in fraud detection.",
+    "type": "atomic",
+    "topic": "Smote",
+    "keywords": [
+      "minority",
+      "smote",
+      "synthetic",
+      "data",
+      "class",
+      "stands"
+    ]
+  },
+  {
+    "question": "What is SVM?",
+    "answer": "Support Vector Machine finds the hyperplane that maximises the margin between classes. Data points nearest the boundary are called support vectors. Kernel trick (RBF, Polynomial) maps data to higher dimensions for non-linear separation. Works well for high-dimensional data with small datasets. Used in text, image, and gene classification.",
+    "type": "atomic",
+    "topic": "Svm",
+    "keywords": [
+      "data",
+      "support",
+      "vector",
+      "machine",
+      "finds",
+      "hyperplane"
+    ]
+  },
+  {
+    "question": "What is Stemming?",
+    "answer": "Stemming reduces words to their root or base form. Example: 'playing' becomes 'play'. Removes suffixes from words. Used in text preprocessing pipelines. Helps reduce vocabulary size in NLP tasks. Not always linguistically correct but sufficient for many tasks. Simple and computationally fast method. Used in search engines and NLP applications.",
+    "type": "atomic",
+    "topic": "Stemming",
+    "keywords": [
+      "stemming",
+      "words",
+      "tasks",
+      "reduces",
+      "their",
+      "root"
+    ]
+  },
+  {
+    "question": "What is Support Vector Machine (SVM)?",
+    "answer": "SVM is a supervised learning algorithm. Used for classification and regression tasks. Finds the optimal hyperplane to separate data classes. Maximizes the margin between classes. Works well in high-dimensional data. Can use kernel tricks to handle non-linear data. Effective in complex datasets. Widely used in ML tasks.",
+    "type": "atomic",
+    "topic": "Support Vector Machine (Svm)",
+    "keywords": [
+      "data",
+      "tasks",
+      "classes",
+      "support",
+      "vector",
+      "machine"
+    ]
+  },
+  {
+    "question": "What is TF-IDF?",
+    "answer": "TF-IDF stands for Term Frequency-Inverse Document Frequency. Measures the importance of words in a document relative to a corpus. TF counts how frequently a word appears in a document. IDF reduces the weight of words that appear in many documents. Produces weighted numerical features for text. Used in NLP and information retrieval. Outperforms simple Bag of Words representation. Improves text classification accuracy.",
+    "type": "atomic",
+    "topic": "Tf-Idf",
+    "keywords": [
+      "document",
+      "words",
+      "tf-idf",
+      "text",
+      "stands",
+      "term"
+    ]
+  },
+  {
+    "question": "What is TensorFlow?",
+    "answer": "TensorFlow by Google is an open-source deep learning framework. tf.keras provides a high-level API for building and training neural networks. Supports GPU and TPU. Includes TensorBoard (visualisation), TF Lite (mobile), and TF Serving (production deployment). Version 2.x uses eager execution making debugging easy.",
+    "type": "atomic",
+    "topic": "Tensorflow",
+    "keywords": [
+      "tensorflow",
+      "google",
+      "open-source",
+      "deep",
+      "learning",
+      "framework"
+    ]
+  },
+  {
+    "question": "What is Time Series Data?",
+    "answer": "Time Series Data is data collected at regular time intervals. It has a sequence where the order of observations matters. Examples include stock prices, weather data, and sensor readings. Used in forecasting and prediction problems. Trend and seasonality are key components. Specialized models like ARIMA are used. Requires special preprocessing and handling. Widely used in finance, business, and engineering.",
+    "type": "atomic",
+    "topic": "Time Series Data",
+    "keywords": [
+      "data",
+      "time",
+      "series",
+      "collected",
+      "regular",
+      "intervals"
+    ]
+  },
+  {
+    "question": "What is Tokenization in NLP?",
+    "answer": "Tokenization is the process of splitting text into smaller units called tokens. Tokens can be words, subwords, or sentences. It is the first step in NLP preprocessing. Example: 'I love AI' becomes ['I', 'love', 'AI']. Helps in analyzing and processing text data. Used as input for NLP models. Important for feature extraction from text. Foundation of all text processing pipelines.",
+    "type": "atomic",
+    "topic": "Tokenization In Nlp",
+    "keywords": [
+      "text",
+      "tokenization",
+      "tokens",
+      "love",
+      "processing",
+      "process"
+    ]
+  },
+  {
+    "question": "What is Transfer Learning?",
+    "answer": "Transfer Learning reuses a pre-trained model for a new but related problem. It applies previously learned knowledge to a different task. Reduces training time significantly. Works well even with limited data. Common in Deep Learning tasks. Example: Using ImageNet models for image classification. Improves performance quickly. Widely used in industry.",
+    "type": "atomic",
+    "topic": "Transfer Learning",
+    "keywords": [
+      "learning",
+      "transfer",
+      "reuses",
+      "pre-trained",
+      "model",
+      "related"
+    ]
+  },
+  {
+    "question": "What is Underfitting?",
+    "answer": "Underfitting happens when a model is too simple to capture the underlying patterns in the data. It performs poorly on both training and testing data. This usually occurs due to insufficient training or overly simple models. Example: Using a linear model for complex data. It results in high bias. The model fails to learn important relationships. Solutions include increasing model complexity and improving features. More training can also help. The goal is to properly capture data patterns.",
+    "type": "atomic",
+    "topic": "Underfitting",
+    "keywords": [
+      "model",
+      "data",
+      "training",
+      "underfitting",
+      "simple",
+      "capture"
+    ]
+  },
+  {
+    "question": "What is XGBoost?",
+    "answer": "XGBoost is an optimized gradient boosting algorithm. Stands for Extreme Gradient Boosting. Highly efficient and fast in execution. Uses parallel processing for speed. Handles missing values automatically. Provides high accuracy on structured data. Popular in Kaggle competitions. Widely used in industry for tabular data problems.",
+    "type": "atomic",
+    "topic": "Xgboost",
+    "keywords": [
+      "xgboost",
+      "gradient",
+      "boosting",
+      "data",
+      "optimized",
+      "algorithm"
+    ]
+  },
+  {
+    "question": "What is Zero-Shot Learning?",
+    "answer": "Zero-Shot Learning allows a model to make predictions on classes it has never seen during training. Uses prior knowledge and semantic relationships to generalize. Requires no training data for new classes at all. Relies on attribute descriptions or embeddings to transfer knowledge. Used in NLP and computer vision tasks. Example: Classifying new object categories without examples. An advanced ML technique. Useful in dynamic environments where new classes appear frequently.",
+    "type": "atomic",
+    "topic": "Zero-Shot Learning",
+    "keywords": [
+      "classes",
+      "zero-shot",
+      "learning",
+      "training",
+      "knowledge",
+      "allows"
+    ]
+  },
+  {
+    "question": "What is a CNN?",
+    "answer": "A Convolutional Neural Network (CNN) is designed for grid-structured data like images. Convolutional layers apply learnable filters to detect features (edges, textures, objects). Pooling layers reduce spatial dimensions. Fully connected layers classify. CNNs are translation-invariant. Famous: VGG, ResNet, MobileNet, EfficientNet.",
+    "type": "atomic",
+    "topic": "A Cnn",
+    "keywords": [
+      "layers",
+      "convolutional",
+      "neural",
+      "network",
+      "designed",
+      "grid-structured"
+    ]
+  },
+  {
+    "question": "What is a Confusion Matrix?",
+    "answer": "A Confusion Matrix is a table used to evaluate classification models. It shows predicted vs actual values. It contains TP, TN, FP, and FN. Helps understand model errors clearly. Useful for calculating precision, recall, and accuracy. It gives detailed performance insights. Common in binary classification problems. It improves model evaluation.",
+    "type": "atomic",
+    "topic": "A Confusion Matrix",
+    "keywords": [
+      "confusion",
+      "matrix",
+      "classification",
+      "model",
+      "table",
+      "evaluate"
+    ]
+  },
+  {
+    "question": "What is a Decision Tree?",
+    "answer": "A Decision Tree is a supervised learning algorithm. It splits data into branches based on conditions. Each node represents a decision. Leaf nodes represent outcomes. Used for classification and regression. Easy to understand and interpret. Prone to overfitting sometimes. Used in many real-world applications.",
+    "type": "atomic",
+    "topic": "A Decision Tree",
+    "keywords": [
+      "decision",
+      "tree",
+      "supervised",
+      "learning",
+      "algorithm",
+      "splits"
+    ]
+  },
+  {
+    "question": "What is a GAN?",
+    "answer": "A Generative Adversarial Network has a Generator (creates fake data from noise) and a Discriminator (distinguishes real from fake). Trained simultaneously in a minimax game. The generator improves until outputs are indistinguishable from real data. Variants: DCGAN, StyleGAN (faces), CycleGAN (style transfer), Pix2Pix (image-to-image). Used in image/video synthesis.",
+    "type": "atomic",
+    "topic": "A Gan",
+    "keywords": [
+      "generator",
+      "fake",
+      "data",
+      "real",
+      "generative",
+      "adversarial"
+    ]
+  },
+  {
+    "question": "What is a Loss Function?",
+    "answer": "A Loss Function measures how well a model performs. It calculates the difference between predicted and actual values. Lower loss means better performance. Common examples include Mean Squared Error and Cross-Entropy. It guides the optimization process. The model tries to minimize this loss during training. Different problems use different loss functions. It is essential for model learning.",
+    "type": "atomic",
+    "topic": "A Loss Function",
+    "keywords": [
+      "loss",
+      "model",
+      "function",
+      "different",
+      "measures",
+      "well"
+    ]
+  },
+  {
+    "question": "What is a Neural Network?",
+    "answer": "A Neural Network is a model inspired by the human brain. It consists of layers: input layer, hidden layers, and output layer. Each layer contains neurons that process data. Neurons are connected with weights and biases. The model learns by adjusting these weights during training. Activation functions help introduce non-linearity. It is widely used in Deep Learning tasks. Example: Image recognition and speech processing.",
+    "type": "atomic",
+    "topic": "A Neural Network",
+    "keywords": [
+      "layer",
+      "neural",
+      "network",
+      "model",
+      "layers",
+      "neurons"
+    ]
+  },
+  {
+    "question": "What is a Pipeline in Machine Learning?",
+    "answer": "An ML Pipeline is a sequence of automated steps in the model building process. Includes data preprocessing, feature engineering, model training, and evaluation. Automates the entire workflow end to end. Improves efficiency and reproducibility of experiments. Used in tools like Scikit-learn pipelines and MLflow. Helps manage complex multi-step processes. Reduces manual errors in production systems. Important in building scalable ML systems.",
+    "type": "atomic",
+    "topic": "A Pipeline In Machine Learning",
+    "keywords": [
+      "pipeline",
+      "model",
+      "building",
+      "systems",
+      "machine",
+      "learning"
+    ]
+  },
+  {
+    "question": "What is a Recommendation System?",
+    "answer": "A Recommendation System suggests relevant items to users. Used in e-commerce, streaming platforms, and social media. Types include collaborative filtering and content-based filtering. Example: Netflix movie recommendations and Amazon product suggestions. Improves user experience and engagement. Uses ML algorithms to analyze user behavior. Widely adopted in industry.",
+    "type": "atomic",
+    "topic": "A Recommendation System",
+    "keywords": [
+      "recommendation",
+      "system",
+      "filtering",
+      "user",
+      "suggests",
+      "relevant"
+    ]
+  },
+  {
+    "question": "What is a confusion matrix in ML?",
+    "answer": "A confusion matrix is a table summarising classification results: True Positives (correctly predicted positive), True Negatives (correctly predicted negative), False Positives (wrongly predicted positive — Type I error), False Negatives (wrongly predicted negative — Type II error). Used to compute Accuracy, Precision, Recall, F1, and identify which classes the model confuses.",
+    "type": "atomic",
+    "topic": "A Confusion Matrix In Ml",
+    "keywords": [
+      "predicted",
+      "confusion",
+      "matrix",
+      "true",
+      "positives",
+      "correctly"
+    ]
+  },
+  {
+    "question": "What is a diffusion model?",
+    "answer": "Diffusion models generate data by learning to reverse a gradual noising process. Forward process: add Gaussian noise to data over T steps. Reverse process: train a U-Net to predict and remove noise at each step. Produces state-of-the-art image quality. Examples: Stable Diffusion, DALL-E 2, Midjourney. More stable to train than GANs.",
+    "type": "atomic",
+    "topic": "A Diffusion Model",
+    "keywords": [
+      "diffusion",
+      "process",
+      "data",
+      "reverse",
+      "noise",
+      "train"
+    ]
+  },
+  {
+    "question": "What is a filter or kernel in CNN?",
+    "answer": "A filter (or kernel) in a CNN is a small matrix of learnable weights (e.g. 3x3) that slides across the input. At each position it computes a dot product, producing a feature map that highlights where that pattern occurs in the input. Multiple filters detect different features. Their weights are learned during training.",
+    "type": "atomic",
+    "topic": "A Filter Or Kernel In Cnn",
+    "keywords": [
+      "filter",
+      "kernel",
+      "weights",
+      "input",
+      "small",
+      "matrix"
+    ]
+  },
+  {
+    "question": "What is a large language model?",
+    "answer": "A Large Language Model (LLM) is a neural network with billions of parameters trained on massive text corpora to understand and generate human language. Architecture: Transformer. Training: self-supervised pre-training then instruction fine-tuning and RLHF. Examples: GPT-4, Gemini, LLaMA, Claude, Mistral. Deploy via API or locally with Ollama.",
+    "type": "atomic",
+    "topic": "A Large Language Model",
+    "keywords": [
+      "language",
+      "large",
+      "model",
+      "neural",
+      "network",
+      "billions"
+    ]
+  },
+  {
+    "question": "What is a perceptron?",
+    "answer": "A Perceptron is the simplest neural network unit. It computes a weighted sum of inputs, adds a bias, and applies a step function to produce binary output. Frank Rosenblatt introduced it in 1957. A Multi-Layer Perceptron (MLP) stacks multiple perceptron layers and uses smooth activation functions, enabling learning of complex patterns.",
+    "type": "atomic",
+    "topic": "A Perceptron",
+    "keywords": [
+      "perceptron",
+      "simplest",
+      "neural",
+      "network",
+      "unit",
+      "computes"
+    ]
+  },
+  {
+    "question": "What is a random forest?",
+    "answer": "Random Forest is an ensemble of decision trees, each trained on a random bootstrap sample with random feature subsets. Final prediction: majority vote (classification) or average (regression). More robust than single trees — reduces variance via bagging. Provides feature importance. Used in finance, healthcare, and competitions.",
+    "type": "atomic",
+    "topic": "A Random Forest",
+    "keywords": [
+      "random",
+      "forest",
+      "trees",
+      "feature",
+      "ensemble",
+      "decision"
+    ]
+  },
+  {
+    "question": "What is a transformer in deep learning?",
+    "answer": "The Transformer is a neural architecture that replaced RNNs for sequence tasks. It uses Self-Attention to process all tokens in parallel (vs RNN step-by-step). Components: Multi-Head Attention, Feed-Forward layers, Layer Normalisation, Positional Encoding. Foundation of BERT (encoder), GPT (decoder), T5 (encoder-decoder).",
+    "type": "atomic",
+    "topic": "A Transformer In Deep Learning",
+    "keywords": [
+      "transformer",
+      "deep",
+      "learning",
+      "neural",
+      "architecture",
+      "replaced"
+    ]
+  },
+  {
+    "question": "What is an Activation Function?",
+    "answer": "Activation Function determines the output of a neuron. Adds non-linearity to the model. Examples include ReLU, Sigmoid, and Tanh. Helps the model learn complex and non-linear patterns. Without activation functions, the model remains linear regardless of depth. ReLU is the most commonly used activation function. Essential component of neural networks and deep learning models.",
+    "type": "atomic",
+    "topic": "An Activation Function",
+    "keywords": [
+      "activation",
+      "function",
+      "model",
+      "relu",
+      "determines",
+      "output"
+    ]
+  },
+  {
+    "question": "What is an Autoencoder?",
+    "answer": "An Autoencoder is a type of neural network used for unsupervised learning. Used for data compression and representation learning. Has two parts: an encoder that compresses data and a decoder that reconstructs it. Learns efficient low-dimensional representations of input data. Used in anomaly detection and dimensionality reduction. Also used in generative models. Reduces dimensionality while preserving important features.",
+    "type": "atomic",
+    "topic": "An Autoencoder",
+    "keywords": [
+      "data",
+      "autoencoder",
+      "learning",
+      "dimensionality",
+      "neural",
+      "network"
+    ]
+  },
+  {
+    "question": "What is an Epoch in Machine Learning?",
+    "answer": "An Epoch is one complete pass through the entire training dataset. The model sees all training samples once per epoch. Training typically involves multiple epochs. More epochs generally improve learning. Too many epochs can cause overfitting. Used in deep learning and neural network training. An important hyperparameter to configure. Helps the model converge to optimal weights.",
+    "type": "atomic",
+    "topic": "An Epoch In Machine Learning",
+    "keywords": [
+      "training",
+      "epoch",
+      "learning",
+      "epochs",
+      "model",
+      "machine"
+    ]
+  },
+  {
+    "question": "What is an Imbalanced Dataset?",
+    "answer": "An imbalanced dataset has unequal class distribution. One class has significantly more samples than others. Example: Fraud detection datasets where fraud cases are rare. Models may become biased toward the majority class. Accuracy becomes a misleading metric. Techniques like oversampling and undersampling are used to address this. SMOTE is a popular resampling method. It is a critical issue in classification tasks.",
+    "type": "atomic",
+    "topic": "An Imbalanced Dataset",
+    "keywords": [
+      "class",
+      "imbalanced",
+      "dataset",
+      "fraud",
+      "unequal",
+      "distribution"
+    ]
+  },
+  {
+    "question": "What is an RNN?",
+    "answer": "A Recurrent Neural Network (RNN) processes sequential data by maintaining a hidden state that captures information from previous time steps. At each step: hidden_state = f(W * input + U * previous_hidden). Problem: vanishing gradients over long sequences. Solution: LSTM and GRU with gating mechanisms.",
+    "type": "atomic",
+    "topic": "An Rnn",
+    "keywords": [
+      "recurrent",
+      "neural",
+      "network",
+      "processes",
+      "sequential",
+      "data"
+    ]
+  },
+  {
+    "question": "What is artificial intelligence?",
+    "answer": "Artificial Intelligence (AI) is the simulation of human intelligence in machines — enabling them to reason, learn, perceive, and make decisions. Categories: Narrow AI (task-specific, e.g. Siri), General AI (human-level, not yet achieved), and Super AI (theoretical). Sub-fields include ML, Deep Learning, NLP, Computer Vision, and Robotics.",
+    "type": "atomic",
+    "topic": "Artificial Intelligence",
+    "keywords": [
+      "intelligence",
+      "artificial",
+      "simulation",
+      "human",
+      "machines",
+      "enabling"
+    ]
+  },
+  {
+    "question": "What is autonomous vehicle AI?",
+    "answer": "Self-driving cars use a full AI stack: Perception (CNNs for detection from cameras/LiDAR), Localisation (SLAM, HD maps), Prediction (LSTM/Transformer for agent trajectories), Planning (route and motion planning), Control (PID, MPC). SAE levels 0-5. Companies: Waymo (Level 4), Tesla Autopilot (Level 2+), Cruise. Safety is the primary challenge.",
+    "type": "atomic",
+    "topic": "Autonomous Vehicle Ai",
+    "keywords": [
+      "planning",
+      "level",
+      "autonomous",
+      "vehicle",
+      "self-driving",
+      "cars"
+    ]
+  },
+  {
+    "question": "What is batch normalisation?",
+    "answer": "Batch Normalisation normalises each layer's inputs to zero mean, unit variance using the current mini-batch statistics, then scales and shifts with learnable parameters γ and β. Benefits: faster convergence, higher learning rates, less sensitive to weight init, mild regularisation. Applied before or after activation functions.",
+    "type": "atomic",
+    "topic": "Batch Normalisation",
+    "keywords": [
+      "batch",
+      "normalisation",
+      "normalises",
+      "layer",
+      "inputs",
+      "zero"
+    ]
+  },
+  {
+    "question": "What is batch size in deep learning?",
+    "answer": "Batch size is the number of training samples processed before updating weights. Large batches: stable gradients, faster per-epoch, but may generalise worse. Small batches: noisier gradients (acts as regularisation), better generalisation, slower throughput. Common: 32, 64, 128, 256. Mini-batch GD is the standard.",
+    "type": "atomic",
+    "topic": "Batch Size In Deep Learning",
+    "keywords": [
+      "batch",
+      "size",
+      "batches",
+      "gradients",
+      "deep",
+      "learning"
+    ]
+  },
+  {
+    "question": "What is bias in machine learning?",
+    "answer": "ML bias: 1) Statistical bias — model systematically underestimates/overestimates (underfitting/high-bias), 2) Data bias — training data under-represents certain groups, 3) Algorithmic bias — model discriminates unfairly. Causes: biased training data, proxy features, feedback loops. Mitigation: diverse data, fairness metrics, adversarial debiasing.",
+    "type": "atomic",
+    "topic": "Bias In Machine Learning",
+    "keywords": [
+      "bias",
+      "data",
+      "model",
+      "training",
+      "machine",
+      "learning"
+    ]
+  },
+  {
+    "question": "What is classification in machine learning?",
+    "answer": "Classification is a supervised learning task where the output is a discrete category. Examples: spam/not-spam, cat/dog, disease positive/negative. Algorithms: Logistic Regression, SVM, Decision Tree, Random Forest, Neural Networks. Evaluation metrics: Accuracy, Precision, Recall, F1 Score, AUC-ROC.",
+    "topic": "Classification",
+    "keywords": [
+      "classification"
+    ],
+    "type": "atomic"
+  },
+  {
+    "question": "What is cross validation?",
+    "answer": "Cross-validation evaluates models more reliably than a single train-test split. K-Fold: split data into K equal folds; train on K-1, validate on 1, repeat K times, average results. Stratified K-Fold: preserves class proportions. Leave-One-Out: extreme case where K=n. Prevents overly optimistic estimates from lucky splits.",
+    "type": "atomic",
+    "topic": "Cross Validation",
+    "keywords": [
+      "split",
+      "k-fold",
+      "cross",
+      "validation",
+      "cross-validation",
+      "evaluates"
+    ]
+  },
+  {
+    "question": "What is deep learning?",
+    "answer": "Deep Learning is a subset of Machine Learning using neural networks with many hidden layers. Unlike traditional ML which requires manual feature engineering, DL automatically learns hierarchical feature representations from raw data. It excels at image, speech, and text tasks but requires large data and GPU compute.",
+    "type": "atomic",
+    "topic": "Deep Learning",
+    "keywords": [
+      "learning",
+      "deep",
+      "requires",
+      "feature",
+      "data",
+      "subset"
+    ]
+  },
+  {
+    "question": "What is dropout in neural networks?",
+    "answer": "Dropout randomly sets neuron outputs to zero during each training step at rate p (e.g. p=0.5). This prevents neurons from co-adapting and forces the network to learn multiple independent representations. At inference, all neurons are active. Acts like an ensemble of many different sub-networks. Hinton et al., 2012.",
+    "type": "atomic",
+    "topic": "Dropout In Neural Networks",
+    "keywords": [
+      "dropout",
+      "neurons",
+      "neural",
+      "networks",
+      "randomly",
+      "sets"
+    ]
+  },
+  {
+    "question": "What is explainable AI?",
+    "answer": "Explainable AI (XAI) makes ML model decisions interpretable. LIME: locally approximates the model with a simple interpretable model. SHAP (SHapley values): assigns each feature a contribution score. Attention visualisation for Transformers. Saliency/gradient maps for CNNs. Required for GDPR right-to-explanation, healthcare diagnosis, and loan approval decisions.",
+    "type": "atomic",
+    "topic": "Explainable Ai",
+    "keywords": [
+      "model",
+      "explainable",
+      "decisions",
+      "interpretable",
+      "makes",
+      "lime"
+    ]
+  },
+  {
+    "question": "What is fine-tuning in ML?",
+    "answer": "Fine-tuning adapts a pre-trained model to a specific task by continuing training on a smaller task-specific dataset with a lower learning rate. For LLMs: instruction fine-tuning teaches models to follow instructions; RLHF aligns behaviour with human preferences. For CNNs: fine-tune last layers on new image domain.",
+    "type": "atomic",
+    "topic": "Fine-Tuning In Ml",
+    "keywords": [
+      "fine-tuning",
+      "adapts",
+      "pre-trained",
+      "model",
+      "specific",
+      "task"
+    ]
+  },
+  {
+    "question": "What is forward propagation?",
+    "answer": "Forward propagation is the process of passing input data through a neural network layer by layer to produce a prediction. At each layer: output = activation(W * input + b). The final layer output is compared to the true label using a loss function. The loss is then used in backpropagation to update weights.",
+    "type": "atomic",
+    "topic": "Forward Propagation",
+    "keywords": [
+      "layer",
+      "forward",
+      "propagation",
+      "input",
+      "output",
+      "loss"
+    ]
+  },
+  {
+    "question": "What is fraud detection in ML?",
+    "answer": "Fraud detection uses ML to flag anomalous transactions in real time. Challenges: extreme class imbalance (1 in 10,000 fraud), concept drift, millisecond latency. Algorithms: Logistic Regression (baseline), Random Forest, XGBoost, Autoencoders (anomaly detection), Graph Neural Networks (detect fraud rings). Handle imbalance: SMOTE, class weights, anomaly framing.",
+    "type": "atomic",
+    "topic": "Fraud Detection In Ml",
+    "keywords": [
+      "fraud",
+      "detection",
+      "class",
+      "imbalance",
+      "anomaly",
+      "flag"
+    ]
+  },
+  {
+    "question": "What is generative AI?",
+    "answer": "Generative AI creates new content by learning the distribution of training data. Key architectures: GANs (adversarial generation), VAEs (variational generation), Diffusion Models (denoising-based), LLMs (text generation). Applications: ChatGPT, DALL-E, Stable Diffusion, GitHub Copilot, Sora. Raises concerns about deepfakes and misinformation.",
+    "type": "atomic",
+    "topic": "Generative Ai",
+    "keywords": [
+      "generation",
+      "generative",
+      "diffusion",
+      "creates",
+      "content",
+      "learning"
+    ]
+  },
+  {
+    "question": "What is hierarchical clustering?",
+    "answer": "Hierarchical Clustering builds a tree of clusters (dendrogram). Agglomerative (bottom-up): each point starts as its own cluster, then merge closest pairs. Divisive (top-down): start with one cluster, split recursively. Linkage methods: single, complete, average, Ward. No need to specify K upfront. Visualise via dendrogram.",
+    "type": "atomic",
+    "topic": "Hierarchical Clustering",
+    "keywords": [
+      "hierarchical",
+      "clustering",
+      "dendrogram",
+      "cluster",
+      "builds",
+      "tree"
+    ]
+  },
+  {
+    "question": "What is image classification?",
+    "answer": "Image classification assigns a single label to an entire image. Deep learning approach: CNN extracts features → Fully Connected layer → Softmax outputs class probabilities. Pre-trained models: ResNet, VGG, EfficientNet, ViT. Transfer learning: fine-tune ImageNet weights on domain-specific data. Benchmark: ImageNet (1000 classes, 1.2M images).",
+    "type": "atomic",
+    "topic": "Image Classification",
+    "keywords": [
+      "image",
+      "classification",
+      "learning",
+      "imagenet",
+      "assigns",
+      "single"
+    ]
+  },
+  {
+    "question": "What is image segmentation?",
+    "answer": "Image Segmentation assigns a label to every pixel. Semantic segmentation: each pixel gets a class label (no instance distinction). Instance segmentation: distinguishes individual objects of the same class. Architectures: U-Net (medical), Mask R-CNN (instance), DeepLab (semantic), SAM (Segment Anything Model by Meta). Used in medical imaging and autonomous driving.",
+    "type": "atomic",
+    "topic": "Image Segmentation",
+    "keywords": [
+      "segmentation",
+      "instance",
+      "image",
+      "label",
+      "pixel",
+      "semantic"
+    ]
+  },
+  {
+    "question": "What is learning rate in deep learning?",
+    "answer": "Learning rate (lr) controls the step size of weight updates: w ← w - lr * gradient. Too large: training diverges. Too small: very slow convergence, may get stuck in local minima. Techniques: LR warm-up (start small, increase), cosine annealing, one-cycle policy. Adam adapts lr per-parameter automatically.",
+    "type": "atomic",
+    "topic": "Learning Rate In Deep Learning",
+    "keywords": [
+      "learning",
+      "rate",
+      "small",
+      "deep",
+      "controls",
+      "step"
+    ]
+  },
+  {
+    "question": "What is machine learning?",
+    "answer": "Machine Learning enables computers to learn from data without explicit programming. Types: Supervised (labelled data), Unsupervised (unlabelled), Reinforcement (rewards). Steps: Collect data → Preprocess → Choose algorithm → Train → Evaluate → Deploy. Popular algorithms: Linear Regression, SVM, Decision Tree, Random Forest, Neural Networks. Libraries: scikit-learn, TensorFlow, PyTorch.",
+    "topic": "Machine Learning",
+    "keywords": [
+      "machine learning"
+    ],
+    "type": "atomic"
+  },
+  {
+    "question": "What is machine translation?",
+    "answer": "Machine Translation converts text between languages automatically. Evolution: Rule-Based → Statistical (phrase-based SMT) → Neural (seq2seq + attention, Google NMT 2016) → Transformers (current state-of-the-art: Google Translate, DeepL). Evaluation: BLEU score (bilingual evaluation understudy) measures n-gram overlap with reference translations.",
+    "type": "atomic",
+    "topic": "Machine Translation",
+    "keywords": [
+      "machine",
+      "translation",
+      "google",
+      "evaluation",
+      "converts",
+      "text"
+    ]
+  },
+  {
+    "question": "What is meta-learning?",
+    "answer": "Meta-learning ('learning to learn') trains models to quickly adapt to new tasks with few examples. The model is trained across many tasks so it learns a good initialisation or learning procedure. MAML (Model-Agnostic Meta-Learning) is a key algorithm. Foundation of few-shot learning. LLMs exhibit emergent meta-learning from pre-training.",
+    "type": "atomic",
+    "topic": "Meta-Learning",
+    "keywords": [
+      "meta-learning",
+      "learning",
+      "tasks",
+      "learn",
+      "trains",
+      "models"
+    ]
+  },
+  {
+    "question": "What is missing data imputation?",
+    "answer": "Missing data handling strategies: 1) Remove rows/columns with too many missing values, 2) Mean/Median imputation (numerical — fast, ignores feature correlation), 3) Mode imputation (categorical), 4) Forward/backward fill (time series), 5) KNN imputation (uses similar samples), 6) Iterative imputer (multivariate). Choice depends on missing data mechanism (MCAR, MAR, MNAR).",
+    "type": "atomic",
+    "topic": "Missing Data Imputation",
+    "keywords": [
+      "missing",
+      "imputation",
+      "data",
+      "handling",
+      "strategies",
+      "remove"
+    ]
+  },
+  {
+    "question": "What is model accuracy?",
+    "answer": "Accuracy = (correct predictions) / (total predictions). Simple but misleading for imbalanced datasets — a model predicting always 'negative' on 99% negative data gets 99% accuracy but is useless. Use F1 score, Precision-Recall, and AUC-ROC for imbalanced problems. Accuracy is reliable only when classes are balanced.",
+    "type": "atomic",
+    "topic": "Model Accuracy",
+    "keywords": [
+      "accuracy",
+      "model",
+      "predictions",
+      "imbalanced",
+      "negative",
+      "correct"
+    ]
+  },
+  {
+    "question": "What is model monitoring?",
+    "answer": "Model monitoring tracks production ML model health over time. Metrics to monitor: prediction distribution, input feature statistics, latency, throughput, accuracy (if labels available), data drift, and model fairness. Tools: Evidently AI, Arize, WhyLabs, Grafana. Alerts trigger retraining when performance degrades.",
+    "type": "atomic",
+    "topic": "Model Monitoring",
+    "keywords": [
+      "model",
+      "monitoring",
+      "tracks",
+      "production",
+      "health",
+      "over"
+    ]
+  },
+  {
+    "question": "What is multi-task learning?",
+    "answer": "Multi-Task Learning trains a model on multiple related tasks simultaneously, sharing representations. Learning multiple tasks together acts as implicit regularisation and improves generalisation. Example: training a model to simultaneously do NER, POS tagging, and sentiment analysis. Used extensively in large foundation models like BERT.",
+    "type": "atomic",
+    "topic": "Multi-Task Learning",
+    "keywords": [
+      "learning",
+      "multi-task",
+      "model",
+      "multiple",
+      "tasks",
+      "simultaneously"
+    ]
+  },
+  {
+    "question": "What is named entity recognition?",
+    "answer": "NER identifies and classifies entities in text: Person (Barack Obama), Organisation (Google), Location (New York), Date (January 2024), Money ($50). Approaches: rule-based, CRF (statistical), BiLSTM-CRF, fine-tuned BERT (state-of-the-art). Libraries: spaCy (fast, production), Hugging Face Transformers (accurate). Used in information extraction.",
+    "type": "atomic",
+    "topic": "Named Entity Recognition",
+    "keywords": [
+      "named",
+      "entity",
+      "recognition",
+      "identifies",
+      "classifies",
+      "entities"
+    ]
+  },
+  {
+    "question": "What is neural architecture search?",
+    "answer": "Neural Architecture Search (NAS) automates the design of neural network architectures. Instead of manually choosing layers and connections, NAS explores a search space of possible architectures to find the best for a given task. Methods: evolutionary algorithms, reinforcement learning, differentiable NAS (DARTS). EfficientNet was found via NAS.",
+    "type": "atomic",
+    "topic": "Neural Architecture Search",
+    "keywords": [
+      "neural",
+      "search",
+      "architecture",
+      "architectures",
+      "automates",
+      "design"
+    ]
+  },
+  {
+    "question": "What is object detection?",
+    "answer": "Object detection locates and classifies multiple objects in an image with bounding boxes. Two-stage: R-CNN, Fast R-CNN, Faster R-CNN (accurate but slower). One-stage: YOLO, SSD (faster, real-time). Transformer-based: DETR. Metric: mAP (mean Average Precision). Applications: autonomous vehicles, security, robotics.",
+    "type": "atomic",
+    "topic": "Object Detection",
+    "keywords": [
+      "r-cnn",
+      "object",
+      "detection",
+      "faster",
+      "locates",
+      "classifies"
+    ]
+  },
+  {
+    "question": "What is one hot encoding?",
+    "answer": "One-Hot Encoding represents categorical variables as binary vectors — one column per category with 0/1 values. Example: Size {S,M,L} → [1,0,0], [0,1,0], [0,0,1]. Prevents model from treating categories as ordered numbers. Creates k columns for k categories. Use get_dummies() in pandas or OneHotEncoder in sklearn.",
+    "type": "atomic",
+    "topic": "One Hot Encoding",
+    "keywords": [
+      "encoding",
+      "categories",
+      "one-hot",
+      "represents",
+      "categorical",
+      "variables"
+    ]
+  },
+  {
+    "question": "What is policy gradient?",
+    "answer": "Policy Gradient methods directly optimise the policy (what action to take in each state) by gradient ascent on expected reward. REINFORCE algorithm: collect trajectories, compute returns, update policy. Advanced: PPO (Proximal Policy Optimisation — stable, widely used), SAC (Soft Actor-Critic), A3C (asynchronous). Used in robotics and LLM alignment (RLHF).",
+    "type": "atomic",
+    "topic": "Policy Gradient",
+    "keywords": [
+      "policy",
+      "gradient",
+      "methods",
+      "directly",
+      "optimise",
+      "action"
+    ]
+  },
+  {
+    "question": "What is pooling in CNN?",
+    "answer": "Pooling in CNNs reduces the spatial size of feature maps, decreasing computation and providing spatial invariance. Max Pooling: takes the maximum value in each window (preserves strongest feature). Average Pooling: takes the average. Global Average Pooling: reduces each feature map to a single value. Applied after convolutional layers.",
+    "type": "atomic",
+    "topic": "Pooling In Cnn",
+    "keywords": [
+      "pooling",
+      "feature",
+      "average",
+      "reduces",
+      "spatial",
+      "takes"
+    ]
+  },
+  {
+    "question": "What is precision in machine learning?",
+    "answer": "Precision = TP / (TP + FP) — of all instances the model predicted as positive, what fraction truly are positive. High precision means the model raises very few false alarms. Critical when false positives are costly, e.g. spam filters or medical alerts. Range: 0 to 1 (1 is perfect). Paired with Recall to compute the F1 Score.",
+    "topic": "Precision",
+    "keywords": [
+      "precision",
+      "true positive",
+      "false positive",
+      "classification metric"
+    ],
+    "type": "atomic"
+  },
+  {
+    "question": "What is prompt engineering?",
+    "answer": "Prompt Engineering is the practice of crafting effective input prompts to get the best outputs from LLMs. Techniques: Zero-shot (direct question), Few-shot (provide examples), Chain-of-Thought (ask to reason step by step), Role prompting (act as an expert), and RAG (provide context from a database). Critical skill for working with GPT and Gemini.",
+    "type": "atomic",
+    "topic": "Prompt Engineering",
+    "keywords": [
+      "prompt",
+      "engineering",
+      "provide",
+      "step",
+      "practice",
+      "crafting"
+    ]
+  },
+  {
+    "question": "What is recall in machine learning?",
+    "answer": "Recall (Sensitivity) = TP / (TP + FN) — of all actual positive cases, what fraction did the model correctly detect. High recall means very few real positives are missed. Critical when missing a positive is costly, e.g. cancer screening or fraud detection. Range: 0 to 1 (1 is perfect). Recall and Precision have an inverse trade-off.",
+    "topic": "Recall",
+    "keywords": [
+      "recall",
+      "sensitivity",
+      "true positive",
+      "false negative",
+      "classification metric"
+    ],
+    "type": "atomic"
+  },
+  {
+    "question": "What is regression in machine learning?",
+    "answer": "Regression is a supervised learning task that predicts a continuous numerical output. Examples: house price, temperature, stock value. Algorithms: Linear Regression, Ridge, Lasso, SVR, Gradient Boosting Regressor. Evaluation metrics: MSE, RMSE, MAE, R-squared.",
+    "topic": "Regression",
+    "keywords": [
+      "regression"
+    ],
+    "type": "atomic"
+  },
+  {
+    "question": "What is regularisation in machine learning?",
+    "answer": "Regularisation adds a penalty term to the loss function to discourage model complexity and prevent overfitting. L1 (Lasso): penalty = λ * sum(|weights|) — drives some weights to exactly zero, performing feature selection. L2 (Ridge): penalty = λ * sum(weights²) — shrinks all weights. Elastic Net: combination of L1 and L2.",
+    "type": "atomic",
+    "topic": "Regularisation In Machine Learning",
+    "keywords": [
+      "penalty",
+      "weights",
+      "regularisation",
+      "machine",
+      "learning",
+      "adds"
+    ]
+  },
+  {
+    "question": "What is scikit-learn?",
+    "answer": "Scikit-learn is Python's most popular ML library. Provides: classification (SVM, RF, LR), regression (Linear, Ridge), clustering (K-Means), preprocessing (scalers, encoders), model selection (GridSearchCV, cross_val_score), pipelines, and metrics. Unified fit/predict/transform API. Install: pip install scikit-learn.",
+    "type": "atomic",
+    "topic": "Scikit-Learn",
+    "keywords": [
+      "scikit-learn",
+      "install",
+      "python",
+      "popular",
+      "library",
+      "provides"
+    ]
+  },
+  {
+    "question": "What is self-attention?",
+    "answer": "Self-Attention allows each token in a sequence to attend to every other token, capturing dependencies regardless of distance. For each token, it computes Query (what am I looking for?), Key (what do I offer?), Value (what do I contribute?). Attention scores are softmax-normalised dot products of Q and K, used to weight V vectors.",
+    "type": "atomic",
+    "topic": "Self-Attention",
+    "keywords": [
+      "token",
+      "self-attention",
+      "allows",
+      "sequence",
+      "attend",
+      "every"
+    ]
+  },
+  {
+    "question": "What is sentiment analysis?",
+    "answer": "Sentiment Analysis classifies the emotional tone of text: Positive, Negative, Neutral (or fine-grained: 1-5 stars). Approaches: Lexicon-based (VADER), ML (Logistic Regression + TF-IDF), Deep Learning (LSTM, CNN), Transformers (BERT, RoBERTa). Aspect-based SA identifies sentiment per aspect (food: positive, service: negative). Used in reviews and brand monitoring.",
+    "type": "atomic",
+    "topic": "Sentiment Analysis",
+    "keywords": [
+      "sentiment",
+      "analysis",
+      "positive",
+      "negative",
+      "classifies",
+      "emotional"
+    ]
+  },
+  {
+    "question": "What is speech recognition?",
+    "answer": "Speech recognition converts spoken audio to text (ASR — Automatic Speech Recognition). Pipeline: audio → extract MFCC features → acoustic model → language model → text. Evolution: HMM → Deep Learning (LSTM) → Transformers (Whisper by OpenAI, Wav2Vec 2.0). Products: Google Speech-to-Text, Amazon Transcribe, Apple Siri, Microsoft Azure Speech.",
+    "type": "atomic",
+    "topic": "Speech Recognition",
+    "keywords": [
+      "speech",
+      "recognition",
+      "audio",
+      "text",
+      "model",
+      "converts"
+    ]
+  },
+  {
+    "question": "What is supervised learning?",
+    "answer": "Supervised Learning trains a model on labelled input-output pairs. The model learns to predict outputs for new inputs by minimising prediction error. Types: Classification (discrete output — spam/not spam) and Regression (continuous output — house price). Common algorithms: Logistic Regression, SVM, Random Forest, Neural Networks. Evaluation: accuracy, F1 (classification); MSE, R-squared (regression).",
+    "topic": "Supervised Learning",
+    "keywords": [
+      "supervised learning"
+    ],
+    "type": "atomic"
+  },
+  {
+    "question": "What is the Adam optimizer?",
+    "answer": "Adam (Adaptive Moment Estimation) combines Momentum (running average of gradients) and RMSprop (running average of squared gradients). It adapts the learning rate for each parameter individually. Parameters: lr (default 0.001), β1=0.9, β2=0.999. The most widely used optimiser in deep learning. Works well without much tuning.",
+    "type": "atomic",
+    "topic": "The Adam Optimizer",
+    "keywords": [
+      "adam",
+      "running",
+      "average",
+      "gradients",
+      "learning",
+      "optimizer"
+    ]
+  },
+  {
+    "question": "What is the F1 score?",
+    "answer": "F1 = 2 * (Precision * Recall) / (Precision + Recall). The harmonic mean ensures both Precision and Recall must be high for a good F1. Range: 0 (worst) to 1 (best). Better than accuracy for imbalanced classes. Macro F1: equal weight per class. Weighted F1: weighted by number of samples per class.",
+    "type": "atomic",
+    "topic": "The F1 Score",
+    "keywords": [
+      "precision",
+      "recall",
+      "class",
+      "weighted",
+      "score",
+      "harmonic"
+    ]
+  },
+  {
+    "question": "What is the Sigmoid Function?",
+    "answer": "Sigmoid is an activation function used in neural networks. It outputs values between 0 and 1. Used in binary classification output layers. Formula: 1 / (1 + e^-x). Smooth and differentiable function. Can cause vanishing gradient issue in deep networks. Commonly used in the output layer for probability prediction. Also used in logistic regression.",
+    "type": "atomic",
+    "topic": "The Sigmoid Function",
+    "keywords": [
+      "function",
+      "sigmoid",
+      "networks",
+      "output",
+      "activation",
+      "neural"
+    ]
+  },
+  {
+    "question": "What is the bias variance tradeoff?",
+    "answer": "The bias-variance tradeoff is the core challenge in ML: Total error = Bias squared + Variance + Irreducible noise. High bias (underfitting): model too simple, misses patterns. High variance (overfitting): model too complex, memorises training noise. Goal: find model complexity that minimises total test error. Regularisation and cross-validation help achieve this balance.",
+    "type": "atomic",
+    "topic": "The Bias Variance Tradeoff",
+    "keywords": [
+      "bias",
+      "variance",
+      "model",
+      "tradeoff",
+      "total",
+      "error"
+    ]
+  },
+  {
+    "question": "What is the elbow method?",
+    "answer": "The Elbow Method determines the optimal K in K-Means clustering. Plot inertia (sum of squared distances to nearest centroid) vs K. The curve bends ('elbows') at the optimal K where adding more clusters gives diminishing returns. If the elbow is unclear, use Silhouette Score instead, which measures cluster separation quality.",
+    "type": "atomic",
+    "topic": "The Elbow Method",
+    "keywords": [
+      "elbow",
+      "method",
+      "optimal",
+      "determines",
+      "k-means",
+      "clustering"
+    ]
+  },
+  {
+    "question": "What is the purpose of pooling in CNN?",
+    "answer": "Pooling in CNNs: 1) Reduces spatial dimensions (fewer parameters, less compute), 2) Provides translation invariance (feature detected slightly off-position still triggers), 3) Controls overfitting. Max pooling takes the maximum value in each window — preserves strongest feature. Global Average Pooling replaces large FC layers in modern architectures.",
+    "type": "atomic",
+    "topic": "The Purpose Of Pooling In Cnn",
+    "keywords": [
+      "pooling",
+      "feature",
+      "purpose",
+      "cnns",
+      "reduces",
+      "spatial"
+    ]
+  },
+  {
+    "question": "What is the vanishing gradient problem?",
+    "answer": "The vanishing gradient problem occurs when gradients become exponentially small as they are backpropagated through many layers or time steps. Weights in early layers barely update, preventing learning of long-range dependencies. Solutions: LSTM/GRU gates, ReLU activation, Batch Normalisation, Residual connections (ResNet), and gradient clipping.",
+    "type": "atomic",
+    "topic": "The Vanishing Gradient Problem",
+    "keywords": [
+      "gradient",
+      "vanishing",
+      "problem",
+      "layers",
+      "occurs",
+      "gradients"
+    ]
+  },
+  {
+    "question": "What is tokenisation?",
+    "answer": "Tokenisation splits text into smaller units (tokens) for processing. Word tokenisation: split by spaces and punctuation. Subword tokenisation (BPE, WordPiece): splits rare words into subwords — handles out-of-vocabulary words. Character tokenisation: each character is a token. LLMs use BPE (GPT) or WordPiece (BERT). vocab_size typically 30,000-100,000.",
+    "type": "atomic",
+    "topic": "Tokenisation",
+    "keywords": [
+      "tokenisation",
+      "splits",
+      "wordpiece",
+      "words",
+      "character",
+      "text"
+    ]
+  },
+  {
+    "question": "What is train test split?",
+    "answer": "Train-test split divides the dataset for unbiased model evaluation. Typical splits: 80% train, 20% test or 70% train, 10% validation, 20% test. The model is trained on train, tuned on validation, and evaluated once on test. sklearn: train_test_split(X, y, test_size=0.2, stratify=y). Stratify ensures balanced class distribution.",
+    "type": "atomic",
+    "topic": "Train Test Split",
+    "keywords": [
+      "train",
+      "test",
+      "split",
+      "model",
+      "validation",
+      "stratify"
+    ]
+  },
+  {
+    "question": "What is unsupervised learning?",
+    "answer": "Unsupervised Learning finds hidden patterns in unlabelled data without predefined outputs. Main tasks: Clustering (K-Means, DBSCAN — group similar data), Dimensionality Reduction (PCA, t-SNE — reduce features), Association Rule Mining (Apriori — find co-occurrence patterns). Used in customer segmentation, anomaly detection, and exploratory data analysis.",
+    "topic": "Unsupervised Learning",
+    "keywords": [
+      "unsupervised learning"
+    ],
+    "type": "atomic"
+  },
+  {
+    "question": "What is variance in machine learning?",
+    "answer": "Variance in ML refers to excessive sensitivity to training data fluctuations — the model overfits. High variance: model performs well on training data but poorly on new data. Cause: model too complex, too few training samples. Fix: regularisation (L1/L2), dropout, cross-validation, more training data.",
+    "topic": "Variance",
+    "keywords": [
+      "variance"
+    ],
+    "type": "atomic"
+  },
+  {
+    "question": "What is word embedding?",
+    "answer": "Word Embeddings represent words as dense numerical vectors capturing semantic meaning. Similar words have similar vectors. Word2Vec: predicts context from word (Skip-gram) or word from context (CBOW). GloVe: matrix factorisation on co-occurrence. FastText: character n-grams. Contextual: BERT embeddings vary by context. Used in all modern NLP.",
+    "type": "atomic",
+    "topic": "Word Embedding",
+    "keywords": [
+      "word",
+      "context",
+      "embeddings",
+      "words",
+      "vectors",
+      "similar"
+    ]
+  },
+  {
+    "question": "Why do we need normalisation in machine learning?",
+    "answer": "Feature normalisation is needed because: 1) Algorithms like KNN and SVM use distance metrics — unnormalised features create bias toward large-scale features, 2) Neural networks train faster and more stably with normalised inputs, 3) Gradient descent converges faster. Tree-based models (Decision Trees, Random Forest, XGBoost) don't need normalisation.",
+    "type": "atomic",
+    "topic": "Why Do We Need Normalisation In Machine Learning",
+    "keywords": [
+      "normalisation",
+      "need",
+      "features",
+      "faster",
+      "machine",
+      "learning"
+    ]
+  },
+  {
+    "question": "Why is LSTM better than RNN?",
+    "answer": "LSTM outperforms vanilla RNN because: 1) Gating mechanisms selectively remember/forget information, 2) Cell state provides a gradient highway that avoids vanishing gradients, 3) Can learn dependencies across hundreds of time steps vs RNNs which forget beyond ~10 steps. GRU is a simpler alternative with similar performance.",
+    "type": "atomic",
+    "topic": "Why Is Lstm Better Than Rnn",
+    "keywords": [
+      "lstm",
+      "forget",
+      "steps",
+      "better",
+      "than",
+      "outperforms"
+    ]
+  },
+  {
+    "question": "Why is deep learning powerful?",
+    "answer": "Deep learning is powerful because: 1) Automatic feature learning from raw data, 2) Scales with data (more data = better model), 3) Scales with compute (GPUs/TPUs enable massive models), 4) Transfer learning lets models pre-trained on huge datasets be fine-tuned quickly, 5) Universal function approximators — can model any complex pattern.",
+    "type": "atomic",
+    "topic": "Why Is Deep Learning Powerful",
+    "keywords": [
+      "learning",
+      "data",
+      "deep",
+      "powerful",
+      "scales",
+      "model"
+    ]
+  },
+  {
+    "question": "Bias vs Variance in Machine Learning",
+    "answer": "Bias refers to errors due to overly simple assumptions in the model. High bias leads to underfitting. Variance refers to errors due to excessive sensitivity to training data. High variance leads to overfitting. There is always a trade-off between bias and variance. This is known as the Bias-Variance Tradeoff. Simple models have high bias and low variance. Complex models have low bias and high variance. The goal is to find the right balance.",
+    "type": "comparison",
+    "topic": "Bias Vs Variance In Machine Learning",
+    "keywords": [
+      "bias",
+      "variance",
+      "high",
+      "refers",
+      "errors",
+      "simple"
+    ]
+  },
+  {
+    "question": "Classification vs Regression",
+    "answer": "Classification and regression are types of supervised learning. In classification, the output is categorical or discrete. Example: Predicting whether an email is spam or not. In regression, the output is continuous or numerical. Example: Predicting house prices. Classification algorithms include Logistic Regression and Decision Trees. Regression algorithms include Linear Regression. The main difference lies in the type of output predicted. Both are widely used depending on the problem.",
+    "type": "comparison",
+    "topic": "Classification Vs Regression",
+    "keywords": [
+      "regression",
+      "classification",
+      "output",
+      "predicting",
+      "algorithms",
+      "include"
+    ]
+  },
+  {
+    "question": "Difference between AI and ML",
+    "answer": "AI is the broad concept of making machines intelligent. ML is a subset of AI — the specific approach of making machines learn from data. All ML is AI, but not all AI is ML (rule-based systems are AI but not ML). Deep Learning is a further subset of ML using multi-layer neural networks.",
+    "type": "comparison",
+    "topic": "Ai And Ml",
+    "keywords": [
+      "making",
+      "machines",
+      "subset",
+      "broad",
+      "concept",
+      "intelligent"
+    ]
+  },
+  {
+    "question": "Difference between AI, ML, and Deep Learning",
+    "answer": "Artificial Intelligence (AI) is a broad field that aims to create machines capable of performing tasks that require human intelligence. Machine Learning (ML) is a subset of AI that enables systems to learn from data without being explicitly programmed. ML models identify patterns in data and make predictions or decisions. Deep Learning (DL) is a subset of ML that uses neural networks with multiple layers. It is designed to handle complex tasks like image and speech recognition. AI is the concept, ML is the implementation, and DL is an advanced form of ML. All three are interconnected and widely used in modern applications. Example: Self-driving cars use all three technologies.",
+    "type": "comparison",
+    "topic": "Ai, Ml, And Deep Learning",
+    "keywords": [
+      "learning",
+      "deep",
+      "intelligence",
+      "tasks",
+      "subset",
+      "data"
+    ]
+  },
+  {
+    "question": "Difference between BERT and GPT",
+    "answer": "BERT: encoder-only, bidirectional context, pre-trained on masked LM, best for understanding tasks (classification, QA, NER). GPT: decoder-only, left-to-right (causal), pre-trained on next-token prediction, best for generation tasks (text, code, summarisation). Both use Transformer architecture.",
+    "type": "comparison",
+    "topic": "Bert And Gpt",
+    "keywords": [
+      "bert",
+      "pre-trained",
+      "best",
+      "tasks",
+      "encoder-only",
+      "bidirectional"
+    ]
+  },
+  {
+    "question": "Difference between machine learning and deep learning",
+    "answer": "ML requires manual feature engineering — a human decides which features to extract. DL learns features automatically from raw data using many layers. DL typically outperforms ML on unstructured data (images, audio, text) but needs more data and compute. For structured/tabular data, XGBoost often beats deep learning.",
+    "type": "comparison",
+    "topic": "Machine Learning And Deep Learning",
+    "keywords": [
+      "data",
+      "learning",
+      "deep",
+      "features",
+      "machine",
+      "requires"
+    ]
+  },
+  {
+    "question": "Standardization vs Normalization",
+    "answer": "Standardization transforms data to have mean equal to 0 and standard deviation equal to 1. Normalization scales data to a range between 0 and 1. Standardization handles outliers better than normalization. Normalization is useful for bounded or image data. Both improve model performance. The choice depends on the algorithm being used. Both are important preprocessing techniques.",
+    "type": "comparison",
+    "topic": "Standardization Vs Normalization",
+    "keywords": [
+      "normalization",
+      "standardization",
+      "data",
+      "equal",
+      "both",
+      "transforms"
+    ]
+  },
+  {
+    "question": "Supervised vs Unsupervised Learning",
+    "answer": "Supervised learning involves training a model using labeled data, where both input and correct output are provided. The model learns the mapping between input and output. It is commonly used for classification and regression tasks. Example: Spam email detection. Unsupervised learning uses unlabeled data without predefined outputs. The model tries to find patterns or groupings in the data. Example: Customer segmentation. It is mainly used for clustering and association tasks. The choice depends on the type of problem.",
+    "type": "comparison",
+    "topic": "Supervised Vs Unsupervised Learning",
+    "keywords": [
+      "learning",
+      "model",
+      "data",
+      "supervised",
+      "unsupervised",
+      "input"
+    ]
+  },
+  {
+    "question": "What is precision and recall in ML?",
+    "answer": "Precision and Recall are complementary classification metrics. Precision = TP/(TP+FP): how accurate are the positive predictions? Recall = TP/(TP+FN): how many actual positives were found? There is a precision-recall trade-off — lowering the decision threshold increases recall but reduces precision. F1 Score = 2*(P*R)/(P+R) balances both.",
+    "topic": "Precision and Recall",
+    "keywords": [
+      "precision",
+      "recall",
+      "f1",
+      "classification metric"
+    ],
+    "type": "comparison"
+  },
+  {
+    "question": "What is the difference between TensorFlow and PyTorch?",
+    "answer": "TensorFlow: static graph (define-then-run), better production tooling (TF Serving, TF Lite, TFX), strong mobile support. PyTorch: dynamic graph (define-by-run), more Pythonic, easier debugging, dominant in research. Both now support eager execution. PyTorch is more popular in academia; TensorFlow in industry. Both are excellent choices.",
+    "type": "comparison",
+    "topic": "The Difference Between Tensorflow And Pytorch",
+    "keywords": [
+      "tensorflow",
+      "pytorch",
+      "graph",
+      "support",
+      "more",
+      "both"
+    ]
+  },
+  {
+    "question": "What is the difference between bagging and boosting?",
+    "answer": "Bagging (Bootstrap Aggregating): trains multiple models in parallel on random subsets of data, combines by voting/averaging. Reduces variance. Example: Random Forest. Boosting: trains models sequentially, each correcting the previous one's errors. Reduces bias and variance. Example: XGBoost, AdaBoost. Bagging is more robust to overfitting; boosting is often more accurate.",
+    "type": "comparison",
+    "topic": "The Difference Between Bagging And Boosting",
+    "keywords": [
+      "bagging",
+      "boosting",
+      "trains",
+      "models",
+      "random",
+      "reduces"
+    ]
+  },
+  {
+    "question": "What is the difference between classification and regression?",
+    "answer": "Classification predicts a discrete category (spam/not spam, cat/dog). Regression predicts a continuous value (house price, temperature). Both are supervised learning. Classification algorithms: Logistic Regression, SVM, Decision Tree, Random Forest. Regression algorithms: Linear Regression, Ridge, Lasso, SVR. Some algorithms work for both.",
+    "type": "comparison",
+    "topic": "The Difference Between Classification And Regression",
+    "keywords": [
+      "regression",
+      "classification",
+      "algorithms",
+      "predicts",
+      "spam",
+      "both"
+    ]
+  },
+  {
+    "question": "What is the difference between supervised and unsupervised learning?",
+    "answer": "Supervised learning: training data has labels (input + correct output), model learns to predict labels. Examples: classification, regression. Unsupervised learning: training data has no labels, model finds hidden structure. Examples: clustering, dimensionality reduction. Semi-supervised: small labelled + large unlabelled dataset.",
+    "type": "comparison",
+    "topic": "The Difference Between Supervised And Unsupervised Learning",
+    "keywords": [
+      "learning",
+      "labels",
+      "supervised",
+      "unsupervised",
+      "training",
+      "data"
+    ]
+  }
+]

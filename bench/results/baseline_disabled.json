@@ -1,0 +1,673 @@
+{
+  "label": "baseline-reasoning-disabled",
+  "timestamp": "2026-06-22 18:52:03",
+  "counts": {
+    "total": 41,
+    "golden": 14,
+    "adversarial": 27,
+    "by_agent": {
+      "DSA_AGENT": 17,
+      "DEBUG_AGENT": 2,
+      "CODE_REVIEW_AGENT": 2,
+      "SQL_AGENT": 9,
+      "SYSTEM_DESIGN_AGENT": 9,
+      "FULLSTACK_AGENT": 2
+    }
+  },
+  "total": 41,
+  "correct": 40,
+  "accuracy": 0.9756,
+  "by_agent": {
+    "DSA_AGENT": {
+      "total": 17,
+      "correct": 16,
+      "accuracy": 0.9412
+    },
+    "DEBUG_AGENT": {
+      "total": 2,
+      "correct": 2,
+      "accuracy": 1.0
+    },
+    "CODE_REVIEW_AGENT": {
+      "total": 2,
+      "correct": 2,
+      "accuracy": 1.0
+    },
+    "SQL_AGENT": {
+      "total": 9,
+      "correct": 9,
+      "accuracy": 1.0
+    },
+    "SYSTEM_DESIGN_AGENT": {
+      "total": 9,
+      "correct": 9,
+      "accuracy": 1.0
+    },
+    "FULLSTACK_AGENT": {
+      "total": 2,
+      "correct": 2,
+      "accuracy": 1.0
+    }
+  },
+  "golden": {
+    "total": 14,
+    "accepted": 14,
+    "false_reject_rate": 0.0,
+    "completeness": 1.0
+  },
+  "adversarial": {
+    "total": 27,
+    "rejected": 26,
+    "false_accept_rate": 0.037,
+    "hallucination_catch_rate": 1.0
+  },
+  "compilation_success": {
+    "code_golden_total": 5,
+    "compiled": 5,
+    "rate": 1.0
+  },
+  "reasoning_quality": {
+    "golden_dsa": 5,
+    "core_stage_coverage_rate": 1.0,
+    "avg_stages_detected": 4.0
+  },
+  "rejecting_stages": {
+    "dsa_complexity": 6,
+    "dsa_output_quality": 3,
+    "dsa_algorithm_critic": 1,
+    "dsa_structure": 1,
+    "debug_critic": 1,
+    "response_quality": 1,
+    "sql_critic": 6,
+    "sysdesign_critic": 6,
+    "fullstack_critic": 1
+  },
+  "false_accepts": [
+    "dsa_contradictory_complexity"
+  ],
+  "false_rejects": [],
+  "cases": [
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "dsa_lru_ordereddict",
+      "agent": "DSA_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "lru",
+        "library_optimal"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "dsa_lru_manual_dll",
+      "agent": "DSA_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "lru",
+        "hashmap_dll"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "dsa_two_sum",
+      "agent": "DSA_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "hashmap"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "dsa_dijkstra_heap",
+      "agent": "DSA_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "graph",
+        "heap"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "dsa_dsu_compression",
+      "agent": "DSA_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "dsu",
+        "path_compression"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_complexity",
+      "reason": "Claims O(1) get/put for an LRU cache but uses no O(1) recency structure and scans to find the LRU entry. Use a HashMap + doubly linked list (move the accessed node to the head, evict the tail) or an OrderedDict with move_to_end \u2014 both give true O(1) get and put.",
+      "correct": true,
+      "id": "dsa_lru_timestamp_scan",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "lru",
+        "on_scan",
+        "false_complexity"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_output_quality",
+      "reason": "An LFU cache solution MUST explain: key->node map (keyToNode), freq->list map (freqToList), minFreq tracking, LRU tie-breaking within a frequency. Describe the key->node map, the freq->list map, how minFreq is maintained, and the LRU tie-break within the minimum frequency.",
+      "correct": true,
+      "id": "dsa_lfu_freq_scan",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "lfu",
+        "on_scan",
+        "false_complexity"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_complexity",
+      "reason": "The code calls PriorityQueue/heap.remove(element) inside the sliding window, which is O(k) per step -> O(n*k) overall, NOT the claimed O(n log k). Rewrite using TWO HEAPS + LAZY DELETION: keep a max-heap for the lower half and a min-heap for the upper half; maintain a HashMap<Integer,Integer> of 'de",
+      "correct": true,
+      "id": "dsa_swm_heap_remove",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "sliding_window_median",
+        "arbitrary_heap_removal"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_complexity",
+      "reason": "Claims O(log n) addNum / O(1) findMedian for a streaming median but sorts or inserts into a sorted list each operation (O(n) or O(n log n)). Use TWO HEAPS: a max-heap for the lower half and a min-heap for the upper half, balanced so their sizes differ by <= 1 -> O(log n) addNum, O(1) findMedian.",
+      "correct": true,
+      "id": "dsa_median_stream_sort",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "median_stream",
+        "sort_each_add",
+        "false_complexity"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_complexity",
+      "reason": "Claims O(log n) range query for a segment tree but aggregates the range with a linear loop / slice (O(n)). Build a real segment tree: recurse over node children (2*node, 2*node+1) splitting at mid, combining child results \u2014 query and update are O(log n).",
+      "correct": true,
+      "id": "dsa_segtree_linear",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "segment_tree",
+        "linear_scan",
+        "false_complexity"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_complexity",
+      "reason": "This does not implement a Trie: it scans a word list / uses startswith, which is O(N*L) per query. Build a real Trie \u2014 each node holds a children map (or array[26]) and an is_end flag; insert and prefix-search are O(L) in the word length.",
+      "correct": true,
+      "id": "dsa_trie_wordlist_scan",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "trie",
+        "wordlist_scan"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_algorithm_critic",
+      "reason": "Union Find rejected: missing rank/size array.",
+      "correct": true,
+      "id": "dsa_dsu_no_compression",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "dsu",
+        "no_path_compression",
+        "false_complexity"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_complexity",
+      "reason": "Claims O(E log V) for Dijkstra but uses no priority queue/heap \u2014 a linear min-distance scan makes it O(V^2). Use a min-heap (heapq / PriorityQueue) keyed by tentative distance, popping the closest unsettled vertex.",
+      "correct": true,
+      "id": "dsa_dijkstra_no_heap",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "graph",
+        "no_heap",
+        "false_complexity"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_output_quality",
+      "reason": "The 'Complexity' section appears more than once. Each section (Problem Understanding, Optimal Algorithm, Code, Approach, Complexity) must appear EXACTLY once \u2014 merge the duplicates into a single clean section.",
+      "correct": true,
+      "id": "dsa_duplicate_complexity",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "duplicate_section",
+        "quality"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_structure",
+      "reason": "A method body is just `pass` / `...` / `raise NotImplementedError` \u2014 that is a placeholder, not an implementation. Provide the real method body.",
+      "correct": true,
+      "id": "dsa_placeholder_stub",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "placeholder",
+        "incomplete"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": false,
+      "id": "dsa_contradictory_complexity",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "contradiction",
+        "self_inconsistent"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "dsa_output_quality",
+      "reason": "The Complexity section claims O(1) but does not explain WHY. Justify it (e.g., hash-map lookups + a doubly linked list give amortized O(1) per operation), not just the Big-O symbol.",
+      "correct": true,
+      "id": "dsa_all_o1_list_remove",
+      "agent": "DSA_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "all_o1",
+        "on_scan",
+        "false_complexity"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "debug_evidence_fix",
+      "agent": "DEBUG_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "debug",
+        "has_evidence"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "debug_critic",
+      "reason": "You do not have the user's actual code or full stack trace, so do not fabricate a complete patched file. In 'Evidence Needed' request the failing code + the FULL stack trace + language/runtime version; list specific likely causes for this error type; and give the FIX PATTERN (e.g., null check / Opti",
+      "correct": true,
+      "id": "debug_fabricated_file",
+      "agent": "DEBUG_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "debug",
+        "fabricated_patch",
+        "hallucination"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "review_multidimension",
+      "agent": "CODE_REVIEW_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "code_review",
+        "multi_dimension"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "response_quality",
+      "reason": "The answer is truncated (it says the rest is omitted / unchanged / continues). Provide the FULL, complete content \u2014 never abbreviate code.",
+      "correct": true,
+      "id": "review_truncated_refactor",
+      "agent": "CODE_REVIEW_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "code_review",
+        "truncated",
+        "shallow"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "sql_full_answer",
+      "agent": "SQL_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "sql",
+        "complete_optimization"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "sql_no_index_justified",
+      "agent": "SQL_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "sql",
+        "justified_no_index"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "sql_expression_index",
+      "agent": "SQL_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "sql",
+        "expression_index"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sql_critic",
+      "reason": "Remove the duplicate/redundant index (customer_id): it is already covered by the leftmost prefix of (customer_id, created_at). Keep only the more selective composite index.",
+      "correct": true,
+      "id": "sql_duplicate_index",
+      "agent": "SQL_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "sql",
+        "duplicate_index"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sql_critic",
+      "reason": "The index on (status) does not match the query shape: its leading column is not used in any WHERE / JOIN / ORDER BY / GROUP BY predicate. Index the columns the query actually filters, joins, or sorts on.",
+      "correct": true,
+      "id": "sql_mismatched_index",
+      "agent": "SQL_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "sql",
+        "mismatched_index"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sql_critic",
+      "reason": "Fix the Partitioning Strategy: MySQL `VALUES LESS THAN` is invalid in PostgreSQL declarative partitioning \u2014 use `PARTITION OF parent FOR VALUES FROM (...) TO (...)` (RANGE), `FOR VALUES IN (...)` (LIST), or `WITH (MODULUS m, REMAINDER r)` (HASH).",
+      "correct": true,
+      "id": "sql_invalid_partition",
+      "agent": "SQL_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "sql",
+        "invalid_pg_partition"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sql_critic",
+      "reason": "Deepen the EXPLAIN / Execution Plan Analysis: explain the relevant plan node types and how the optimization changes them \u2014 Seq Scan, Index Scan, Bitmap Scan, Sort, and Hash Aggregate. Missing: Bitmap Scan, Sort, Hash Aggregate.",
+      "correct": true,
+      "id": "sql_missing_plan_nodes",
+      "agent": "SQL_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "sql",
+        "missing_explain_nodes"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sql_critic",
+      "reason": "State the cost/benefit of each optimization in Tradeoffs: weigh the COST (index storage + write amplification, replica lag, cache staleness) against the BENEFIT (latency / throughput improvement) so each recommendation is justified.",
+      "correct": true,
+      "id": "sql_missing_cost_benefit",
+      "agent": "SQL_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "sql",
+        "missing_tradeoffs"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sql_critic",
+      "reason": "The Final Optimized Query wraps a column in a function inside a WHERE/JOIN predicate (non-sargable), so the proposed index cannot be used. Compare the bare column instead (e.g. created_at >= '2024-01-01' rather than YEAR(created_at) = 2024), or add a matching expression index.",
+      "correct": true,
+      "id": "sql_nonsargable",
+      "agent": "SQL_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "sql",
+        "nonsargable_predicate"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "sd_consistent_capacity",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "system_design",
+        "derived_capacity"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "sd_instagram_full",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "system_design",
+        "domain_deepdive"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "sd_capacity_math",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "system_design",
+        "capacity_math"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sysdesign_critic",
+      "reason": "Capacity numbers are inconsistent: 1000000000 requests/day implies an average of ~11574 QPS (\u00f786,400), but the stated QPS (~100) is off by an order of magnitude. Recompute QPS = requests-per-day \u00f7 86,400 and state your peak factor (e.g., 2\u201310\u00d7 average).",
+      "correct": true,
+      "id": "sd_inconsistent_qps",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "system_design",
+        "capacity_order_of_magnitude"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sysdesign_critic",
+      "reason": "The Capacity Calculations section is hand-wavy \u2014 show the actual math with numbers and units (e.g., requests/day \u00f7 86,400 = QPS; writes/day \u00d7 bytes = storage/day \u00d7 365 = storage/year; \u00d7 replication factor).",
+      "correct": true,
+      "id": "sd_handwavy_capacity",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "system_design",
+        "handwavy_capacity"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sysdesign_critic",
+      "reason": "The architecture diagram names only infrastructure (Load Balancer / Redis / Kafka / Database). Show the application SERVICES and how a request flows through them, e.g., Client \u2192 API Gateway \u2192 Feed/Timeline/Ranking Services \u2192 Cache \u2192 DB, with Kafka where relevant.",
+      "correct": true,
+      "id": "sd_infra_only",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "system_design",
+        "infra_namedrop_no_domain"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sysdesign_critic",
+      "reason": "This design is missing mandatory sections: Functional Requirements, Non-Functional Requirements, API Design, Database Design, Redis Strategy, Kafka Strategy, Data Flow, Monitoring, Disaster Recovery, Security, Tradeoffs, Cost Considerations. Every system design MUST include all of: Functional Requir",
+      "correct": true,
+      "id": "sd_missing_sections",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "system_design",
+        "missing_mandatory_sections"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sysdesign_critic",
+      "reason": "The architecture diagram is missing required tiers: Queue, Storage. A complete diagram traces a request through all seven: Client \u2192 API Gateway \u2192 Services \u2192 Cache \u2192 Queue \u2192 Database \u2192 Storage.",
+      "correct": true,
+      "id": "sd_diagram_missing_tiers",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "system_design",
+        "diagram_missing_tiers"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "sysdesign_critic",
+      "reason": "This social design is missing mandatory domain sections: Feed Ranking, Fan-out on Write, Fan-out on Read, Celebrity Handling, Media Storage, CDN Strategy, Search Architecture. A senior social design MUST address these core challenges \u2014 generic Redis/Kafka/Database/Load-Balancer boxes are not enough.",
+      "correct": true,
+      "id": "sd_social_missing_deepdive",
+      "agent": "SYSTEM_DESIGN_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "system_design",
+        "missing_domain_deepdive"
+      ]
+    },
+    {
+      "verified": true,
+      "stage": "accept",
+      "reason": "",
+      "correct": true,
+      "id": "fs_complete_project",
+      "agent": "FULLSTACK_AGENT",
+      "kind": "golden",
+      "expect": "accept",
+      "tags": [
+        "fullstack",
+        "complete_build"
+      ]
+    },
+    {
+      "verified": false,
+      "stage": "fullstack_critic",
+      "reason": "The Folder Structure must explicitly include all four top-level directories: frontend/, backend/, database/, and docker/. Missing: docker/.",
+      "correct": true,
+      "id": "fs_missing_docker",
+      "agent": "FULLSTACK_AGENT",
+      "kind": "adversarial",
+      "expect": "reject",
+      "tags": [
+        "fullstack",
+        "missing_docker_dir"
+      ]
+    }
+  ]
+}

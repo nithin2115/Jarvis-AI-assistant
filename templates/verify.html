@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Permissions-Policy" content="camera=(self); microphone=(self)">
+<title>JARVIS — Biometric Verification</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#020408;font-family:"Segoe UI",sans-serif;color:#fff;overflow:hidden;}
+#bg{position:fixed;inset:0;background:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);background-size:48px 48px;}
+.corner{position:fixed;width:28px;height:28px;border-color:#00d4ff22;border-style:solid;}
+.corner.tl{top:16px;left:16px;border-width:1px 0 0 1px}
+.corner.tr{top:16px;right:16px;border-width:1px 1px 0 0}
+.corner.bl{bottom:16px;left:16px;border-width:0 0 1px 1px}
+.corner.br{bottom:16px;right:16px;border-width:0 1px 1px 0}
+
+#wrap{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:28px;}
+
+/* Header */
+#hdr{text-align:center;}
+#hdr .greeting{font-size:11px;letter-spacing:6px;color:#00d4ff55;text-transform:uppercase;margin-bottom:6px;}
+#hdr .name-lbl{font-size:28px;font-weight:100;letter-spacing:10px;color:#00d4ff;text-shadow:0 0 30px #00d4ff66;}
+
+/* Panel */
+#panel{background:rgba(0,10,22,.9);border:1px solid #00d4ff1a;border-radius:20px;padding:40px 48px;width:480px;text-align:center;position:relative;}
+
+/* Face ring */
+#face-ring{width:200px;height:200px;border-radius:50%;margin:0 auto 24px;position:relative;}
+#face-ring video{width:100%;height:100%;border-radius:50%;object-fit:cover;transform:scaleX(-1);}
+.ring-layer{position:absolute;inset:0;border-radius:50%;pointer-events:none;}
+#ring1{border:2px solid #00d4ff22;}
+#ring2{border:2px solid transparent;border-top-color:#00d4ff;animation:spin1 1.8s linear infinite;display:none;}
+#ring3{border:2px dashed #00d4ff11;inset:-8px;animation:spin2 8s linear infinite;}
+@keyframes spin1{to{transform:rotate(360deg)}}
+@keyframes spin2{to{transform:rotate(-360deg)}}
+#face-ring .face-ind{position:absolute;inset:16px;border-radius:50%;border:1.5px dashed #00d4ff22;transition:all .4s;}
+#face-ring .face-ind.detected{border-color:#00ff88;border-style:solid;box-shadow:0 0 18px #00ff8833;}
+#face-ring .face-ind.verified{border-color:#00ff88;background:#00ff8808;}
+
+/* Step label */
+#step-lbl{font-size:10px;letter-spacing:5px;color:#00d4ff66;text-transform:uppercase;margin-bottom:6px;}
+#step-msg{font-size:13px;color:#ffffff55;line-height:1.8;margin-bottom:22px;min-height:42px;}
+
+/* Voice bars */
+#vbars{display:flex;gap:3px;align-items:center;justify-content:center;height:48px;margin-bottom:22px;}
+.vb{width:3px;border-radius:2px;background:#00d4ff33;transition:height .08s;}
+
+/* Status */
+#status{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#00d4ff66;min-height:20px;margin-bottom:16px;}
+
+/* Retry */
+#retry-btn{display:none;background:rgba(255,68,68,.07);border:1px solid #ff444433;color:#ff4444aa;
+  padding:10px 28px;border-radius:8px;cursor:pointer;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-right:10px;transition:all .3s;}
+#retry-btn:hover{background:rgba(255,68,68,.14);}
+
+/* ── Cinematic Success Overlay ──────────────────────────── */
+#success{position:fixed;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(0,18,36,.97) 0%,rgba(2,4,8,.995) 70%);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  z-index:100;overflow:hidden;}
+
+/* Spinning rings behind the content */
+.sr{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid transparent;
+  transform:translate(-50%,-50%);pointer-events:none;}
+#sr1{width:700px;height:700px;border-color:#00d4ff05;animation:srSpin 30s linear infinite;}
+#sr2{width:540px;height:540px;border-top-color:#00d4ff22;border-bottom-color:#00d4ff11;
+  animation:srSpin 14s linear infinite reverse;}
+#sr3{width:380px;height:380px;border-top-color:#00d4ff55;border-left-color:#00d4ff22;
+  border-width:1.5px;animation:srSpin 8s linear infinite;
+  filter:drop-shadow(0 0 8px #00d4ff44);}
+#sr4{width:240px;height:240px;border-top-color:#00d4ff99;border-width:1.5px;
+  animation:srSpin 4.5s linear infinite reverse;
+  filter:drop-shadow(0 0 12px #00d4ff66);}
+@keyframes srSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+/* Horizontal scan line inside overlay */
+#succ-scan{position:absolute;top:0;left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,#00d4ff55,transparent);
+  animation:scanLine 3s linear infinite;opacity:.5;}
+
+/* Content z-layer */
+.succ-body{position:relative;z-index:2;display:flex;flex-direction:column;
+  align-items:center;text-align:center;}
+
+#succ-icon{font-size:88px;color:#00d4ff;
+  text-shadow:0 0 60px #00d4ff,0 0 120px #00d4ff77;
+  animation:iconPop .7s cubic-bezier(.16,1,.3,1) both .1s;
+  margin-bottom:32px;}
+@keyframes iconPop{from{transform:scale(0) rotate(-20deg);opacity:0}
+  to{transform:scale(1) rotate(0deg);opacity:1}}
+
+#succ-granted{font-size:44px;font-weight:100;letter-spacing:22px;text-transform:uppercase;
+  color:#00d4ff;text-shadow:0 0 50px #00d4ffaa;
+  animation:suSlide .9s cubic-bezier(.16,1,.3,1) both .4s;
+  margin-bottom:28px;}
+
+#succ-welcome{font-size:28px;font-weight:200;letter-spacing:5px;color:#e8f4ff;
+  animation:suSlide .9s cubic-bezier(.16,1,.3,1) both .7s;
+  margin-bottom:10px;}
+
+#succ-line2{font-size:14px;letter-spacing:3px;color:#ffffff50;
+  animation:suSlide .9s cubic-bezier(.16,1,.3,1) both 1s;
+  margin-bottom:36px;}
+
+#succ-bar{width:280px;height:2px;background:#00d4ff15;border-radius:1px;
+  animation:suSlide .9s cubic-bezier(.16,1,.3,1) both 1.3s;overflow:hidden;
+  margin-bottom:16px;}
+#succ-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#00d4ff,#0088ff);
+  border-radius:1px;transition:width 4s linear;box-shadow:0 0 12px #00d4ff88;}
+
+#succ-sub{font-size:8px;letter-spacing:6px;color:#00d4ff44;text-transform:uppercase;
+  animation:suSlide .9s cubic-bezier(.16,1,.3,1) both 1.6s;}
+
+@keyframes suSlide{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* Scan line */
+#scan{position:fixed;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#00d4ff44,transparent);animation:scanLine 3s linear infinite;pointer-events:none;}
+@keyframes scanLine{0%{top:0}100%{top:100vh}}
+
+.hidden{display:none!important;}
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="scan"></div>
+<div class="corner tl"></div><div class="corner tr"></div>
+<div class="corner bl"></div><div class="corner br"></div>
+
+<div id="wrap">
+  <div id="hdr">
+    <div class="greeting">Welcome back</div>
+    <div class="name-lbl">{{ name }}</div>
+  </div>
+
+  <div id="panel">
+    <div id="step-lbl">Step 1 of 2 — Face Verification</div>
+    <div id="step-msg">Look directly at the camera.<br>Hold still while JARVIS scans your face.</div>
+
+    <div id="face-ring">
+      <video id="camFeed" autoplay playsinline muted></video>
+      <div class="ring-layer" id="ring1"></div>
+      <div class="ring-layer" id="ring2"></div>
+      <div class="ring-layer" id="ring3"></div>
+      <div class="face-ind" id="faceInd"></div>
+    </div>
+
+    <div id="vbars" class="hidden">
+      <div class="vb" id="vb0"></div><div class="vb" id="vb1"></div><div class="vb" id="vb2"></div>
+      <div class="vb" id="vb3"></div><div class="vb" id="vb4"></div><div class="vb" id="vb5"></div>
+      <div class="vb" id="vb6"></div><div class="vb" id="vb7"></div><div class="vb" id="vb8"></div>
+      <div class="vb" id="vb9"></div><div class="vb" id="vb10"></div><div class="vb" id="vb11"></div>
+    </div>
+
+    <div id="status">Activating camera...</div>
+    <button id="retry-btn" onclick="retryAll()">Retry</button>
+  </div>
+</div>
+
+<!-- Cinematic Success Overlay -->
+<div id="success">
+  <div class="sr" id="sr1"></div>
+  <div class="sr" id="sr2"></div>
+  <div class="sr" id="sr3"></div>
+  <div class="sr" id="sr4"></div>
+  <div id="succ-scan"></div>
+  <div class="succ-body">
+    <div id="succ-icon">✦</div>
+    <div id="succ-granted">ACCESS GRANTED</div>
+    <div id="succ-welcome">Welcome back, boss.</div>
+    <div id="succ-line2">It's great to see you here again.</div>
+    <div id="succ-bar"><div id="succ-bar-fill"></div></div>
+    <div id="succ-sub">Identity confirmed &nbsp;·&nbsp; Activating JARVIS</div>
+  </div>
+</div>
+
+<script>
+const NAME = "{{ name }}";
+let camStream, micStream, audioCtx, analyserNode;
+let faceDone=false, voiceDone=false;
+let faceLoop=null, voiceSamples=[], voiceProc=null;
+let attempts={face:0, voice:0};
+
+// ── Camera start ─────────────────────────────────────────────
+async function startCamera(){
+  try{
+    camStream = await navigator.mediaDevices.getUserMedia({video:{width:320,height:320,facingMode:'user'},audio:false});
+    document.getElementById('camFeed').srcObject = camStream;
+    setStatus('Face detected — hold still', '#00d4ff66');
+    document.getElementById('ring2').style.display='block';
+    startFaceLoop();
+  }catch(e){ setStatus('Camera denied — cannot verify','#ff4444aa'); }
+}
+
+// ── Face polling loop ─────────────────────────────────────────
+function startFaceLoop(){
+  faceLoop = setInterval(runFaceCheck, 1200);
+}
+
+async function runFaceCheck(){
+  const b64 = captureFrame();
+  if(!b64) return;
+
+  // First just detect face presence for UI
+  try{
+    const r = await fetch('/api/auth/has_face',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image:b64})});
+    const d = await r.json();
+    document.getElementById('faceInd').classList.toggle('detected', d.has_face);
+    if(!d.has_face){ setStatus('No face detected — move closer','#ff8800aa'); return; }
+  }catch{return;}
+
+  // Attempt face verification
+  setStatus('Matching identity...','#00d4ff88');
+  try{
+    const r = await fetch('/api/auth/verify/face',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image:b64})});
+    const d = await r.json();
+    if(d.ok){
+      clearInterval(faceLoop);
+      document.getElementById('faceInd').classList.add('verified');
+      document.getElementById('ring2').style.display='none';
+      if(camStream) camStream.getVideoTracks().forEach(t=>t.stop());
+      setStatus('Face verified ✓  —  Voice check next','#00ff8888');
+      faceDone=true;
+      setTimeout(startVoiceStep, 1000);
+    }else{
+      attempts.face++;
+      setStatus(`Face not recognised (${attempts.face}/3) — try again`,'#ff8800aa');
+      if(attempts.face>=3){ clearInterval(faceLoop); showRetry('Face verification failed after 3 attempts.'); }
+    }
+  }catch(e){ setStatus('Verification error — retrying...','#ff4444aa'); }
+}
+
+// ── Voice step ────────────────────────────────────────────────
+function startVoiceStep(){
+  document.getElementById('step-lbl').textContent = 'Step 2 of 2 — Voice Verification';
+  document.getElementById('step-msg').innerHTML = 'Say the wake phrase clearly:<br><span style="color:#00d4ff88;font-style:italic;">\"Hey Jarvis\"</span>';
+  document.getElementById('vbars').classList.remove('hidden');
+  document.getElementById('face-ring').classList.add('hidden');
+  recordVoice();
+}
+
+async function recordVoice(){
+  voiceSamples=[];
+  setStatus('Listening for your voice...','#00d4ff88');
+  try{
+    micStream = await getVoiceMicStream('verify');
+    audioCtx  = new (window.AudioContext||window.webkitAudioContext)({sampleRate:16000});
+    const src = audioCtx.createMediaStreamSource(micStream);
+    analyserNode = audioCtx.createAnalyser(); analyserNode.fftSize=256;
+    voiceProc = audioCtx.createScriptProcessor(4096,1,1);
+    src.connect(analyserNode); src.connect(voiceProc); voiceProc.connect(audioCtx.destination);
+    voiceProc.onaudioprocess = e => {
+      voiceSamples.push(...Array.from(e.inputBuffer.getChannelData(0)));
+      animVBars();
+    };
+    setTimeout(stopVoiceCapture, 3500);
+  }catch(e){
+    console.error('[VERIFY MIC]', e && e.name, e && e.message, e);
+    setStatus(micErrorText(e, 'cannot verify'),'#ff4444aa');
+  }
+}
+
+async function getVoiceMicStream(label){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    throw {name:'NotSupportedError', message:'mediaDevices.getUserMedia is unavailable'};
+  }
+  const attempts=[
+    {audio:{sampleRate:16000,channelCount:1},video:false},
+    {audio:{sampleRate:{ideal:16000},channelCount:{ideal:1}},video:false},
+    {audio:true,video:false}
+  ];
+  let lastErr=null;
+  for(const constraints of attempts){
+    try{
+      return await navigator.mediaDevices.getUserMedia(constraints);
+    }catch(e){
+      lastErr=e;
+      console.warn(`[${label} mic]`, e && e.name, e && e.message, constraints);
+      if(e && (e.name==='NotAllowedError' || e.name==='SecurityError')) break;
+    }
+  }
+  throw lastErr || {name:'UnknownError', message:'microphone could not start'};
+}
+
+function micErrorText(e, suffix){
+  const name=(e && e.name) || 'UnknownError';
+  const msg=(e && e.message) ? ` (${e.message})` : '';
+  if(name==='NotAllowedError' || name==='SecurityError')
+    return `Microphone permission blocked - allow localhost in browser settings ${msg}`;
+  if(name==='NotFoundError' || name==='DevicesNotFoundError')
+    return `No microphone found - connect or enable an input device ${msg}`;
+  if(name==='NotReadableError' || name==='TrackStartError')
+    return `Microphone is busy - close other apps and try again ${msg}`;
+  if(name==='OverconstrainedError' || name==='ConstraintNotSatisfiedError')
+    return `Microphone format unsupported - ${suffix} ${msg}`;
+  if(name==='NotSupportedError')
+    return `Browser microphone API unavailable - ${suffix} ${msg}`;
+  return `Microphone error (${name}) - ${suffix} ${msg}`;
+}
+
+function _f32ToB64(samples){
+  const arr   = new Float32Array(samples);
+  const bytes = new Uint8Array(arr.buffer);
+  let bin = '', chunk = 8192;
+  for(let i=0; i<bytes.length; i+=chunk)
+    bin += String.fromCharCode(...bytes.subarray(i, Math.min(i+chunk, bytes.length)));
+  return btoa(bin);
+}
+
+async function stopVoiceCapture(){
+  if(voiceProc){ voiceProc.disconnect(); }
+  if(audioCtx)  audioCtx.close();
+  if(micStream) micStream.getTracks().forEach(t=>t.stop());
+  setStatus('Matching voice signature...','#00d4ff88');
+
+  const b64 = _f32ToB64(voiceSamples.slice(0, 16000*3));
+
+  try{
+    const r = await fetch('/api/auth/verify/voice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({audio:b64})});
+    const d = await r.json();
+    if(d.ok){
+      setStatus('Voice verified ✓  —  Access granted','#00ff8888');
+      setTimeout(showSuccess, 800);
+    }else{
+      attempts.voice++;
+      if(attempts.voice<3){
+        setStatus(`Voice not matched (${attempts.voice}/3) — try again`,'#ff8800aa');
+        setTimeout(recordVoice, 1200);
+      }else{ showRetry('Voice verification failed. Access denied.'); }
+    }
+  }catch(e){ setStatus('Error — retrying...','#ff4444aa'); setTimeout(recordVoice,1500); }
+}
+
+function animVBars(){
+  if(!analyserNode) return;
+  const d=new Uint8Array(analyserNode.frequencyBinCount); analyserNode.getByteFrequencyData(d);
+  for(let i=0;i<12;i++){
+    const h=4+Math.round(d[Math.floor(i*d.length/12)]/255*44);
+    const el=document.getElementById('vb'+i);
+    if(el){ el.style.height=h+'px'; el.style.background=`rgba(0,212,255,${0.3+h/58})`; }
+  }
+}
+
+// ── TTS — single controlled welcome (fires exactly once) ──
+let _hasSpokenWelcome = false;
+let _ttsVoice = null;
+
+function _pickVoice() {
+  const vs = speechSynthesis.getVoices();
+  _ttsVoice = vs.find(v => /David|Mark|Daniel|Alex/i.test(v.name))
+           || vs.find(v => v.lang === 'en-US' && v.localService)
+           || vs.find(v => v.lang.startsWith('en-'))
+           || vs[0] || null;
+}
+
+function _say(text) {
+  return new Promise(resolve => {
+    if (!('speechSynthesis' in window)) { resolve(); return; }
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.88; u.pitch = 0.80; u.volume = 1.0;
+    if (_ttsVoice) u.voice = _ttsVoice;
+    const guard = setTimeout(resolve, 10000);
+    u.onend  = () => { clearTimeout(guard); resolve(); };
+    u.onerror = () => { clearTimeout(guard); resolve(); };
+    speechSynthesis.speak(u);
+  });
+}
+
+async function _doWelcome() {
+  if (_hasSpokenWelcome) return;      // strict single-fire guard
+  _hasSpokenWelcome = true;
+
+  if (!('speechSynthesis' in window)) return;
+
+  if (speechSynthesis.getVoices().length === 0) {
+    await new Promise(r => {
+      speechSynthesis.addEventListener('voiceschanged', r, { once: true });
+      setTimeout(r, 1500);
+    });
+  }
+  _pickVoice();
+  speechSynthesis.cancel();           // clear any stale audio
+
+  await _say("Welcome back, boss. It's great to see you here again.");
+}
+
+function _fadeAndGo() {
+  document.body.style.transition = 'opacity 0.75s ease';
+  document.body.style.opacity    = '0';
+  setTimeout(() => { window.location.href = '/'; }, 780);
+}
+
+// ── Success ───────────────────────────────────────────────
+async function showSuccess() {
+  document.getElementById('success').style.display = 'flex';
+  setTimeout(() => { document.getElementById('succ-bar-fill').style.width = '100%'; }, 1800);
+
+  const safetyTimer = setTimeout(_fadeAndGo, 12000);   // never hang
+
+  await _doWelcome();
+
+  clearTimeout(safetyTimer);
+  await new Promise(r => setTimeout(r, 500));
+  _fadeAndGo();
+}
+
+// ── Retry ─────────────────────────────────────────────────────
+function showRetry(msg){
+  setStatus(msg,'#ff4444aa');
+  document.getElementById('retry-btn').style.display='inline-block';
+}
+function retryAll(){
+  attempts={face:0,voice:0}; faceDone=false; voiceDone=false;
+  document.getElementById('retry-btn').style.display='none';
+  document.getElementById('face-ring').classList.remove('hidden');
+  document.getElementById('vbars').classList.add('hidden');
+  document.getElementById('step-lbl').textContent='Step 1 of 2 — Face Verification';
+  document.getElementById('step-msg').innerHTML='Look directly at the camera.<br>Hold still while JARVIS scans your face.';
+  document.getElementById('faceInd').className='face-ind';
+  document.getElementById('ring2').style.display='block';
+  startCamera();
+}
+
+// ── Helpers ───────────────────────────────────────────────────
+function captureFrame(){
+  const v=document.getElementById('camFeed'); if(!v.videoWidth) return null;
+  const c=document.createElement('canvas'); c.width=v.videoWidth; c.height=v.videoHeight;
+  c.getContext('2d').drawImage(v,0,0); return c.toDataURL('image/jpeg',0.85);
+}
+function setStatus(m,c){ const e=document.getElementById('status'); e.textContent=m; e.style.color=c; }
+
+// Start
+startCamera();
+</script>
+</body>
+</html>

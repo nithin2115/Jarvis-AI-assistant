@@ -52,8 +52,15 @@ app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 # Init Google OAuth (optional -- works without it)
 gauth.init_oauth(app)
 
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading",
+socketio = SocketIO(app, cors_allowed_origins="*",
     ping_timeout=60, ping_interval=25, logger=False, engineio_logger=False)
+
+# Auto-initialize Brain Manager so AI works under Gunicorn (Render/production) as well as python app.py
+try:
+    brain_manager.init(socketio=socketio)
+    logger.info("[INIT] BrainManager initialized successfully")
+except Exception as _bme:
+    logger.warning(f"[INIT] BrainManager init deferred: {_bme}")
 
 #  Global state 
 
@@ -528,7 +535,7 @@ def handle_connect():
         emit("voice_status", voice_server.get_status())
     except Exception:
         pass
-    if _logged_in():
+    if _logged_in() and getattr(config, "ENABLE_BACKGROUND_VOICE", False):
         socketio.start_background_task(_ensure_voice_for_main_ui)
 
     # Emit AI status so UI can show which engines are live
@@ -646,9 +653,13 @@ def handle_command(data=None):
                 except Exception: pass
                 state.send_response(reply)
                 state.stream_subtitle(reply)
-                try:
-                    tts.speak(reply)
-                finally:
+                if getattr(config, "ENABLE_VOICE_OUTPUT", False):
+                    try:
+                        tts.speak(reply)
+                    finally:
+                        try: voice_server.notify_speaking_end()
+                        except Exception: pass
+                else:
                     try: voice_server.notify_speaking_end()
                     except Exception: pass
                 state.set_state("idle")
@@ -713,7 +724,7 @@ def handle_command(data=None):
         # output (the AI's prose is short, but reading code aloud is awful).
         # The streaming TTS module already converts fenced blocks into a
         # single "code shown on screen" cue, so we keep it enabled here.
-        tts_enabled = bool(stream)
+        tts_enabled = bool(stream) and getattr(config, "ENABLE_VOICE_OUTPUT", False)
 
         # ── Open the live TTS streaming session BEFORE the first chunk ──
         if tts_enabled:
@@ -880,25 +891,26 @@ def handle_command(data=None):
             # idle-state + resume_listening emit. We do NOT block here.
             return
 
-        # Non-streaming fallback path: speak via the legacy blocking TTS.
-        try:
-            speak_text = chat_modes.format_for_voice(response, render_mode)
-        except Exception as e:
-            logger.warning(f"[CMD] format_for_voice failed, using fallback summary: {e}")
-            speak_text = chat_modes.tts_summary(response, render_mode)
-        try:
-            state.set_state("speaking")
-            voice_server.notify_speaking_start()
-        except Exception:
-            pass
-        try:
-            tts.speak(speak_text)
-        except Exception as e:
-            logger.error(f"[CMD] TTS Error (non-fatal): {e}")
-        try:
-            voice_server.notify_speaking_end()
-        except Exception:
-            pass
+        # Non-streaming fallback path: speak via the legacy blocking TTS only if enabled.
+        if getattr(config, "ENABLE_VOICE_OUTPUT", False):
+            try:
+                speak_text = chat_modes.format_for_voice(response, render_mode)
+            except Exception as e:
+                logger.warning(f"[CMD] format_for_voice failed, using fallback summary: {e}")
+                speak_text = chat_modes.tts_summary(response, render_mode)
+            try:
+                state.set_state("speaking")
+                voice_server.notify_speaking_start()
+            except Exception:
+                pass
+            try:
+                tts.speak(speak_text)
+            except Exception as e:
+                logger.error(f"[CMD] TTS Error (non-fatal): {e}")
+            try:
+                voice_server.notify_speaking_end()
+            except Exception:
+                pass
         state.set_state("idle")
         try:
             socketio.emit("resume_listening", {}, namespace="/")
@@ -1795,7 +1807,7 @@ def health():
 
 def run_server(host="0.0.0.0", port=8000, debug=False):
     print("[INIT] Initializing TTS...")
-    if tts.is_available():
+    if tts.is_available() and getattr(config, "ENABLE_VOICE_OUTPUT", False):
         def greet():
             time.sleep(2)
             tts.speak("Welcome back, boss. All systems are online.")
@@ -1804,8 +1816,8 @@ def run_server(host="0.0.0.0", port=8000, debug=False):
     # Load ChromaDB knowledge base in background (non-blocking)
     threading.Thread(target=knowledge_db.init, daemon=True, name="knowledge-init").start()
 
-    # Initialize AI Brain Manager with all providers + health monitoring
-    brain_manager.init(socketio=socketio)
+    if not brain_manager.brain:
+        brain_manager.init(socketio=socketio)
     brain_summary = brain_manager.brain.get_provider_summary()
     tavily_status = "OK" if config.is_tavily_ready() else "NO KEY"
 

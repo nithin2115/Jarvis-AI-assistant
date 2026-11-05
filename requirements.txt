@@ -1,15 +1,21 @@
-# Jarvis AI Assistant - Dependencies
 
-# Web Interface & Socket Server (for app.py)
+# Jarvis AI Assistant - Desktop Dependencies
+
+# Web Interface
 Flask>=2.3.0
 Flask-SocketIO>=5.3.0
 Authlib>=1.3.0
 python-dotenv>=1.0.0
+simple-websocket>=1.0.0
 
-# Core Framework (for main.py)
-pyqt5>=5.15.10
-pyqt5-tools>=5.15.4.3
+# Desktop Framework
+PyQt5>=5.15.10
+PyQt5-tools>=5.15.4.3
 pywebview>=5.1
+
+# Document Processing
+pypdf>=4.0.0
+python-docx>=1.1.0
 
 # AI APIs
 groq>=0.9.0
@@ -17,22 +23,22 @@ google-generativeai>=0.7.0
 httpx>=0.27.0
 tavily-python>=0.3.0
 
-# AI & Memory
+# AI and Memory
 sentence-transformers>=3.0.0
 huggingface-hub>=0.34.0
 faiss-cpu>=1.8.0
 chromadb>=0.4.24
 numpy>=1.26.0
 
-# Voice & Audio
-speechrecognition>=3.10.3
+# Voice and Audio
+SpeechRecognition>=3.10.3
 pyttsx3>=2.90
-pyaudio>=0.2.14
+PyAudio>=0.2.14
 edge-tts>=6.1.12
 sounddevice>=0.4.6
 vosk>=0.3.45
 
-# Vision & Screen Capture
+# Vision and Screen Capture
 opencv-python>=4.9.0.80
 Pillow>=10.3.0
 mss>=9.0.1
@@ -44,7 +50,7 @@ webdriver-manager>=4.0.1
 beautifulsoup4>=4.12.3
 requests>=2.31.0
 
-# System & Utilities
+# Windows System Automation
 psutil>=5.9.8
 pyautogui>=0.9.54
 screen-brightness-control>=0.22.1
@@ -53,13 +59,13 @@ comtypes>=1.4.1
 keyboard>=0.13.5
 mouse>=0.7.1
 
-# Async & Data
+# Async and Database
 aiohttp>=3.9.1
 pyyaml>=6.0.1
 sqlalchemy>=2.0.23
 sqlite-utils>=3.35.0
 
-# Logging & Auth
+# Logging and Authentication
 loguru>=0.7.2
 rich>=13.7.1
 bcrypt>=4.1.2

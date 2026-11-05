@@ -1,0 +1,33 @@
+
+# Jarvis Desktop-Specific Dependencies
+
+# GUI
+PyQt5>=5.15.10
+PyQt5-tools>=5.15.4.3
+pywebview>=5.1
+
+# Voice and Audio
+SpeechRecognition>=3.10.3
+pyttsx3>=2.90
+PyAudio>=0.2.14
+sounddevice>=0.4.6
+vosk>=0.3.45
+
+# Vision and Screen Capture
+opencv-python>=4.9.0.80
+Pillow>=10.3.0
+mss>=9.0.1
+
+# Windows Automation
+pyautogui>=0.9.54
+screen-brightness-control>=0.22.1
+pycaw>=20240210
+comtypes>=1.4.1
+keyboard>=0.13.5
+mouse>=0.7.1
+psutil>=5.9.8
+
+# Browser Automation
+playwright>=1.43.0
+selenium>=4.19.0
+webdriver-manager>=4.0.1

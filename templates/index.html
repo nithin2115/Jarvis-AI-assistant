@@ -3955,48 +3955,93 @@ window._micRecognition = null;
 window._toggleMic = function(){
   const btn = document.getElementById('chat-mic-btn');
   if(!btn) return;
+
   if(window._micListening){
-    // Stop listening
-    if(window._micRecognition) window._micRecognition.stop();
+    // Stop listening cleanly
+    try {
+      if(window._micRecognition) window._micRecognition.stop();
+    } catch(e){}
     window._micListening = false;
     btn.classList.remove('listening');
     return;
   }
-  // Start speech recognition
+
+  // Check browser SpeechRecognition support
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SR){ alert('Speech recognition not supported in this browser.'); return; }
+  if(!SR){
+    alert('Voice input is not supported in this browser. Please use Google Chrome or Microsoft Edge.');
+    return;
+  }
+
   const rec = new SR();
-  rec.lang = 'en-US';
+  // Adapt to user's native system language/accent for much better accuracy
+  rec.lang = navigator.language || 'en-US';
   rec.interimResults = true;
-  rec.continuous = false;
-  rec.maxAlternatives = 1;
+  rec.continuous = true;
+  rec.maxAlternatives = 3;
+
   window._micRecognition = rec;
   window._micListening = true;
   btn.classList.add('listening');
-  let finalTranscript = '';
-  rec.onresult = (ev)=>{
+
+  const baseText = _chatIn.value ? _chatIn.value.trim() + ' ' : '';
+  const originalPlaceholder = _chatIn.placeholder;
+  _chatIn.placeholder = '🎙️ Listening... Speak now (click mic again to stop)';
+
+  let finalized = '';
+
+  rec.onresult = (ev) => {
     let interim = '';
-    for(let i = ev.resultIndex; i < ev.results.length; i++){
-      if(ev.results[i].isFinal) finalTranscript += ev.results[i][0].transcript;
-      else interim += ev.results[i][0].transcript;
+    finalized = '';
+    for(let i = 0; i < ev.results.length; i++){
+      const chunk = ev.results[i][0].transcript;
+      if(ev.results[i].isFinal){
+        finalized += chunk + ' ';
+      } else {
+        interim += chunk;
+      }
     }
-    _chatIn.value = finalTranscript + interim;
-    _autoExpand(); _updateSendBtn();
+    const combined = (finalized + interim).trim();
+    if(combined){
+      _chatIn.value = baseText + combined;
+      _autoExpand();
+      _updateSendBtn();
+    }
   };
-  rec.onend = ()=>{
+
+  rec.onerror = (ev) => {
+    console.warn('[MIC ERROR]', ev.error);
+    if(ev.error === 'not-allowed' || ev.error === 'permission-denied'){
+      alert('Microphone access is blocked! Please click the lock or camera icon in your browser URL bar and allow microphone permission.');
+    } else if(ev.error === 'network'){
+      console.warn('Speech recognition network error: check internet connection.');
+    }
+    if(ev.error === 'not-allowed' || ev.error === 'audio-capture'){
+      window._micListening = false;
+      btn.classList.remove('listening');
+      _chatIn.placeholder = originalPlaceholder;
+    }
+  };
+
+  rec.onend = () => {
     window._micListening = false;
     btn.classList.remove('listening');
-    if(finalTranscript.trim()){
-      _chatIn.value = finalTranscript.trim();
-      _autoExpand(); _updateSendBtn();
-      _chatIn.focus();
+    _chatIn.placeholder = originalPlaceholder;
+    if(_chatIn.value.trim()){
+      _autoExpand();
+      _updateSendBtn();
+      try { _chatIn.focus(); } catch(e){}
     }
   };
-  rec.onerror = ()=>{
+
+  try {
+    rec.start();
+  } catch(err){
+    console.error('[MIC START FAILED]', err);
     window._micListening = false;
     btn.classList.remove('listening');
-  };
-  rec.start();
+    _chatIn.placeholder = originalPlaceholder;
+  }
 };
 
 // ═══════════════════════════════════════════════════════

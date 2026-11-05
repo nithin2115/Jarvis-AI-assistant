@@ -18,6 +18,10 @@ GROQ_MODEL       = os.getenv('GROQ_MODEL',       'qwen/qwen3.8-27b')           #
 GEMINI_MODEL     = os.getenv('GEMINI_MODEL',      'gemini-3.8-flash')           # smart
 OPENROUTER_MODEL = os.getenv('OPENROUTER_MODEL',  'meta-llama/llama-3.3-70b-instruct')
 
+# ── Voice / Speech settings ───────────────────────
+ENABLE_VOICE_OUTPUT     = os.getenv('ENABLE_VOICE_OUTPUT', 'false').lower() in ('true', '1', 'yes')
+ENABLE_BACKGROUND_VOICE = os.getenv('ENABLE_BACKGROUND_VOICE', 'false').lower() in ('true', '1', 'yes')
+
 # ── Generation limits ─────────────────────────────
 MAX_TOKENS  = int(os.getenv('MAX_TOKENS', '600'))
 TEMPERATURE = float(os.getenv('TEMPERATURE', '0.7'))

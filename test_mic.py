@@ -57,11 +57,11 @@ def main():
         return
 
     # Step 3: Test default input device
-    default_idx = sd.default.device[0]
+    default_idx = 27
     default_dev = devices[default_idx]
-    native_rate = int(default_dev['default_samplerate'])
-    print("\n[3/5] Testing default device [%d] at native %dHz..." % (default_idx, native_rate))
+    native_rate = 16000
 
+    print("\n[3/5] Testing device [%d] at native %dHz..." % (default_idx, native_rate))
     import queue
     audio_q = queue.Queue()
     def cb(indata, frames, time_info, status):

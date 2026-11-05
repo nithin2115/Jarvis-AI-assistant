@@ -17,15 +17,20 @@ env/
 .DS_Store
 Thumbs.db
 
-# Database files (auto-recreated)
+# Database and user data
 users.db
 memory.db
 *.db
 *.sqlite
+data/chroma_db/
+data/memory/
+data/vosk-model/
 
 # Test/debug scripts
 test_keys.py
 test_groq_models.py
+test_tts.py
+test_mic.py
 
 # Logs
 *.log

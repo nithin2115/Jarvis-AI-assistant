@@ -70,25 +70,33 @@ def _truncate(text: str, limit: int = MAX_TEXT_CHARS) -> str:
 
 
 def _extract_pdf(data: bytes) -> str:
+    PdfReader = None
     try:
-        from PyPDF2 import PdfReader
+        from pypdf import PdfReader
     except Exception:
         try:
-            from pypdf import PdfReader  # fallback
+            from PyPDF2 import PdfReader
         except Exception as e:
-            logger.warning(f"[UPLOAD] PDF reader unavailable: {e}")
+            logger.warning(f"[UPLOAD] PDF reader unavailable (install pypdf): {e}")
+            print(f"⚠️ [UPLOAD] PDF extract failed: neither pypdf nor PyPDF2 is installed!")
             return ""
     try:
         reader = PdfReader(io.BytesIO(data))
         chunks = []
-        for page in reader.pages[:80]:  # cap pages defensively
+        for i, page in enumerate(reader.pages[:80]):  # cap pages defensively
             try:
-                chunks.append(page.extract_text() or "")
-            except Exception:
+                t = page.extract_text()
+                if t and t.strip():
+                    chunks.append(t.strip())
+            except Exception as pe:
+                logger.debug(f"[UPLOAD] Page {i} extract failed: {pe}")
                 continue
-        return "\n".join(c.strip() for c in chunks if c).strip()
+        extracted = "\n\n".join(chunks).strip()
+        print(f"✅ [UPLOAD] PDF extracted {len(extracted)} characters from {len(reader.pages)} pages")
+        return extracted
     except Exception as e:
         logger.warning(f"[UPLOAD] PDF extract failed: {e}")
+        print(f"⚠️ [UPLOAD] PDF reading failed: {e}")
         return ""
 
 
@@ -97,10 +105,13 @@ def _extract_docx(data: bytes) -> str:
         import docx  # python-docx
     except Exception as e:
         logger.warning(f"[UPLOAD] python-docx unavailable: {e}")
+        print(f"⚠️ [UPLOAD] DOCX extract failed: python-docx not installed!")
         return ""
     try:
         doc = docx.Document(io.BytesIO(data))
-        return "\n".join(p.text for p in doc.paragraphs if p.text).strip()
+        text = "\n".join(p.text for p in doc.paragraphs if p.text).strip()
+        print(f"✅ [UPLOAD] DOCX extracted {len(text)} characters")
+        return text
     except Exception as e:
         logger.warning(f"[UPLOAD] DOCX extract failed: {e}")
         return ""

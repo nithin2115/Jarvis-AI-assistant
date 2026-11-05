@@ -3,7 +3,7 @@ services:
     name: jarvis-ai-assistant
     runtime: python
     buildCommand: pip install -r requirements-production.txt
-    startCommand: gunicorn --worker-class eventlet -w 1 --bind 0.0.0.0:$PORT app:app
+    startCommand: python app.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0

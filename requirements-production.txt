@@ -48,5 +48,3 @@ psutil>=5.9.8
 
 # TTS
 edge-tts>=6.1.12
-
-simple-websocket>=1.0.0
